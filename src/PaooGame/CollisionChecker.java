@@ -44,6 +44,7 @@ public class CollisionChecker {
                     item.collisionON = true;
                 }
                 break;
+
             case "Down":
                 itemBottomRow =(itemBottomWorldY/* + item.speed*/)/Tile.TILE_HEIGHT;
                 tileNum1 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemLeftCol);
