@@ -36,8 +36,6 @@ public class Hero extends Character
 
         super(refLink, x, y, Character.DEFAULT_CREATURE_WIDTH, Character.DEFAULT_CREATURE_HEIGHT);
 
-
-
         ///Seteaza imaginea de start a eroului
         image = Assets.heroLeft;
         ///Stabilieste pozitia relativa si dimensiunea dreptunghiului de coliziune, starea implicita(normala)
@@ -51,8 +49,8 @@ public class Hero extends Character
         attackBounds.y = 10;
         attackBounds.width = 38;
         attackBounds.height = 38;
-        worldX = (float) (8.5*Tile.TILE_WIDTH);
-        worldY = 6*Tile.TILE_HEIGHT;
+        worldX = 22*Tile.TILE_WIDTH;
+        worldY = 25*Tile.TILE_HEIGHT;
         screenX = GameWindow.GetHalfWidth();
         screenY = GameWindow.GetHalfHeight();
     }

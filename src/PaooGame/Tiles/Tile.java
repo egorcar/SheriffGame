@@ -16,9 +16,15 @@ public class Tile
     /// o singura data in memorie
     public static Tile grassTile        = new SandTile(0);     /*!< Dala de tip iarba*/
     public static Tile mountainTile     = new RockTile(1);  /*!< Dala de tip munte/piatra*/
-    public static Tile waterTile        = new WaterTile(2);     /*!< Dala de tip apa*/
-    public static Tile treeTile         = new TreeTile(3);      /*!< Dala de tip copac*/
-    public static Tile soilTile         = new SoilTile(4);      /*!< Dala de tip sol/pamant*/
+    public static Tile blFenceTile      = new blFenceTile(4);
+    public static Tile brFenceTile      = new brFenceTile(5);
+    public static Tile trFenceTile      = new trFenceTile(6);
+    public static Tile tlFenceTile      = new tlFenceTile(7);
+    public static Tile vFenceTile       = new vFenceTile(8);
+    public static Tile hFenceTile       = new hFenceTile(9);
+    /*public static Tile waterTile        = new WaterTile(2);     *//*!< Dala de tip apa*//*
+    public static Tile treeTile         = new TreeTile(3);      *//*!< Dala de tip copac*//*
+    public static Tile soilTile         = new SoilTile(4);      *//*!< Dala de tip sol/pamant*/
     //public static Tile sandTile         = new SandTile(4);      /*!< Dala de tip sol/pamant*/
 
     public static final int TILE_WIDTH  = 48;                       /*!< Latimea unei dale.*/
@@ -49,31 +55,17 @@ public class Tile
 
     }
 
-    /*! \fn public void Draw(Graphics g, int x, int y)
-        \brief Deseneaza in fereastra dala.
-
-        \param g Contextul grafic in care sa se realizeze desenarea
-        \param x Coordonata x in cadrul ferestrei unde sa fie desenata dala
-        \param y Coordonata y in cadrul ferestrei unde sa fie desenata dala
-     */
     public void Draw(Graphics g, int x, int y)
     {
-
         /// Desenare dala
         g.drawImage(img, x, y, TILE_WIDTH, TILE_HEIGHT, null);
     }
 
-    /*! \fn public boolean IsSolid()
-        \brief Returneaza proprietatea de dala solida (supusa coliziunilor) sau nu.
-     */
     public boolean IsSolid()
     {
-        return false;
+        return solid;
     }
 
-    /*! \fn public int GetId()
-        \brief Returneaza id-ul dalei.
-     */
     public int GetId()
     {
         return id;
