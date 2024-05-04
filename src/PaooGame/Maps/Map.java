@@ -57,7 +57,12 @@ public class Map {
             int worldY = worldRow * Tile.TILE_HEIGHT;
             int screenX = (int) (worldX - hero.worldX + hero.screenX);
             int screenY = (int) (worldY - hero.worldY + hero.screenY);
-            GetTile(worldCol, worldRow).Draw(g, screenX, screenY);
+            if(worldX + Tile.TILE_WIDTH > hero.worldX - hero.screenX &&
+                    worldX - Tile.TILE_WIDTH < hero.worldX + hero.screenX &&
+                    worldY + Tile.TILE_WIDTH > hero.worldY - hero.screenY &&
+                    worldY - Tile.TILE_WIDTH < hero.worldY + hero.screenY){
+                GetTile(worldCol, worldRow).Draw(g, screenX, screenY);
+            }
             worldCol++;
 
             if (worldCol == maxWorldCol) {
