@@ -1,6 +1,6 @@
 package PaooGame;
 
-//paoogame2
+//---------------------------------------------------------SHERIFF--------------------------------------------------------------------
 
 public class Main
 {
@@ -9,5 +9,4 @@ public class Main
         Game paooGame = new Game("Sheriff", 816, 576);
         paooGame.StartGame();
     }
-    //a
 }
