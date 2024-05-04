@@ -1,5 +1,9 @@
 package PaooGame.GameWindow;
 
+import PaooGame.CollisionChecker;
+import PaooGame.Game;
+import PaooGame.RefLinks;
+
 import javax.swing.*;
 import java.awt.*;
 

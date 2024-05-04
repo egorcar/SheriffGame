@@ -1,5 +1,6 @@
 package PaooGame.Items;
 
+import PaooGame.CollisionChecker;
 import PaooGame.RefLinks;
 
 
@@ -26,9 +27,12 @@ public abstract class Item
     public Rectangle bounds;         /*!< Dreptunghiul curent de coliziune.*/
     public Rectangle normalBounds;   /*!< Dreptunghiul de coliziune aferent starii obisnuite(spatiul ocupat de entitate in mod normal), poate fi mai mic sau mai mare decat dimensiunea imaginii sale.*/
     protected Rectangle attackBounds;   /*!< Dreptunghiul de coliziune aferent starii de atac.*/
+
     protected RefLinks refLink;         /*!< O referinte catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program.*/
     public int spriteCounter = 0;
     public int spriteNum = 1;
+
+    public CollisionChecker cChecker;
 
 
     /*! \fn public Item(RefLinks refLink, float x, float y, int width, int height)
@@ -50,13 +54,12 @@ public abstract class Item
 
 
         ///Creaza dreptunghi de coliziune pentru modul normal, aici a fost stabilit la dimensiunea imaginii dar poate fi orice alta dimensiune
-        normalBounds = new Rectangle(0, 0, width, height);
+        normalBounds = new Rectangle(0, 0, 32, 32);
         ///Creaza dreptunghi de coliziune pentru modul de atack, aici a fost stabilit la dimensiunea imaginii dar poate fi orice alta dimensiune
         attackBounds = new Rectangle(0, 0, width, height);
         ///Dreptunghiul de coliziune implicit este setat ca fiind cel normal
         bounds = normalBounds;
-        /*screenX = GameWindow.GetHalfWidth();
-        screenY = GameWindow.GetHalfHeigth();*/
+        cChecker = new CollisionChecker(refLink);
     }
 
     ///Metoda abstracta destinata actualizarii starii curente

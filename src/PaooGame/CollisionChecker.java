@@ -1,18 +1,16 @@
 package PaooGame;
-
-import PaooGame.Maps.Map;
 import PaooGame.Items.Character;
+import PaooGame.States.PlayState;
 import PaooGame.Tiles.Tile;
-import PaooGame.RefLinks;
+
+import java.sql.Ref;
 
 //import static PaooGame.Tiles.Tile.tiles;
 
 public class CollisionChecker {
-    //Game game;
     private RefLinks refLink;
 
     public CollisionChecker(RefLinks refLink){
-        //this.game = game;
         this.refLink = refLink;
     }
     public void checkTile(Character item){
@@ -20,7 +18,7 @@ public class CollisionChecker {
         // THIS IS A FUNCTION THAT CHECKS A CHARACTER. CHARACTER'S NAME IS "item". item IT'S NOT AN ITEM, IT'S A CHARACTER!!
 
         int itemLeftWorldX = (int) (item.worldX + item.bounds.x);
-        int itemRightWorldX = (int) (item.worldY + item.bounds.x + item.bounds.width);
+        int itemRightWorldX = (int) (item.worldX + item.bounds.x + item.bounds.width);
         int itemTopWorldY = (int) (item.worldY + item.bounds.y);
         int itemBottomWorldY = (int) (item.worldY + item.bounds.y + item.bounds.height);
 
@@ -34,20 +32,47 @@ public class CollisionChecker {
 
         switch (item.direction){
             case "Up":
-                itemTopRow = (int) ((itemTopWorldY - item.speed)/Tile.TILE_HEIGHT);
-                tileNum1 = refLink.GetMap().MiddleEastMap(itemLeftCol,itemTopRow);
-                tileNum2 = refLink.GetMap().MiddleEastMap(itemRightCol,itemTopRow);
+                itemTopRow =(itemTopWorldY/* - item.speed*/)/Tile.TILE_HEIGHT;
+                tileNum1 = refLink.GetMap().MiddleEastMap(itemTopRow, itemLeftCol);
+                tileNum2 = refLink.GetMap().MiddleEastMap(itemTopRow, itemRightCol);
+                System.out.println(itemLeftCol+","+itemTopRow);
+                System.out.println(itemRightCol+","+itemTopRow);
                 Tile temp1 = Tile.tileMaker(tileNum1);
                 Tile temp2 = Tile.tileMaker(tileNum2);
+                System.out.println(temp1 +" "+ temp2);
                 if(temp1.solid || temp2.solid){
                     item.collisionON = true;
                 }
                 break;
             case "Down":
+                itemBottomRow =(itemBottomWorldY/* + item.speed*/)/Tile.TILE_HEIGHT;
+                tileNum1 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemLeftCol);
+                tileNum2 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemRightCol);
+                temp1 = Tile.tileMaker(tileNum1);
+                temp2 = Tile.tileMaker(tileNum2);
+                if(temp1.solid || temp2.solid){
+                    item.collisionON = true;
+                }
                 break;
             case "Left":
+                itemLeftCol =(itemLeftWorldX/* - item.speed*/)/Tile.TILE_HEIGHT;
+                tileNum1 = refLink.GetMap().MiddleEastMap(itemTopRow, itemLeftCol);
+                tileNum2 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemLeftCol);
+                temp1 = Tile.tileMaker(tileNum1);
+                temp2 = Tile.tileMaker(tileNum2);
+                if(temp1.solid || temp2.solid){
+                    item.collisionON = true;
+                }
                 break;
             case "Right":
+                itemRightCol = (int) ((itemRightWorldX + item.speed)/Tile.TILE_HEIGHT);
+                tileNum1 = refLink.GetMap().MiddleEastMap(itemTopRow, itemRightCol);
+                tileNum2 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemRightCol);
+                temp1 = Tile.tileMaker(tileNum1);
+                temp2 = Tile.tileMaker(tileNum2);
+                if(temp1.solid || temp2.solid){
+                    item.collisionON = true;
+                }
                 break;
         }
     }

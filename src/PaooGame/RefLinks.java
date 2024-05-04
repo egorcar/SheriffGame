@@ -16,6 +16,8 @@ public class RefLinks
     private Game game;          /*!< Referinta catre obiectul Game.*/
     private Map map;            /*!< Referinta catre harta curenta.*/
 
+    private CollisionChecker cChecker;
+
 
     /*! \fn public RefLinks(Game game)
         \brief Constructorul de initializare al clasei.
@@ -82,5 +84,7 @@ public class RefLinks
     }
     public Hero GetHero(){return hero;}
     public void SetHero(Hero hero){this.hero = hero;}
+    public CollisionChecker GetCChecker(){return cChecker;}
+    public void SetCChecker(CollisionChecker cChecker){this.cChecker = cChecker;}
 
 }

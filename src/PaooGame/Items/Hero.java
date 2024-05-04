@@ -3,6 +3,7 @@ package PaooGame.Items;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import PaooGame.CollisionChecker;
 import PaooGame.GameWindow.GameWindow;
 import PaooGame.RefLinks;
 import PaooGame.Graphics.Assets;
@@ -149,27 +150,51 @@ public class Hero extends Character
         ///Verificare apasare tasta "sus"
         if(refLink.GetKeyManager().up)
         {
-            yMove = -speed;
             direction = "Up";
         }
         ///Verificare apasare tasta "jos"
         if(refLink.GetKeyManager().down)
         {
-            yMove = speed;
             direction = "Down";
         }
         ///Verificare apasare tasta "left"
         if(refLink.GetKeyManager().left)
         {
-            xMove = -speed;
             direction = "Left";
         }
         ///Verificare apasare tasta "dreapta"
         if(refLink.GetKeyManager().right)
         {
-            xMove = speed;
+            //xMove = speed;
             direction = "Right";
         }
+
+        //CHECK TILE COLLISION
+
+        collisionON = false;
+        cChecker.checkTile(this);
+        System.out.println("Collision = "+ collisionON+" Direction = "+direction);
+
+        if(!collisionON){
+            if(refLink.GetKeyManager().up)
+            {
+                yMove = -speed;
+            }
+            if(refLink.GetKeyManager().down)
+            {
+                yMove = speed;
+            }
+            if(refLink.GetKeyManager().left)
+            {
+                xMove = -speed;
+            }
+            if(refLink.GetKeyManager().right)
+            {
+                xMove = speed;
+            }
+        }
+
+
     }
 
     /*! \fn public void Draw(Graphics g)
