@@ -149,28 +149,26 @@ public class Hero extends Character
         ///Verificare apasare tasta "sus"
         if(refLink.GetKeyManager().up)
         {
-            /*if(refLink.GetKeyManager().left)
-            {
-                xMove = (float) (-speed/sqrt(2));
-                yMove = (float) (-speed/sqrt(2));
-            }
-            else*/
             yMove = -speed;
+            direction = "Up";
         }
         ///Verificare apasare tasta "jos"
         if(refLink.GetKeyManager().down)
         {
             yMove = speed;
+            direction = "Down";
         }
         ///Verificare apasare tasta "left"
         if(refLink.GetKeyManager().left)
         {
             xMove = -speed;
+            direction = "Left";
         }
         ///Verificare apasare tasta "dreapta"
         if(refLink.GetKeyManager().right)
         {
             xMove = speed;
+            direction = "Right";
         }
     }
 
@@ -185,8 +183,8 @@ public class Hero extends Character
         g.drawImage(image, (int)GameWindow.GetHalfWidth()-30, (int)GameWindow.GetHalfHeight()-10, width, height, null);
 
         ///doar pentru debug daca se doreste vizualizarea dreptunghiului de coliziune altfel se vor comenta urmatoarele doua linii
-        //g.setColor(Color.blue);
-        //g.fillRect((int)(x + bounds.x), (int)(y + bounds.y), bounds.width, bounds.height);
+        g.setColor(Color.blue);
+        g.fillRect((int) screenX, (int) screenY, bounds.width, bounds.height);
     }
 
 }

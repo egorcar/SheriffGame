@@ -10,7 +10,7 @@ public class Tile
 {
     private static final int NO_TILES   = 32;
     public static Tile[] tiles          = new Tile[NO_TILES];       /*!< Vector de referinte de tipuri de dale.*/
-    public boolean solid;
+    public boolean solid = false;
 
     /// De remarcat ca urmatoarele dale sunt statice si publice. Acest lucru imi permite sa le am incarcate
     /// o singura data in memorie
@@ -69,5 +69,28 @@ public class Tile
     public int GetId()
     {
         return id;
+    }
+
+    public static Tile tileMaker(int id){
+        switch (id){
+            case 0:
+                return grassTile;
+            case 1:
+                return mountainTile;
+            case 4:
+                return blFenceTile;
+            case 5:
+                return brFenceTile;
+            case 6:
+                return trFenceTile;
+            case 7:
+                return tlFenceTile;
+            case 8:
+                return vFenceTile;
+            case 9:
+                return hFenceTile;
+            default:
+                throw new IllegalStateException("Unexpected value: " + id);
+        }
     }
 }

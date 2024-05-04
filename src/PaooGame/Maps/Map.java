@@ -1,7 +1,5 @@
 package PaooGame.Maps;
 
-import PaooGame.GameWindow.GameWindow;
-import PaooGame.Graphics.SpriteSheet;
 import PaooGame.Items.Hero;
 import PaooGame.RefLinks;
 import PaooGame.Tiles.Tile;
@@ -15,7 +13,7 @@ public class Map {
     private RefLinks refLink;   /*!< O referinte catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program.*/
     private int width;          /*!< Latimea hartii in numar de dale.*/
     private int height;         /*!< Inaltimea hartii in numar de dale.*/
-    private int[][] tiles;     /*!< Referinta catre o matrice cu codurile dalelor ce vor construi harta.*/
+    private static int[][] tiles;     /*!< Referinta catre o matrice cu codurile dalelor ce vor construi harta.*/
     public final int maxWorldCol = 44;
     public final int maxWorldRow = 44;
     //public final int maxScreenCol = ;
@@ -33,6 +31,9 @@ public class Map {
         this.refLink = refLink;
         ///incarca harta de start. Functia poate primi ca argument id-ul hartii ce poate fi incarcat.
         LoadWorld();
+    }
+
+    public int[][] GetMap() { return tiles;
     }
 
     /*! \fn public  void Update()
@@ -110,7 +111,7 @@ public class Map {
         }
     }
 
-    private int MiddleEastMap(int x ,int y)
+    public int MiddleEastMap(int x, int y)
     {
         ///Definire statica a matricei de coduri de dale.
         final int map[][] = {

@@ -16,5 +16,6 @@ public class SandTile extends Tile
     {
             /// Apel al constructorului clasei de baza
         super(Assets.sand, id);
+        //solid = false;
     }
 }

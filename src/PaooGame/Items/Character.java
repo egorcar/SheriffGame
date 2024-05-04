@@ -14,9 +14,10 @@ public abstract class Character extends Item
     public static final float DEFAULT_SPEED         = 4.0f; /*!< Viteza implicita a unu caracter.*/
     public static final int DEFAULT_CREATURE_WIDTH  = 60;   /*!< Latimea implicita a imaginii caracterului.*/
     public static final int DEFAULT_CREATURE_HEIGHT = 60;   /*!< Inaltimea implicita a imaginii caracterului.*/
+    public String direction;
 
     protected int life;     /*!< Retine viata caracterului.*/
-    protected float speed;  /*!< Retine viteza de deplasare caracterului.*/
+    public float speed;  /*!< Retine viteza de deplasare caracterului.*/
     protected float xMove;  /*!< Retine noua pozitie a caracterului pe axa X.*/
     protected float yMove;  /*!< Retine noua pozitie a caracterului pe axa Y.*/
 

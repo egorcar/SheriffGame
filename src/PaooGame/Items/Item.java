@@ -18,12 +18,13 @@ public abstract class Item
     public float worldY;
     public float screenX;
     public float screenY;
+    public boolean collisionON = false;
     protected float x;                  /*!< Pozitia pe axa X a "tablei" de joc a imaginii entitatii.*/
     protected float y;                  /*!< Pozitia pe axa Y a "tablei" de joc a imaginii entitatii.*/
     protected int width;                /*!< Latimea imaginii entitatii.*/
     protected int height;               /*!< Inaltimea imaginii entitatii.*/
-    protected Rectangle bounds;         /*!< Dreptunghiul curent de coliziune.*/
-    protected Rectangle normalBounds;   /*!< Dreptunghiul de coliziune aferent starii obisnuite(spatiul ocupat de entitate in mod normal), poate fi mai mic sau mai mare decat dimensiunea imaginii sale.*/
+    public Rectangle bounds;         /*!< Dreptunghiul curent de coliziune.*/
+    public Rectangle normalBounds;   /*!< Dreptunghiul de coliziune aferent starii obisnuite(spatiul ocupat de entitate in mod normal), poate fi mai mic sau mai mare decat dimensiunea imaginii sale.*/
     protected Rectangle attackBounds;   /*!< Dreptunghiul de coliziune aferent starii de atac.*/
     protected RefLinks refLink;         /*!< O referinte catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program.*/
     public int spriteCounter = 0;
