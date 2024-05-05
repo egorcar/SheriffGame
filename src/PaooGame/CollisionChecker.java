@@ -17,10 +17,10 @@ public class CollisionChecker {
 
         // THIS IS A FUNCTION THAT CHECKS A CHARACTER. CHARACTER'S NAME IS "item". item IT'S NOT AN ITEM, IT'S A CHARACTER!!
 
-        int itemLeftWorldX = (int) (item.worldX + item.bounds.x);
-        int itemRightWorldX = (int) (item.worldX + item.bounds.x + item.bounds.width);
+        int itemLeftWorldX = (int) (item.worldX + item.bounds.x-32);
+        int itemRightWorldX = (int) (item.worldX + item.bounds.x + item.bounds.width-32);
         int itemTopWorldY = (int) (item.worldY + item.bounds.y);
-        int itemBottomWorldY = (int) (item.worldY + item.bounds.y + item.bounds.height);
+        int itemBottomWorldY = (int) (item.worldY + item.bounds.y + item.bounds.height-20);
 
         int itemLeftCol = (int) (itemLeftWorldX/ Tile.TILE_WIDTH);
         int itemRightCol = (int) (itemRightWorldX/ Tile.TILE_WIDTH);

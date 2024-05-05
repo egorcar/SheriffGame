@@ -173,7 +173,8 @@ public class Hero extends Character
 
         collisionON = false;
         cChecker.checkTile(this);
-        System.out.println("Collision = "+ collisionON+" Direction = "+direction);
+        //System.out.println("Collision = "+ collisionON+" Direction = "+direction);
+        System.out.println(worldX+","+worldY);
 
         if(!collisionON){
             if(refLink.GetKeyManager().up)
