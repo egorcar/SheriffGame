@@ -40,10 +40,10 @@ public class Hero extends Character
         ///Seteaza imaginea de start a eroului
         image = Assets.heroLeft;
         ///Stabilieste pozitia relativa si dimensiunea dreptunghiului de coliziune, starea implicita(normala)
-        normalBounds.x = 16;
-        normalBounds.y = 16;
-        normalBounds.width = 16;
-        normalBounds.height = 32;
+        normalBounds.x = -8;
+        normalBounds.y = 20;
+        normalBounds.width = 12;
+        normalBounds.height = 12;
 
         ///Stabilieste pozitia relativa si dimensiunea dreptunghiului de coliziune, starea de atac
         attackBounds.x = 10;
@@ -153,27 +153,30 @@ public class Hero extends Character
             direction = "Up";
         }
         ///Verificare apasare tasta "jos"
-        if(refLink.GetKeyManager().down)
+        else if(refLink.GetKeyManager().down)
         {
             direction = "Down";
         }
         ///Verificare apasare tasta "left"
-        if(refLink.GetKeyManager().left)
+        else if(refLink.GetKeyManager().left)
         {
             direction = "Left";
         }
         ///Verificare apasare tasta "dreapta"
-        if(refLink.GetKeyManager().right)
+        else if(refLink.GetKeyManager().right)
         {
             //xMove = speed;
             direction = "Right";
         }
+        else
+            direction = "No";
+
 
         //CHECK TILE COLLISION
 
         collisionON = false;
         cChecker.checkTile(this);
-        //System.out.println("Collision = "+ collisionON+" Direction = "+direction);
+        System.out.println("Collision = "+ collisionON+" Direction = "+direction);
         System.out.println(worldX+","+worldY);
 
         if(!collisionON){
@@ -210,7 +213,7 @@ public class Hero extends Character
 
         ///doar pentru debug daca se doreste vizualizarea dreptunghiului de coliziune altfel se vor comenta urmatoarele doua linii
         g.setColor(Color.blue);
-        g.fillRect((int) screenX, (int) screenY, bounds.width, bounds.height);
+        g.fillRect((int) screenX+bounds.x, (int) screenY+bounds.y, bounds.width, bounds.height);
     }
 
 }
