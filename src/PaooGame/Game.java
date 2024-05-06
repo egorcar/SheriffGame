@@ -5,6 +5,7 @@ import PaooGame.Graphics.Assets;
 import PaooGame.Input.KeyManager;
 import PaooGame.States.*;
 import PaooGame.Tiles.Tile;
+import PaooGame.AssetSetter;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;

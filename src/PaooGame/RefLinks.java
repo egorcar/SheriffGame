@@ -4,6 +4,7 @@ import PaooGame.Items.Hero;
 import PaooGame.Maps.Map;
 
 import PaooGame.Input.KeyManager;
+import PaooGame.Object.SuperObject;
 
 /*! \class public class RefLinks
     \brief Clasa ce retine o serie de referinte ale unor elemente pentru a fi usor accesibile.
@@ -17,6 +18,8 @@ public class RefLinks
     private Map map;            /*!< Referinta catre harta curenta.*/
 
     private CollisionChecker cChecker;
+    private AssetSetter assetSetter;
+    private SuperObject []obj;
 
 
     /*! \fn public RefLinks(Game game)
@@ -86,5 +89,11 @@ public class RefLinks
     public void SetHero(Hero hero){this.hero = hero;}
     public CollisionChecker GetCChecker(){return cChecker;}
     public void SetCChecker(CollisionChecker cChecker){this.cChecker = cChecker;}
+    public SuperObject[] GetSuperObject(){
+        return obj;
+    }
+    public  void SetSuperObject(SuperObject []obj){
+        this.obj = obj;
+    }
 
 }

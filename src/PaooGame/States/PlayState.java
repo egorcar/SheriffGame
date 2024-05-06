@@ -1,9 +1,11 @@
 package PaooGame.States;
 
+import PaooGame.AssetSetter;
 import PaooGame.CollisionChecker;
 import PaooGame.Game;
 import PaooGame.GameWindow.GameWindow;
 import PaooGame.Items.Hero;
+import PaooGame.Object.SuperObject;
 import PaooGame.RefLinks;
 import PaooGame.Maps.Map;
 
@@ -16,8 +18,9 @@ public class PlayState extends State
 {
     private Hero hero;  /*!< Referinta catre obiectul animat erou (controlat de utilizator).*/
     private Map map;    /*!< Referinta catre harta curenta.*/
-    public CollisionChecker cChecker;
-
+    public AssetSetter assetSetter;
+    //public CollisionChecker cChecker;
+    public SuperObject []obj;
     /*! \fn public PlayState(RefLinks refLink)
         \brief Constructorul de initializare al clasei
 
@@ -33,7 +36,13 @@ public class PlayState extends State
         refLink.SetMap(map);
         ///Construieste eroul
         hero = new Hero(refLink, GameWindow.GetHalfWidth(), GameWindow.GetHalfHeight());
-        cChecker = new CollisionChecker(refLink);
+        //cChecker = new CollisionChecker(refLink);
+        assetSetter = new AssetSetter(refLink);
+
+        obj = new SuperObject[]{new SuperObject(refLink)};
+        refLink.SetSuperObject(obj);
+
+        assetSetter.setObject();
     }
 
     /*! \fn public void Update()
