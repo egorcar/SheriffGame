@@ -65,5 +65,6 @@ public class PlayState extends State
     {
         map.Draw(g, hero);
         hero.Draw(g);
+        obj[0].Draw(refLink, hero, g);
     }
 }
