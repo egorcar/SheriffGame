@@ -39,8 +39,12 @@ public class PlayState extends State
         //cChecker = new CollisionChecker(refLink);
         assetSetter = new AssetSetter(refLink);
 
-        obj = new SuperObject[]{new SuperObject(refLink)};
+        obj = new SuperObject[10];
+        for (int i = 0; i < obj.length; i++) {
+            obj[i] = new SuperObject(refLink);
+        }
         refLink.SetSuperObject(obj);
+
 
         assetSetter.setObject();
     }
@@ -63,8 +67,15 @@ public class PlayState extends State
     @Override
     public void Draw(Graphics g)
     {
+        //Draw map:
         map.Draw(g, hero);
+        //Draw hero:
         hero.Draw(g);
-        obj[0].Draw(refLink, hero, g);
+        //Draw objects:
+        for(int i = 0; i<this.obj.length; i++){
+            if(this.obj[i]!=null){
+                this.obj[i].Draw(refLink, hero, g);
+            }
+        }
     }
 }
