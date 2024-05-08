@@ -99,24 +99,49 @@ public class CollisionChecker {
                         character.bounds.y -= character.speed;
                         if(character.bounds.intersects(refLink.GetSuperObject()[i].bounds)){
                             System.out.println("Up collision");
+                            if (refLink.GetSuperObject()[i].collision == true){
+                                character.collisionON = true;
+                            }
+                            if(hero == true){
+                                index = i;
+                            }
                         }
                         break;
                     case "Down":
                         character.bounds.y += character.speed;
                         if(character.bounds.intersects(refLink.GetSuperObject()[i].bounds)){
                             System.out.println("Down collision");
+                            if (refLink.GetSuperObject()[i].collision == true){
+                                character.collisionON = true;
+                            }
+                            if(hero == true){
+                                index = i;
+                            }
                         }
+
                         break;
                     case "Left":
                         character.bounds.x -= character.speed;
                         if(character.bounds.intersects(refLink.GetSuperObject()[i].bounds)){
                             System.out.println("Left collision");
+                            if (refLink.GetSuperObject()[i].collision == true){
+                                character.collisionON = true;
+                            }
+                            if(hero == true){
+                                index = i;
+                            }
                         }
                         break;
                     case "Right":
                         character.bounds.x += character.speed;
                         if(character.bounds.intersects(refLink.GetSuperObject()[i].bounds)){
                             System.out.println("Right collision");
+                            if (refLink.GetSuperObject()[i].collision == true){
+                                character.collisionON = true;
+                            }
+                            if(hero == true){
+                                index = i;
+                            }
                         }
                         break;
                 }

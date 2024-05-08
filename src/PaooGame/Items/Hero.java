@@ -22,7 +22,7 @@ import PaooGame.Tiles.Tile;
 public class Hero extends Character
 {
     private BufferedImage image;    /*!< Referinta catre imaginea curenta a eroului.*/
-
+    int hasPotion = 0;
 
     /*! \fn public Hero(RefLinks refLink, float x, float y)
         \brief Constructorul de initializare al clasei Hero.
@@ -175,10 +175,11 @@ public class Hero extends Character
 
 
         //CHECK TILE COLLISION
-
         collisionON = false;
+
         cChecker.checkTile(this);
         int objIndex = cChecker.checkObject(this, true);
+        pickUpObject(objIndex);
         //System.out.println("Collision = "+ collisionON+" Direction = "+direction);
         //System.out.println(worldX+","+worldY);
 
@@ -209,6 +210,26 @@ public class Hero extends Character
 
         \brief g Contextul grafi in care trebuie efectuata desenarea eroului.
      */
+    public void pickUpObject(int i){
+        if(i!=999){
+            String objectName = refLink.GetSuperObject()[i].name;
+            switch (objectName){
+                case"PotionH":
+                    hasPotion++;
+                    refLink.GetSuperObject()[i]=null;
+                    System.out.println("Potions: "+hasPotion);
+                    break;
+                case "Shop":
+                    if(hasPotion>0){
+                        //refLink.GetSuperObject()[i]=null;
+                        hasPotion--;
+                    }
+                    System.out.println("Potions: "+hasPotion);
+                    break;
+            }
+        }
+
+    }
     @Override
     public void Draw(Graphics g)
     {
@@ -218,5 +239,7 @@ public class Hero extends Character
         g.setColor(Color.blue);
         g.fillRect((int) screenX+bounds.x, (int) screenY+bounds.y, bounds.width, bounds.height);
     }
+
+
 
 }
