@@ -98,7 +98,6 @@ public class CollisionChecker {
                     case "Up":
                         character.bounds.y -= character.speed;
                         if(character.bounds.intersects(refLink.GetSuperObject()[i].bounds)){
-                            System.out.println("Up collision");
                             if (refLink.GetSuperObject()[i].collision == true){
                                 character.collisionON = true;
                             }
@@ -110,7 +109,6 @@ public class CollisionChecker {
                     case "Down":
                         character.bounds.y += character.speed;
                         if(character.bounds.intersects(refLink.GetSuperObject()[i].bounds)){
-                            System.out.println("Down collision");
                             if (refLink.GetSuperObject()[i].collision == true){
                                 character.collisionON = true;
                             }
@@ -123,7 +121,6 @@ public class CollisionChecker {
                     case "Left":
                         character.bounds.x -= character.speed;
                         if(character.bounds.intersects(refLink.GetSuperObject()[i].bounds)){
-                            System.out.println("Left collision");
                             if (refLink.GetSuperObject()[i].collision == true){
                                 character.collisionON = true;
                             }
@@ -135,7 +132,6 @@ public class CollisionChecker {
                     case "Right":
                         character.bounds.x += character.speed;
                         if(character.bounds.intersects(refLink.GetSuperObject()[i].bounds)){
-                            System.out.println("Right collision");
                             if (refLink.GetSuperObject()[i].collision == true){
                                 character.collisionON = true;
                             }
