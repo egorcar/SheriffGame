@@ -21,7 +21,7 @@ public class AssetSetter {
         refLink.GetSuperObject()[0].worldY = 23*TILE_HEIGHT;
 
         refLink.GetSuperObject()[1] = new OBJ_potionH(refLink);
-        refLink.GetSuperObject()[1].worldX = 30*TILE_WIDTH;
+        refLink.GetSuperObject()[1].worldX = 28*TILE_WIDTH;
         refLink.GetSuperObject()[1].worldY = 23*TILE_HEIGHT;
 
 

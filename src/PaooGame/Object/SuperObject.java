@@ -18,6 +18,9 @@ public class SuperObject {
     public int worldY;
     private RefLinks refLink;
 
+    public Rectangle bounds = new Rectangle(0, 0, 48, 48);
+    public int solidAreaDefaultX = 0;
+    public int solidAreaDefaultY = 0;
     public SuperObject(RefLinks refLink){
         this.refLink = refLink;
     }

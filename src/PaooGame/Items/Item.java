@@ -20,10 +20,10 @@ public abstract class Item
     public float screenX;
     public float screenY;
     public boolean collisionON = false;
-    protected float x;                  /*!< Pozitia pe axa X a "tablei" de joc a imaginii entitatii.*/
-    protected float y;                  /*!< Pozitia pe axa Y a "tablei" de joc a imaginii entitatii.*/
     protected int width;                /*!< Latimea imaginii entitatii.*/
     protected int height;               /*!< Inaltimea imaginii entitatii.*/
+    public int solidAreaDefaultX;
+    public int solidAreaDefaultY;
     public Rectangle bounds;         /*!< Dreptunghiul curent de coliziune.*/
     public Rectangle normalBounds;   /*!< Dreptunghiul de coliziune aferent starii obisnuite(spatiul ocupat de entitate in mod normal), poate fi mai mic sau mai mare decat dimensiunea imaginii sale.*/
     protected Rectangle attackBounds;   /*!< Dreptunghiul de coliziune aferent starii de atac.*/

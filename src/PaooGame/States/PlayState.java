@@ -69,13 +69,13 @@ public class PlayState extends State
     {
         //Draw map:
         map.Draw(g, hero);
-        //Draw hero:
-        hero.Draw(g);
         //Draw objects:
         for(int i = 0; i<this.obj.length; i++){
             if(this.obj[i]!=null){
                 this.obj[i].Draw(refLink, hero, g);
             }
         }
+        //Draw hero:
+        hero.Draw(g);
     }
 }

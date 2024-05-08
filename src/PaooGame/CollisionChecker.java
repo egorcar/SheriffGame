@@ -1,5 +1,6 @@
 package PaooGame;
 import PaooGame.Items.Character;
+import PaooGame.Items.Item;
 import PaooGame.States.PlayState;
 import PaooGame.Tiles.Tile;
 
@@ -35,11 +36,11 @@ public class CollisionChecker {
                 itemTopRow =((itemTopWorldY-10)/* - item.speed*/)/Tile.TILE_HEIGHT;
                 tileNum1 = refLink.GetMap().MiddleEastMap(itemTopRow, itemLeftCol);
                 tileNum2 = refLink.GetMap().MiddleEastMap(itemTopRow, itemRightCol);
-                System.out.println(itemLeftCol+","+itemTopRow);
-                System.out.println(itemRightCol+","+itemTopRow);
+                //System.out.println(itemLeftCol+","+itemTopRow);
+                //System.out.println(itemRightCol+","+itemTopRow);
                 Tile temp1 = Tile.tileMaker(tileNum1);
                 Tile temp2 = Tile.tileMaker(tileNum2);
-                System.out.println(temp1 +" "+ temp2);
+                //System.out.println(temp1 +" "+ temp2);
                 if(temp1.solid || temp2.solid){
                     item.collisionON = true;
                 }
@@ -51,7 +52,7 @@ public class CollisionChecker {
                 tileNum2 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemRightCol);
                 temp1 = Tile.tileMaker(tileNum1);
                 temp2 = Tile.tileMaker(tileNum2);
-                System.out.println(temp1 +" "+ temp2);
+                //System.out.println(temp1 +" "+ temp2);
                 if(temp1.solid || temp2.solid){
                     item.collisionON = true;
                 }
@@ -62,7 +63,7 @@ public class CollisionChecker {
                 tileNum2 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemLeftCol);
                 temp1 = Tile.tileMaker(tileNum1);
                 temp2 = Tile.tileMaker(tileNum2);
-                System.out.println(temp1 +" "+ temp2);
+                //System.out.println(temp1 +" "+ temp2);
                 if(temp1.solid || temp2.solid){
                     item.collisionON = true;
                 }
@@ -73,7 +74,7 @@ public class CollisionChecker {
                 tileNum2 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemRightCol);
                 temp1 = Tile.tileMaker(tileNum1);
                 temp2 = Tile.tileMaker(tileNum2);
-                System.out.println(temp1 +" "+ temp2);
+                //System.out.println(temp1 +" "+ temp2);
                 if(temp1.solid || temp2.solid){
                     item.collisionON = true;
                 }
@@ -81,5 +82,52 @@ public class CollisionChecker {
             case "No":
                 break;
         }
+    }
+    public int checkObject(Character character, boolean hero){
+        int index = 999;
+
+        for(int i = 0; i<refLink.GetSuperObject().length; i++){
+            if(refLink.GetSuperObject()[i] != null){
+                character.bounds.x = (int) (character.worldX + character.bounds.x);
+                character.bounds.y = (int) (character.worldY + character.bounds.y);
+
+                refLink.GetSuperObject()[i].bounds.x = refLink.GetSuperObject()[i].worldX + refLink.GetSuperObject()[i].bounds.x;
+                refLink.GetSuperObject()[i].bounds.y = refLink.GetSuperObject()[i].worldY + refLink.GetSuperObject()[i].bounds.y;
+
+                switch (character.direction){
+                    case "Up":
+                        character.bounds.y -= character.speed;
+                        if(character.bounds.intersects(refLink.GetSuperObject()[i].bounds)){
+                            System.out.println("Up collision");
+                        }
+                        break;
+                    case "Down":
+                        character.bounds.y += character.speed;
+                        if(character.bounds.intersects(refLink.GetSuperObject()[i].bounds)){
+                            System.out.println("Down collision");
+                        }
+                        break;
+                    case "Left":
+                        character.bounds.x -= character.speed;
+                        if(character.bounds.intersects(refLink.GetSuperObject()[i].bounds)){
+                            System.out.println("Left collision");
+                        }
+                        break;
+                    case "Right":
+                        character.bounds.x += character.speed;
+                        if(character.bounds.intersects(refLink.GetSuperObject()[i].bounds)){
+                            System.out.println("Right collision");
+                        }
+                        break;
+                }
+                character.bounds.x = character.solidAreaDefaultX;
+                character.bounds.y = character.solidAreaDefaultY;
+                refLink.GetSuperObject()[i].bounds.x = refLink.GetSuperObject()[i].solidAreaDefaultX;
+                refLink.GetSuperObject()[i].bounds.y = refLink.GetSuperObject()[i].solidAreaDefaultY;
+
+            }
+        }
+
+        return index;
     }
 }

@@ -44,6 +44,8 @@ public class Hero extends Character
         normalBounds.y = 20;
         normalBounds.width = 12;
         normalBounds.height = 12;
+        solidAreaDefaultX = normalBounds.x;
+        solidAreaDefaultY = normalBounds.y;
 
         ///Stabilieste pozitia relativa si dimensiunea dreptunghiului de coliziune, starea de atac
         attackBounds.x = 10;
@@ -176,8 +178,9 @@ public class Hero extends Character
 
         collisionON = false;
         cChecker.checkTile(this);
-        System.out.println("Collision = "+ collisionON+" Direction = "+direction);
-        System.out.println(worldX+","+worldY);
+        int objIndex = cChecker.checkObject(this, true);
+        //System.out.println("Collision = "+ collisionON+" Direction = "+direction);
+        //System.out.println(worldX+","+worldY);
 
         if(!collisionON){
             if(refLink.GetKeyManager().up)
