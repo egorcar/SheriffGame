@@ -23,7 +23,7 @@ import PaooGame.Tiles.Tile;
 public class Hero extends Character
 {
     private BufferedImage image;    /*!< Referinta catre imaginea curenta a eroului.*/
-    int hasPotion = 0;
+    public int hasPotion = 0;
 
     /*! \fn public Hero(RefLinks refLink, float x, float y)
         \brief Constructorul de initializare al clasei Hero.

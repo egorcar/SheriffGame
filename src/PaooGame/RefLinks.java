@@ -21,6 +21,7 @@ public class RefLinks
     private AssetSetter assetSetter;
     private SuperObject []obj;
     private Sound sound;
+    private UI ui;
 
 
     /*! \fn public RefLinks(Game game)
@@ -97,4 +98,7 @@ public class RefLinks
 
     public Sound GetSound(){return sound;}
     public void SetSound(Sound sound){this.sound = sound;}
+
+    public UI GetUI(){return ui;}
+    public void SetUI(UI ui){this.ui = ui;}
 }

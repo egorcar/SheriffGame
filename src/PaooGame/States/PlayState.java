@@ -19,7 +19,9 @@ public class PlayState extends State
     //public CollisionChecker cChecker;
     public SuperObject []obj;
 
-    public static Sound sound;
+    public static Sound se;
+    public static Sound music;
+    public UI ui;
     /*! \fn public PlayState(RefLinks refLink)
         \brief Constructorul de initializare al clasei
 
@@ -34,10 +36,15 @@ public class PlayState extends State
         ///Referinta catre harta construita este setata si in obiectul shortcut pentru a fi accesibila si in alte clase ale programului.
         refLink.SetMap(map);
 
-        sound = new Sound();
+        music = new Sound();
+        se = new Sound();
+
+        ui = new UI(refLink);
+        refLink.SetUI(ui);
 
         ///Construieste eroul
         hero = new Hero(refLink, GameWindow.GetHalfWidth(), GameWindow.GetHalfHeight());
+        refLink.SetHero(hero);
         //cChecker = new CollisionChecker(refLink);
         assetSetter = new AssetSetter(refLink);
         obj = new SuperObject[10];
@@ -86,20 +93,22 @@ public class PlayState extends State
         }
         //Draw hero:
         hero.Draw(g);
+
+        ui.draw(g, refLink);
     }
 
     public void playMusic(int i){
-        sound.setFile(i);
-        sound.play();
-        sound.loop();
+        music.setFile(i);
+        music.play();
+        music.loop();
     }
 
     public void stopMusic(){
-        sound.stop();
+        music.stop();
     }
     public static void playSE(int i){
-        sound.setFile(i);
-        sound.play();
+        se.setFile(i);
+        se.play();
     }
 
 
