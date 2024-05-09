@@ -20,6 +20,7 @@ public class RefLinks
     private CollisionChecker cChecker;
     private AssetSetter assetSetter;
     private SuperObject []obj;
+    private Sound sound;
 
 
     /*! \fn public RefLinks(Game game)
@@ -87,13 +88,13 @@ public class RefLinks
     }
     public Hero GetHero(){return hero;}
     public void SetHero(Hero hero){this.hero = hero;}
+
     public CollisionChecker GetCChecker(){return cChecker;}
     public void SetCChecker(CollisionChecker cChecker){this.cChecker = cChecker;}
-    public SuperObject[] GetSuperObject(){
-        return obj;
-    }
-    public  void SetSuperObject(SuperObject []obj){
-        this.obj = obj;
-    }
 
+    public SuperObject[] GetSuperObject(){return obj;}
+    public  void SetSuperObject(SuperObject []obj){this.obj = obj;}
+
+    public Sound GetSound(){return sound;}
+    public void SetSound(Sound sound){this.sound = sound;}
 }

@@ -2,6 +2,7 @@ package PaooGame;
 
 import PaooGame.Object.OBJ_Shop;
 import PaooGame.Object.OBJ_potionH;
+import PaooGame.Object.OBJ_potionS;
 
 import java.sql.Ref;
 
@@ -28,7 +29,7 @@ public class AssetSetter {
         refLink.GetSuperObject()[2].worldX = 17*TILE_WIDTH;
         refLink.GetSuperObject()[2].worldY = 19*TILE_HEIGHT;
 
-        refLink.GetSuperObject()[3] = new OBJ_potionH(refLink);
+        refLink.GetSuperObject()[3] = new OBJ_potionS(refLink);
         refLink.GetSuperObject()[3].worldX = 24*TILE_WIDTH;
         refLink.GetSuperObject()[3].worldY = 16*TILE_HEIGHT;
     }

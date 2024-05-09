@@ -1,12 +1,9 @@
 package PaooGame.States;
 
-import PaooGame.AssetSetter;
-import PaooGame.CollisionChecker;
-import PaooGame.Game;
+import PaooGame.*;
 import PaooGame.GameWindow.GameWindow;
 import PaooGame.Items.Hero;
 import PaooGame.Object.SuperObject;
-import PaooGame.RefLinks;
 import PaooGame.Maps.Map;
 
 import java.awt.*;
@@ -21,6 +18,8 @@ public class PlayState extends State
     public AssetSetter assetSetter;
     //public CollisionChecker cChecker;
     public SuperObject []obj;
+
+    public static Sound sound;
     /*! \fn public PlayState(RefLinks refLink)
         \brief Constructorul de initializare al clasei
 
@@ -34,19 +33,29 @@ public class PlayState extends State
         map = new Map(refLink);
         ///Referinta catre harta construita este setata si in obiectul shortcut pentru a fi accesibila si in alte clase ale programului.
         refLink.SetMap(map);
+
+        sound = new Sound();
+
         ///Construieste eroul
         hero = new Hero(refLink, GameWindow.GetHalfWidth(), GameWindow.GetHalfHeight());
         //cChecker = new CollisionChecker(refLink);
         assetSetter = new AssetSetter(refLink);
-
         obj = new SuperObject[10];
         for (int i = 0; i < obj.length; i++) {
             obj[i] = new SuperObject(refLink);
         }
         refLink.SetSuperObject(obj);
-
-
         assetSetter.setObject();
+        playMusic(0);
+
+
+
+
+
+
+
+
+
     }
 
     /*! \fn public void Update()
@@ -78,4 +87,20 @@ public class PlayState extends State
         //Draw hero:
         hero.Draw(g);
     }
+
+    public void playMusic(int i){
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+    }
+
+    public void stopMusic(){
+        sound.stop();
+    }
+    public static void playSE(int i){
+        sound.setFile(i);
+        sound.play();
+    }
+
+
 }

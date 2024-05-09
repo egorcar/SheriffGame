@@ -7,6 +7,7 @@ import PaooGame.CollisionChecker;
 import PaooGame.GameWindow.GameWindow;
 import PaooGame.RefLinks;
 import PaooGame.Graphics.Assets;
+import PaooGame.States.PlayState;
 import PaooGame.Tiles.Tile;
 
 
@@ -215,6 +216,7 @@ public class Hero extends Character
             String objectName = refLink.GetSuperObject()[i].name;
             switch (objectName){
                 case"PotionH":
+                    PlayState.playSE(1);
                     hasPotion++;
                     refLink.GetSuperObject()[i]=null;
                     System.out.println("Potions: "+hasPotion);
@@ -225,6 +227,11 @@ public class Hero extends Character
                         hasPotion--;
                     }
                     System.out.println("Potions: "+hasPotion);
+                    break;
+                case "PotionS":
+                    PlayState.playSE(1);
+                    speed+=4;
+                    refLink.GetSuperObject()[i]=null;
                     break;
             }
         }
