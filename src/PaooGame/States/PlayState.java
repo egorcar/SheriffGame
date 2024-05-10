@@ -7,6 +7,8 @@ import PaooGame.Object.SuperObject;
 import PaooGame.Maps.Map;
 
 import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.text.AttributedCharacterIterator;
 
 /*! \class public class PlayState extends State
     \brief Implementeaza/controleaza jocul.
@@ -31,6 +33,7 @@ public class PlayState extends State
     {
         ///Apel al constructorului clasei de baza
         super(refLink);
+
         ///Construieste harta jocului
         map = new Map(refLink);
         ///Referinta catre harta construita este setata si in obiectul shortcut pentru a fi accesibila si in alte clase ale programului.
@@ -63,6 +66,7 @@ public class PlayState extends State
 
 
 
+
     }
 
     /*! \fn public void Update()
@@ -83,6 +87,8 @@ public class PlayState extends State
     @Override
     public void Draw(Graphics g)
     {
+        long drawStart = 0;
+        drawStart = System.nanoTime();
         //Draw map:
         map.Draw(g, hero);
         //Draw objects:
@@ -95,6 +101,12 @@ public class PlayState extends State
         hero.Draw(g);
 
         ui.draw(g, refLink);
+        //Debug
+        if(refLink.GetHero().checkDrawTime){
+            long drawEnd = System.nanoTime();
+            long passsed = drawEnd - drawStart;
+            System.out.println(passsed);
+        }
     }
 
     public void playMusic(int i){

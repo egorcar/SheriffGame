@@ -24,6 +24,7 @@ public class Hero extends Character
 {
     private BufferedImage image;    /*!< Referinta catre imaginea curenta a eroului.*/
     public int hasPotion = 0;
+    public boolean checkDrawTime = false;
 
     /*! \fn public Hero(RefLinks refLink, float x, float y)
         \brief Constructorul de initializare al clasei Hero.
@@ -151,6 +152,10 @@ public class Hero extends Character
         xMove = 0;
         yMove = 0;
         ///Verificare apasare tasta "sus"
+        if(refLink.GetKeyManager().debug){
+            if(!checkDrawTime) checkDrawTime = true;
+            else checkDrawTime = false;
+        }
         if(refLink.GetKeyManager().up)
         {
             direction = "Up";
@@ -225,7 +230,7 @@ public class Hero extends Character
                     if(hasPotion>0){
                         //refLink.GetSuperObject()[i]=null;
                         hasPotion--;
-                        refLink.GetUI().showMessage("Good stuff, cowboy!");
+                        refLink.GetUI().showMessage("Easy there, cowboy!");
                     }
                     else
                         refLink.GetUI().showMessage("Get some booze, brother");
@@ -247,8 +252,8 @@ public class Hero extends Character
         g.drawImage(image, (int)GameWindow.GetHalfWidth()-30, (int)GameWindow.GetHalfHeight()-10, width, height, null);
 
         ///doar pentru debug daca se doreste vizualizarea dreptunghiului de coliziune altfel se vor comenta urmatoarele doua linii
-        g.setColor(Color.blue);
-        g.fillRect((int) screenX+bounds.x, (int) screenY+bounds.y, bounds.width, bounds.height);
+        //g.setColor(Color.blue);
+        //g.fillRect((int) screenX+bounds.x, (int) screenY+bounds.y, bounds.width, bounds.height);
     }
 
 
