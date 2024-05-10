@@ -10,7 +10,7 @@ public class OBJ_potionH extends SuperObject{
         super(refLink);
         name = "PotionH";
         try{
-            img = ImageIO.read(getClass().getResourceAsStream("/textures/shoppng.png"));
+            img = ImageIO.read(getClass().getResourceAsStream("/textures/whiskeyGlass.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -219,19 +219,23 @@ public class Hero extends Character
                     PlayState.playSE(1);
                     hasPotion++;
                     refLink.GetSuperObject()[i]=null;
-                    System.out.println("Potions: "+hasPotion);
+                    refLink.GetUI().showMessage("Yee haw!");
                     break;
                 case "Shop":
                     if(hasPotion>0){
                         //refLink.GetSuperObject()[i]=null;
                         hasPotion--;
+                        refLink.GetUI().showMessage("Good stuff, cowboy!");
                     }
-                    System.out.println("Potions: "+hasPotion);
+                    else
+                        refLink.GetUI().showMessage("Get some booze, brother");
+
                     break;
                 case "PotionS":
                     PlayState.playSE(1);
                     speed+=4;
                     refLink.GetSuperObject()[i]=null;
+                    refLink.GetUI().showMessage("Slow down, cowboy!");
                     break;
             }
         }
