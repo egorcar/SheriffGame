@@ -83,8 +83,5 @@ public class Assets
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
     }
 }
