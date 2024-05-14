@@ -1,5 +1,6 @@
 package PaooGame;
 
+import PaooGame.Items.NPC_Enemy;
 import PaooGame.Object.OBJ_Shop;
 import PaooGame.Object.OBJ_potionH;
 import PaooGame.Object.OBJ_potionS;
@@ -34,7 +35,9 @@ public class AssetSetter {
         refLink.GetSuperObject()[3].worldY = 16*TILE_HEIGHT;
     }
 
-    /*public void setObject(){
-        refLink.GetSuperObject();
-    }*/
+    public void setNpc(){
+        refLink.GetNPC_Enemy()[0] = new NPC_Enemy(refLink, 18, 19, 48, 48);
+        refLink.GetNPC_Enemy()[0].worldX = 17*TILE_WIDTH;
+        refLink.GetNPC_Enemy()[0].worldY = 23*TILE_HEIGHT;
+    }
 }

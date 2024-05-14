@@ -22,7 +22,7 @@ import PaooGame.Tiles.Tile;
  */
 public class Hero extends Character
 {
-    private BufferedImage image;    /*!< Referinta catre imaginea curenta a eroului.*/
+    //private BufferedImage image;    /*!< Referinta catre imaginea curenta a eroului.*/
     public int hasPotion = 0;
     public boolean checkDrawTime = false;
 

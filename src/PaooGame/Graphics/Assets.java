@@ -16,10 +16,10 @@ public class Assets
     public static BufferedImage heroStandsRight;
     public static BufferedImage heroStands2;
     public static BufferedImage heroStandsRight2;
-    /*public static BufferedImage enemy1Stands;
+    public static BufferedImage enemy1Stands;
     public static BufferedImage enemy1StandsRight;
     public static BufferedImage enemy1Stands2;
-    public static BufferedImage enemy1StandsRight2;*/
+    public static BufferedImage enemy1StandsRight2;
     public static BufferedImage heroLeft;
     public static BufferedImage heroRight;
     public static BufferedImage soil;
@@ -84,6 +84,10 @@ public class Assets
             trfence = ImageIO.read(Assets.class.getResourceAsStream("/textures/fenceTopRight.png"));
             blfence = ImageIO.read(Assets.class.getResourceAsStream("/textures/fenceBotLeft.png"));
             brfence = ImageIO.read(Assets.class.getResourceAsStream("/textures/fenceBotRight.png"));
+            enemy1Stands = ImageIO.read(Assets.class.getResourceAsStream("/textures/enemy1Stands1.png"));
+            enemy1StandsRight = ImageIO.read(Assets.class.getResourceAsStream("/textures/enemy1Stands1Right.png"));
+            enemy1Stands2 = ImageIO.read(Assets.class.getResourceAsStream("/textures/enemy1Stands2.png"));
+            enemy1StandsRight2 = ImageIO.read(Assets.class.getResourceAsStream("/textures/enemy1Stands2Right.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

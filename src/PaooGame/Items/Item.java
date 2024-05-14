@@ -5,6 +5,8 @@ import PaooGame.RefLinks;
 
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+
 import PaooGame.GameWindow.GameWindow;
 
 /*! \class Item
@@ -14,7 +16,7 @@ public abstract class Item
 {
     ///asa cum s-a mai precizat, coordonatele x si y sunt de tip float pentru a se elimina erorile de rotunjire
     ///ce pot sa apara in urma calculelor, urmand a se converti la intreg doar in momentul desenarii.
-
+    //public BufferedImage img;
     public float worldX;
     public float worldY;
     public float screenX;

@@ -2,6 +2,8 @@ package PaooGame.Items;
 
 import PaooGame.RefLinks;
 
+import java.awt.image.BufferedImage;
+
 /*! \class public abstract class Character extends Item
     \brief Defineste notiunea abstracta de caracter/individ/fiinta din joc.
 
@@ -10,6 +12,7 @@ import PaooGame.RefLinks;
  */
 public abstract class Character extends Item
 {
+    public BufferedImage image;
     public static final int DEFAULT_LIFE            = 10;   /*!< Valoarea implicita a vietii unui caracter.*/
     public static final float DEFAULT_SPEED         = 4.0f; /*!< Viteza implicita a unu caracter.*/
     public static final int DEFAULT_CREATURE_WIDTH  = 60;   /*!< Latimea implicita a imaginii caracterului.*/

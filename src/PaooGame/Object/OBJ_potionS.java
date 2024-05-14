@@ -9,7 +9,7 @@ public class OBJ_potionS extends SuperObject{
         super(refLink);
         name = "PotionS";
         try{
-            img = ImageIO.read(getClass().getResourceAsStream("/textures/shoppng.png"));
+            img = ImageIO.read(getClass().getResourceAsStream("/textures/beerBottle.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

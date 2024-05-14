@@ -1,6 +1,7 @@
 package PaooGame;
 
 import PaooGame.Items.Hero;
+import PaooGame.Items.NPC_Enemy;
 import PaooGame.Maps.Map;
 
 import PaooGame.Input.KeyManager;
@@ -22,6 +23,7 @@ public class RefLinks
     private SuperObject []obj;
     private Sound sound;
     private UI ui;
+    private NPC_Enemy[] npc1;
 
 
     /*! \fn public RefLinks(Game game)
@@ -101,4 +103,7 @@ public class RefLinks
 
     public UI GetUI(){return ui;}
     public void SetUI(UI ui){this.ui = ui;}
+
+    public NPC_Enemy[] GetNPC_Enemy(){return npc1;}
+    public void SetNPC_Enemy(NPC_Enemy[] npc1){this.npc1 = npc1;}
 }

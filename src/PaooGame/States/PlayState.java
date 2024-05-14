@@ -3,9 +3,11 @@ package PaooGame.States;
 import PaooGame.*;
 import PaooGame.GameWindow.GameWindow;
 import PaooGame.Items.Hero;
+import PaooGame.Items.NPC_Enemy;
 import PaooGame.Object.SuperObject;
 import PaooGame.Maps.Map;
 
+import javax.swing.text.html.parser.Entity;
 import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.text.AttributedCharacterIterator;
@@ -20,6 +22,7 @@ public class PlayState extends State
     public AssetSetter assetSetter;
     //public CollisionChecker cChecker;
     public SuperObject []obj;
+    public NPC_Enemy[] npc;
 
     public static Sound se;
     public static Sound music;
@@ -48,7 +51,8 @@ public class PlayState extends State
         ///Construieste eroul
         hero = new Hero(refLink, GameWindow.GetHalfWidth(), GameWindow.GetHalfHeight());
         refLink.SetHero(hero);
-        //cChecker = new CollisionChecker(refLink);
+
+        //Construieste obiectele
         assetSetter = new AssetSetter(refLink);
         obj = new SuperObject[10];
         for (int i = 0; i < obj.length; i++) {
@@ -56,6 +60,16 @@ public class PlayState extends State
         }
         refLink.SetSuperObject(obj);
         assetSetter.setObject();
+
+        //Construieste npc-urile
+        npc = new NPC_Enemy[10];
+        for (int i = 0; i < obj.length; i++) {
+            npc[i] = new NPC_Enemy(refLink, 10, 10, 48, 48);
+        }
+        refLink.SetNPC_Enemy(npc);
+        assetSetter.setNpc();
+
+        //Porneste muzica
         playMusic(0);
 
 
@@ -100,7 +114,16 @@ public class PlayState extends State
         //Draw hero:
         hero.Draw(g);
 
+        //Draw npcs;
+        for(int i = 0; i<this.obj.length; i++){
+            if(this.obj[i]!=null){
+                this.npc[i].Draw(refLink, hero, g);
+            }
+        }
+
+        //Draw ui:
         ui.draw(g, refLink);
+
         //Debug
         if(refLink.GetHero().checkDrawTime){
             long drawEnd = System.nanoTime();
