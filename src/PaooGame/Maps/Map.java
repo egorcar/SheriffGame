@@ -53,7 +53,6 @@ public class Map {
         int worldRow = 0;
         //System.out.printf("X: %f, %f \nY: %f, %f\n", hero.worldX, hero.screenX, hero.worldY, hero.screenY);
         while (worldCol < maxWorldCol && worldRow < maxWorldRow) {
-
             int worldX = worldCol * Tile.TILE_WIDTH;
             int worldY = worldRow * Tile.TILE_HEIGHT;
             int screenX = (int) (worldX - hero.worldX + hero.screenX);

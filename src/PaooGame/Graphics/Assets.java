@@ -16,6 +16,10 @@ public class Assets
     public static BufferedImage heroStandsRight;
     public static BufferedImage heroStands2;
     public static BufferedImage heroStandsRight2;
+    /*public static BufferedImage enemy1Stands;
+    public static BufferedImage enemy1StandsRight;
+    public static BufferedImage enemy1Stands2;
+    public static BufferedImage enemy1StandsRight2;*/
     public static BufferedImage heroLeft;
     public static BufferedImage heroRight;
     public static BufferedImage soil;
