@@ -109,7 +109,8 @@ public class NPC_Enemy extends Character{
             }
             g.drawImage(image, screenX, screenY, (int) (TILE_WIDTH*1.2), (int) (TILE_HEIGHT*1.2), null);
             g.setColor(Color.red);
-            g.fillRect((int) screenX+bounds.x, (int) screenY+bounds.y, bounds.width, bounds.height);
+            g.fillRect(screenX+collisionBounds.x,screenY+collisionBounds.y, collisionBounds.width, collisionBounds.height);
+            System.out.println("");
         }
     }
 }

@@ -31,6 +31,7 @@ public abstract class Item
     public int solidAreaDefaultY;
     public Rectangle bounds;         /*!< Dreptunghiul curent de coliziune.*/
     public Rectangle normalBounds;   /*!< Dreptunghiul de coliziune aferent starii obisnuite(spatiul ocupat de entitate in mod normal), poate fi mai mic sau mai mare decat dimensiunea imaginii sale.*/
+    public Rectangle collisionBounds;   /*!< Dreptunghiul de coliziune aferent starii obisnuite(spatiul ocupat de entitate in mod normal), poate fi mai mic sau mai mare decat dimensiunea imaginii sale.*/
     protected Rectangle attackBounds;   /*!< Dreptunghiul de coliziune aferent starii de atac.*/
 
     protected RefLinks refLink;         /*!< O referinte catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program.*/
@@ -63,6 +64,7 @@ public abstract class Item
         normalBounds = new Rectangle(0, 0, 8, 8);
         ///Creaza dreptunghi de coliziune pentru modul de atack, aici a fost stabilit la dimensiunea imaginii dar poate fi orice alta dimensiune
         attackBounds = new Rectangle(0, 0, width, height);
+        collisionBounds = new Rectangle(0, 0, 8, 8);
         ///Dreptunghiul de coliziune implicit este setat ca fiind cel normal
         bounds = normalBounds;
         cChecker = new CollisionChecker(refLink);

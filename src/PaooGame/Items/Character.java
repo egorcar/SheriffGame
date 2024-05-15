@@ -48,6 +48,14 @@ public abstract class Character extends Item
         normalBounds.y = 32;
         normalBounds.width = 12;
         normalBounds.height = 12;
+
+        collisionBounds.x = 8;
+        solidAreaDefaultX = 16;
+        collisionBounds.y = 8;
+        solidAreaDefaultY = 28;
+        collisionBounds.width = 20;
+        collisionBounds.height = 32;
+
     }
 
     public void Move() {
@@ -97,6 +105,8 @@ public abstract class Character extends Item
         collisionON = false;
 
         cChecker.checkTile(this);
+        cChecker.checkObject(this, false);
+        cChecker.checkPlayer(this);
 
         if(!collisionON){
             if(direction == "Up") {yMove = -speed;}

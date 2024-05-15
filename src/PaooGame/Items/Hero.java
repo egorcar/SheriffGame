@@ -153,10 +153,15 @@ public class Hero extends Character
 
         //CHECK TILE COLLISION
         collisionON = false;
-
         cChecker.checkTile(this);
+
+        //CHECK OBJECT COLLISION
         int objIndex = cChecker.checkObject(this, true);
         pickUpObject(objIndex);
+
+        //CHECK NPC COLLISION
+        int npcIndex = refLink.GetCChecker().checkCharacters(this, refLink.GetNPC_Enemy());
+        interactNPC(npcIndex);
 
         if(!collisionON){
             if(direction == "Up") {yMove = -speed;}
@@ -180,6 +185,7 @@ public class Hero extends Character
                     hasPotion++;
                     refLink.GetSuperObject()[i]=null;
                     //refLink.GetSuperObject()[i].img = nothing;
+                    System.out.println(refLink.GetNPC_Enemy());
                     refLink.GetUI().showMessage("Yee haw!");
                     break;
                 case "Shop":
@@ -201,6 +207,12 @@ public class Hero extends Character
             }
         }
 
+    }
+
+    public void interactNPC(int i){
+        if(i!=999){
+            System.out.println("You are hitting the "+i+" npc");
+        }
     }
     @Override
     public void Draw(Graphics g)

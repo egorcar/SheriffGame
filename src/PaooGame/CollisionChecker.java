@@ -4,6 +4,7 @@ import PaooGame.Items.Item;
 import PaooGame.States.PlayState;
 import PaooGame.Tiles.Tile;
 
+import javax.swing.text.html.parser.Entity;
 import java.sql.Ref;
 
 //import static PaooGame.Tiles.Tile.tiles;
@@ -210,7 +211,101 @@ public class CollisionChecker {
 
             }
         }
-
         return index;
+    }
+    public int checkCharacters(Character character, Item[] target){
+        int index = 999;
+//2
+        //3
+        //4
+        //5
+        //6
+
+        for(int i = 0; i<target.length; i++){
+            if(target[i] != null){
+                character.collisionBounds.x = (int) (character.worldX + character.collisionBounds.x);
+                character.collisionBounds.y = (int) (character.worldY + character.collisionBounds.y);
+
+                target[i].collisionBounds.x = (int) (target[i].worldX + target[i].collisionBounds.x);
+                target[i].collisionBounds.y = (int) (target[i].worldY + target[i].collisionBounds.y);
+
+                switch (character.direction){
+                    case "Up":
+                        character.collisionBounds.y -= character.speed;
+                        if(character.collisionBounds.intersects(target[i].collisionBounds)){
+                            character.collisionON = true;
+                            index = i;
+                        }
+                        break;
+                    case "Down":
+                        character.collisionBounds.y += character.speed;
+                        if(character.collisionBounds.intersects(target[i].collisionBounds)){
+                            character.collisionON = true;
+                            index = i;
+                        }
+
+                        break;
+                    case "Left":
+                        character.collisionBounds.x -= character.speed;
+                        if(character.collisionBounds.intersects(target[i].collisionBounds)){
+                            character.collisionON = true;
+                            index = i;
+                        }
+                        break;
+                    case "Right":
+                        character.collisionBounds.x += character.speed;
+                        if(character.collisionBounds.intersects(target[i].collisionBounds)){
+                            character.collisionON = true;
+                            index = i;
+                        }
+                        break;
+                }
+                character.collisionBounds.x = character.solidAreaDefaultX;
+                character.collisionBounds.y = character.solidAreaDefaultY;
+                target[i].collisionBounds.x = target[i].solidAreaDefaultX;
+                target[i].collisionBounds.y = target[i].solidAreaDefaultY;
+
+            }
+        }
+        return index;
+    }
+    public void checkPlayer(Character character){
+        character.collisionBounds.x = (int) (character.worldX + character.collisionBounds.x);
+        character.collisionBounds.y = (int) (character.worldY + character.collisionBounds.y);
+
+        refLink.GetHero().collisionBounds.x = (int) (refLink.GetHero().worldX + refLink.GetHero().collisionBounds.x);
+        refLink.GetHero().collisionBounds.y = (int) (refLink.GetHero().worldY + refLink.GetHero().collisionBounds.y);
+
+        switch (character.direction){
+            case "Up":
+                character.collisionBounds.y -= character.speed;
+                if(character.collisionBounds.intersects(refLink.GetHero().collisionBounds)){
+                    character.collisionON = true;
+                }
+                break;
+            case "Down":
+                character.collisionBounds.y += character.speed;
+                if(character.collisionBounds.intersects(refLink.GetHero().collisionBounds)){
+                    character.collisionON = true;
+                }
+
+                break;
+            case "Left":
+                character.collisionBounds.x -= character.speed;
+                if(character.collisionBounds.intersects(refLink.GetHero().collisionBounds)){
+                    character.collisionON = true;
+                }
+                break;
+            case "Right":
+                character.collisionBounds.x += character.speed;
+                if(character.collisionBounds.intersects(refLink.GetHero().collisionBounds)){
+                    character.collisionON = true;
+                }
+                break;
+        }
+        character.collisionBounds.x = character.solidAreaDefaultX;
+        character.collisionBounds.y = character.solidAreaDefaultY;
+        refLink.GetHero().collisionBounds.x = refLink.GetHero().solidAreaDefaultX;
+        refLink.GetHero().collisionBounds.y = refLink.GetHero().solidAreaDefaultY;
     }
 }
