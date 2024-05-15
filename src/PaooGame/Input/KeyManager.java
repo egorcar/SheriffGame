@@ -18,6 +18,7 @@ public class KeyManager implements KeyListener
     public boolean left;    /*!< Flag pentru tasta "stanga" apasata.*/
     public boolean right;   /*!< Flag pentru tasta "dreapta" apasata.*/
     public boolean debug;   /*!< Flag pentru tasta "debug" apasata.*/
+    public boolean enter;
 
     /*! \fn public KeyManager()
         \brief Constructorul clasei.
@@ -36,6 +37,7 @@ public class KeyManager implements KeyListener
         left  = keys[KeyEvent.VK_A];
         right = keys[KeyEvent.VK_D];
         debug = keys[KeyEvent.VK_P];
+        enter = keys[KeyEvent.VK_ENTER];
     }
 
     /*! \fn public void keyPressed(KeyEvent e)

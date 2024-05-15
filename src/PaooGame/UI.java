@@ -1,6 +1,8 @@
 package PaooGame;
 
 import PaooGame.Object.OBJ_potionH;
+import PaooGame.States.MenuState;
+import PaooGame.States.State;
 import PaooGame.Tiles.Tile;
 
 import java.awt.*;

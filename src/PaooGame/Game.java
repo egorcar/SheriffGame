@@ -64,7 +64,7 @@ public class Game implements Runnable
     private Graphics        g;          /*!< Referinta catre un context grafic.*/
 
         ///Available states
-    private State playState;            /*!< Referinta catre joc.*/
+    public State playState;            /*!< Referinta catre joc.*/
     private State menuState;            /*!< Referinta catre menu.*/
     private State settingsState;        /*!< Referinta catre setari.*/
     private State aboutState;           /*!< Referinta catre about.*/
@@ -120,7 +120,7 @@ public class Game implements Runnable
         settingsState   = new SettingsState(refLink);
         aboutState      = new AboutState(refLink);
             ///Seteaza starea implicita cu care va fi lansat programul in executie
-        State.SetState(playState);
+        State.SetState(menuState);
     }
 
     /*! \fn public void run()

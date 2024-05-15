@@ -36,7 +36,7 @@ public class PlayState extends State
     {
         ///Apel al constructorului clasei de baza
         super(refLink);
-
+        state = "PlayState";
         ///Construieste harta jocului
         map = new Map(refLink);
         ///Referinta catre harta construita este setata si in obiectul shortcut pentru a fi accesibila si in alte clase ale programului.
@@ -73,7 +73,7 @@ public class PlayState extends State
         assetSetter.setNpc();
 
         //Porneste muzica
-        playMusic(0);
+        //playMusic(0);
 
 
 
@@ -92,6 +92,7 @@ public class PlayState extends State
     @Override
     public void Update()
     {
+        playMusic(0);
         map.Update();
         hero.Update();
         for(int i = 0; i< npc.length; i++){
