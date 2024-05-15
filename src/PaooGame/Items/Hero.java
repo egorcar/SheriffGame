@@ -10,6 +10,8 @@ import PaooGame.Graphics.Assets;
 import PaooGame.States.PlayState;
 import PaooGame.Tiles.Tile;
 
+import javax.imageio.ImageIO;
+
 
 /*! \class public class Hero extends Character
     \brief Implementeaza notiunea de erou/player (caracterul controlat de jucator).
@@ -70,8 +72,6 @@ public class Hero extends Character
         GetInput();
         ///Actualizeaza pozitia
         Move();
-        //System.out.printf("x: %f, y: %f \n", this.worldX, this.worldY);
-        //System.out.printf("scx: %f, scy: %f \n", this.screenX, this.screenY);
         ///Actualizeaza imaginea
         spriteCounter++;
         if(spriteCounter > 10){
@@ -127,20 +127,6 @@ public class Hero extends Character
                     image = Assets.heroStands;
             }
         }
-        /*else{
-            if(image == Assets.heroStands){
-                if(spriteNum==1)
-                    image = Assets.heroStands;
-                if(spriteNum==2)
-                    image = Assets.heroStands2;
-            }
-            else if(image == Assets.heroStands2)
-                image = Assets.heroStands;
-            else if(image == Assets.heroStandsRight)
-                image = Assets.heroStandsRight2;
-            else if(image == Assets.heroStandsRight2)
-                image = Assets.heroStandsRight;
-        }*/
     }
 
     /*! \fn private void GetInput()
@@ -156,29 +142,14 @@ public class Hero extends Character
             if(!checkDrawTime) checkDrawTime = true;
             else checkDrawTime = false;
         }
-        if(refLink.GetKeyManager().up)
-        {
-            direction = "Up";
-        }
+        if(refLink.GetKeyManager().up) {direction = "Up";}
         ///Verificare apasare tasta "jos"
-        else if(refLink.GetKeyManager().down)
-        {
-            direction = "Down";
-        }
+        else if(refLink.GetKeyManager().down) {direction = "Down";}
         ///Verificare apasare tasta "left"
-        else if(refLink.GetKeyManager().left)
-        {
-            direction = "Left";
-        }
+        else if(refLink.GetKeyManager().left) {direction = "Left";}
         ///Verificare apasare tasta "dreapta"
-        else if(refLink.GetKeyManager().right)
-        {
-            //xMove = speed;
-            direction = "Right";
-        }
-        else
-            direction = "No";
-
+        else if(refLink.GetKeyManager().right) {direction = "Right";}
+        else direction = "No";
 
         //CHECK TILE COLLISION
         collisionON = false;
@@ -186,29 +157,13 @@ public class Hero extends Character
         cChecker.checkTile(this);
         int objIndex = cChecker.checkObject(this, true);
         pickUpObject(objIndex);
-        //System.out.println("Collision = "+ collisionON+" Direction = "+direction);
-        //System.out.println(worldX+","+worldY);
 
         if(!collisionON){
-            if(refLink.GetKeyManager().up)
-            {
-                yMove = -speed;
-            }
-            if(refLink.GetKeyManager().down)
-            {
-                yMove = speed;
-            }
-            if(refLink.GetKeyManager().left)
-            {
-                xMove = -speed;
-            }
-            if(refLink.GetKeyManager().right)
-            {
-                xMove = speed;
-            }
+            if(direction == "Up") {yMove = -speed;}
+            if(direction == "Down") {yMove = speed;}
+            if(direction == "Left") {xMove = -speed;}
+            if(direction == "Right") {xMove = speed;}
         }
-
-
     }
 
     /*! \fn public void Draw(Graphics g)
@@ -224,6 +179,7 @@ public class Hero extends Character
                     PlayState.playSE(1);
                     hasPotion++;
                     refLink.GetSuperObject()[i]=null;
+                    //refLink.GetSuperObject()[i].img = nothing;
                     refLink.GetUI().showMessage("Yee haw!");
                     break;
                 case "Shop":
@@ -250,12 +206,7 @@ public class Hero extends Character
     public void Draw(Graphics g)
     {
         g.drawImage(image, (int)GameWindow.GetHalfWidth()-30, (int)GameWindow.GetHalfHeight()-10, width, height, null);
-
-        ///doar pentru debug daca se doreste vizualizarea dreptunghiului de coliziune altfel se vor comenta urmatoarele doua linii
         //g.setColor(Color.blue);
         //g.fillRect((int) screenX+bounds.x, (int) screenY+bounds.y, bounds.width, bounds.height);
     }
-
-
-
 }

@@ -250,11 +250,7 @@ public class Game implements Runnable
                 wnd.GetCanvas().createBufferStrategy(3);
                 return;
             }
-            catch (Exception e)
-            {
-                    /// Afisez informatii despre problema aparuta pentru depanare.
-                e.printStackTrace();
-            }
+            catch (Exception e) {e.printStackTrace();}
         }
             /// Se obtine contextul grafic curent in care se poate desena.
         g = bs.getDrawGraphics();
@@ -265,14 +261,11 @@ public class Game implements Runnable
             ///Trebuie obtinuta starea curenta pentru care urmeaza a se actualiza starea, atentie trebuie sa fie diferita de null.
             if(State.GetState() != null)
             {
-                ///Actualizez starea curenta a jocului daca exista.
                 State.GetState().Draw(g);
             }
         /// end operatie de desenare
-
             /// Se afiseaza pe ecran
         bs.show();
-
             /// Elibereaza resursele de memorie aferente contextului grafic curent (zonele de memorie ocupate de
             /// elementele grafice ce au fost desenate pe canvas).
         g.dispose();
@@ -297,9 +290,6 @@ public class Game implements Runnable
     /*! \fn public KeyManager GetKeyManager()
         \brief Returneaza obiectul care gestioneaza tastatura.
      */
-    public KeyManager GetKeyManager()
-    {
-        return keyManager;
-    }
+    public KeyManager GetKeyManager() {return keyManager;}
 }
 

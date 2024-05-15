@@ -3,6 +3,8 @@ package PaooGame.Items;
 import PaooGame.RefLinks;
 
 import java.awt.image.BufferedImage;
+import java.awt.image.Raster;
+import java.util.Random;
 
 /*! \class public abstract class Character extends Item
     \brief Defineste notiunea abstracta de caracter/individ/fiinta din joc.
@@ -44,74 +46,45 @@ public abstract class Character extends Item
         yMove   = 0;
     }
 
-    public void Move()
-    {
+    public void Move() {
         MoveX();
         MoveY();
-        /*System.out.println(xMove);
-        System.out.println(worldX);
-        System.out.println(yMove);
-        System.out.println(worldY);*/
     }
 
-    public void MoveX()
-    {
-        this.worldX += xMove;
+    public void MoveX() {this.worldX += xMove;}
+    public void MoveY() {this.worldY += yMove;}
+    public void setAction(){
+
     }
-    public void MoveY()
-    {
-        this.worldY += yMove;
+    public void Update(){
+        setAction();
+        collisionON = false;
+        cChecker.checkTileNPC(this);
+        //refLink.GetCChecker().checkTileNPC(this);
+        //System.out.println(direction);
+        if(!collisionON){
+            Move();
+            if(direction == "Up") {yMove = -speed;}
+            if(direction == "Down") {yMove = speed;}
+            if(direction == "Left") {xMove = -speed;}
+            if(direction == "Right") {xMove = speed;}
+        }
     }
 
-    public int GetLife()
-    {
-        return life;
-    }
+    public int GetLife() {return life;}
 
-    public float GetSpeed()
-    {
-        return speed;
-    }
+    public float GetSpeed() {return speed;}
 
-    public void SetLife(int life)
-    {
-        this.life = life;
-    }
+    public void SetLife(int life) {this.life = life;}
 
-    public void SetSpeed(float speed) {
-        this.speed = speed;
-    }
+    public void SetSpeed(float speed) {this.speed = speed;}
 
-    /*! \fn public float GetXMove()
-        \brief Returneaza distanta in pixeli pe axa X cu care este actualizata pozitia caracterului.
-     */
-    public float GetXMove()
-    {
-        return xMove;
-    }
+    public float GetXMove() {return xMove;}
 
-    /*! \fn public float GetYMove()
-        \brief Returneaza distanta in pixeli pe axa Y cu care este actualizata pozitia caracterului.
-     */
-    public float GetYMove()
-    {
-        return yMove;
-    }
+    public float GetYMove() {return yMove;}
 
-    /*! \fn public void SetXMove(float xMove)
-        \brief Seteaza distanta in pixeli pe axa X cu care va fi actualizata pozitia caracterului.
-     */
-    public void SetXMove(float xMove)
-    {
-        this.xMove = xMove;
-    }
+    public void SetXMove(float xMove) {this.xMove = xMove;}
 
-    /*! \fn public void SetYMove(float yMove)
-        \brief Seteaza distanta in pixeli pe axa Y cu care va fi actualizata pozitia caracterului.
-     */
-    public void SetYMove(float yMove)
-    {
-        this.yMove = yMove;
-    }
+    public void SetYMove(float yMove) {this.yMove = yMove;}
 }
 

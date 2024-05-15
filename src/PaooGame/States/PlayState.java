@@ -20,7 +20,7 @@ public class PlayState extends State
     private Hero hero;  /*!< Referinta catre obiectul animat erou (controlat de utilizator).*/
     private Map map;    /*!< Referinta catre harta curenta.*/
     public AssetSetter assetSetter;
-    //public CollisionChecker cChecker;
+    public CollisionChecker cChecker;
     public SuperObject []obj;
     public NPC_Enemy[] npc;
 
@@ -41,6 +41,9 @@ public class PlayState extends State
         map = new Map(refLink);
         ///Referinta catre harta construita este setata si in obiectul shortcut pentru a fi accesibila si in alte clase ale programului.
         refLink.SetMap(map);
+
+        cChecker = new CollisionChecker(refLink);
+        refLink.SetCChecker(cChecker);
 
         music = new Sound();
         se = new Sound();
@@ -91,6 +94,11 @@ public class PlayState extends State
     {
         map.Update();
         hero.Update();
+        for(int i = 0; i< npc.length; i++){
+            if(npc[i] != null){
+                npc[i].Update();
+            }
+        }
     }
 
     /*! \fn public void Draw(Graphics g)

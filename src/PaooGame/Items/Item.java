@@ -6,8 +6,11 @@ import PaooGame.RefLinks;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 import PaooGame.GameWindow.GameWindow;
+
+import javax.imageio.ImageIO;
 
 /*! \class Item
     \brief. Implementeaza notiunea abstracta de entitate activa din joc, "element cu care se poate interactiona: monstru, turn etc.".
@@ -33,8 +36,9 @@ public abstract class Item
     protected RefLinks refLink;         /*!< O referinte catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program.*/
     public int spriteCounter = 0;
     public int spriteNum = 1;
-
     public CollisionChecker cChecker;
+    public int actionLockCounter;
+    public BufferedImage nothing;
 
 
     /*! \fn public Item(RefLinks refLink, float x, float y, int width, int height)
@@ -62,6 +66,11 @@ public abstract class Item
         ///Dreptunghiul de coliziune implicit este setat ca fiind cel normal
         bounds = normalBounds;
         cChecker = new CollisionChecker(refLink);
+        try {
+            nothing = ImageIO.read(getClass().getResourceAsStream("/textures/nothing.png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     ///Metoda abstracta destinata actualizarii starii curente

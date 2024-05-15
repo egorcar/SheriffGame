@@ -24,7 +24,6 @@ public class UI {
     public void showMessage(String text){
         message = text;
         messageOn = true;
-
     }
 
     public void draw(Graphics g, RefLinks refLink){

@@ -33,6 +33,68 @@ public class CollisionChecker {
 
         switch (item.direction){
             case "Up":
+                itemTopRow = (int) (((itemTopWorldY-10) - item.speed)/Tile.TILE_HEIGHT);
+                tileNum1 = refLink.GetMap().MiddleEastMap(itemTopRow, itemLeftCol);
+                tileNum2 = refLink.GetMap().MiddleEastMap(itemTopRow, itemRightCol);
+                Tile temp1 = Tile.tileMaker(tileNum1);
+                Tile temp2 = Tile.tileMaker(tileNum2);
+
+                if(temp1.solid || temp2.solid){
+                    item.collisionON = true;
+                }
+                break;
+
+            case "Down":
+                itemBottomRow = (int) ((itemBottomWorldY+10 + item.speed)/Tile.TILE_HEIGHT);
+                tileNum1 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemLeftCol);
+                tileNum2 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemRightCol);
+                temp1 = Tile.tileMaker(tileNum1);
+                temp2 = Tile.tileMaker(tileNum2);
+                if(temp1.solid || temp2.solid){
+                    item.collisionON = true;
+                }
+                break;
+            case "Left":
+                itemLeftCol = (int) ((itemLeftWorldX-10 - item.speed)/Tile.TILE_HEIGHT);
+                tileNum1 = refLink.GetMap().MiddleEastMap(itemTopRow, itemLeftCol);
+                tileNum2 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemLeftCol);
+                temp1 = Tile.tileMaker(tileNum1);
+                temp2 = Tile.tileMaker(tileNum2);
+                if(temp1.solid || temp2.solid){
+                    item.collisionON = true;
+                }
+                break;
+            case "Right":
+                itemRightCol = (int) ((itemRightWorldX+10 + item.speed)/Tile.TILE_HEIGHT);
+                tileNum1 = refLink.GetMap().MiddleEastMap(itemTopRow, itemRightCol);
+                tileNum2 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemRightCol);
+                temp1 = Tile.tileMaker(tileNum1);
+                temp2 = Tile.tileMaker(tileNum2);
+                if(temp1.solid || temp2.solid){
+                    item.collisionON = true;
+                }
+                break;
+            case "No":
+                break;
+        }
+    }
+
+    public void checkTileNPC(Character item){
+        int itemLeftWorldX = (int) (item.worldX + item.bounds.x);
+        int itemRightWorldX = (int) (item.worldX + item.bounds.x + item.bounds.width);
+        int itemTopWorldY = (int) (item.worldY + item.bounds.y);
+        int itemBottomWorldY = (int) (item.worldY + item.bounds.y + item.bounds.height);
+
+        int itemLeftCol = (int) (itemLeftWorldX/ Tile.TILE_WIDTH);
+        int itemRightCol = (int) (itemRightWorldX/ Tile.TILE_WIDTH);
+        int itemTopRow = (int) (itemTopWorldY/ Tile.TILE_HEIGHT);
+        int itemBottomRow = (int) (itemBottomWorldY/ Tile.TILE_HEIGHT);
+
+        int tileNum1, tileNum2;
+
+
+        switch (item.direction){
+            case "Up":
                 itemTopRow =((itemTopWorldY-10)/* - item.speed*/)/Tile.TILE_HEIGHT;
                 tileNum1 = refLink.GetMap().MiddleEastMap(itemTopRow, itemLeftCol);
                 tileNum2 = refLink.GetMap().MiddleEastMap(itemTopRow, itemRightCol);

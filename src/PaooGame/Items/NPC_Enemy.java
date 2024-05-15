@@ -4,9 +4,8 @@ import PaooGame.Graphics.Assets;
 import PaooGame.RefLinks;
 import PaooGame.Tiles.Tile;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.IOException;
+import java.util.Random;
 
 import static PaooGame.Tiles.Tile.TILE_HEIGHT;
 import static PaooGame.Tiles.Tile.TILE_WIDTH;
@@ -14,20 +13,37 @@ import static PaooGame.Tiles.Tile.TILE_WIDTH;
 public class NPC_Enemy extends Character{
     public NPC_Enemy(RefLinks refLink, float x, float y, int width, int height){
         super(refLink, x, y, width, height);
-        //speed = 3;
+        //actionLockCounter = 0;
+        speed = 1;
         image = Assets.enemy1Stands;
     }
 
-
-
-    public void Update() {
-
+    public void setAction(){
+        actionLockCounter++;
+        //System.out.println(this.direction);
+        //System.out.println(refLink.GetNPC_Enemy().length);
+        if(actionLockCounter == 60){
+            Random random = new Random();
+            int i = random.nextInt(125)+1;
+            if(i<=25)             {this.direction = "Up";}
+            if(i > 25 && i <= 50) {this.direction = "Down";}
+            if(i > 50 && i <= 75) {this.direction = "Left";}
+            if(i > 75 && i <= 100){this.direction = "Right";}
+            if(i > 100){this.direction = "NA";}
+            actionLockCounter = 0;
+        }
     }
+    @Override
+    public void Update() {
+        super.Update();
+    }
+
 
     @Override
     public void Draw(Graphics g) {
 
     }
+
 
     public void Draw(RefLinks refLink, Hero hero, Graphics g) {
         int screenX = (int) (worldX - hero.worldX + hero.screenX);
@@ -36,6 +52,9 @@ public class NPC_Enemy extends Character{
                 worldX - Tile.TILE_WIDTH < hero.worldX + hero.screenX &&
                 worldY + Tile.TILE_WIDTH > hero.worldY - hero.screenY &&
                 worldY - Tile.TILE_WIDTH < hero.worldY + hero.screenY){
+            //System.out.printf("x: %f, y: %f \n", this.worldX, this.worldY);
+            //System.out.printf("scx: %f, scy: %f \n", this.screenX, this.screenY);
+            ///Actualizeaza imaginea
             spriteCounter++;
             if(spriteCounter > 10){
                 if(spriteNum == 1)
@@ -51,8 +70,6 @@ public class NPC_Enemy extends Character{
                     image = Assets.enemy1StandsRight;
                 if(spriteNum==2)
                     image = Assets.enemy1StandsRight2;
-
-
             }
             if(direction == "Right") {
                 if(spriteNum==1)

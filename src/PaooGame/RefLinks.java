@@ -39,56 +39,32 @@ public class RefLinks
     /*! \fn public KeyManager GetKeyManager()
         \brief Returneaza referinta catre managerul evenimentelor de tastatura.
      */
-    public KeyManager GetKeyManager()
-    {
-        return game.GetKeyManager();
-    }
+    public KeyManager GetKeyManager() {return game.GetKeyManager();}
 
-    /*! \fn public int GetWidth()
-        \brief Returneaza latimea ferestrei jocului.
-     */
     public int GetWidth() { return game.GetWidth(); }
 
-    /*! \fn public int GetHeight()
-        \brief Returneaza inaltimea ferestrei jocului.
-     */
     public int GetHeight() { return game.GetHeight(); }
 
-    /*! \fn public Game GetGame()
-        \brief Intoarce referinta catre obiectul Game.
-     */
+
     public Game GetGame()
     {
         return game;
     }
 
-    /*! \fn public void SetGame(Game game)
-        \brief Seteaza referinta catre un obiect Game.
-
-        \param game Referinta obiectului Game.
-     */
     public void SetGame(Game game)
     {
         this.game = game;
     }
 
-    /*! \fn public Map GetMap()
-        \brief Intoarce referinta catre harta curenta.
-     */
     public Map GetMap()
     {
         return map;
     }
-
-    /*! \fn public void SetMap(Map map)
-        \brief Seteaza referinta catre harta curenta.
-
-        \param map Referinta catre harta curenta.
-     */
     public void SetMap(Map map)
     {
         this.map = map;
     }
+
     public Hero GetHero(){return hero;}
     public void SetHero(Hero hero){this.hero = hero;}
 
