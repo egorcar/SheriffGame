@@ -44,6 +44,10 @@ public abstract class Character extends Item
         speed   = DEFAULT_SPEED;
         xMove   = 0;
         yMove   = 0;
+        normalBounds.x = 20;
+        normalBounds.y = 32;
+        normalBounds.width = 12;
+        normalBounds.height = 12;
     }
 
     public void Move() {
@@ -56,7 +60,7 @@ public abstract class Character extends Item
     public void setAction(){
 
     }
-    public void Update(){
+    /*public void Update(){
         setAction();
         collisionON = false;
         cChecker.checkTileNPC(this);
@@ -69,6 +73,39 @@ public abstract class Character extends Item
             if(direction == "Left") {xMove = -speed;}
             if(direction == "Right") {xMove = speed;}
         }
+    }*/
+
+    public void Update(){
+        System.out.println("Updatetest");
+        xMove = 0;
+        yMove = 0;
+
+        actionLockCounter++;
+        //System.out.println(this.direction);
+        //System.out.println(refLink.GetNPC_Enemy().length);
+        if(actionLockCounter == 60){
+            Random random = new Random();
+            int i = random.nextInt(125)+1;
+            if(i<=25)             {this.direction = "Up";}
+            if(i > 25 && i <= 50) {this.direction = "Down";}
+            if(i > 50 && i <= 75) {this.direction = "Left";}
+            if(i > 75 && i <= 100){this.direction = "Right";}
+            if(i > 100){this.direction = "No";}
+            actionLockCounter = 0;
+        }
+
+        collisionON = false;
+
+        cChecker.checkTile(this);
+
+        if(!collisionON){
+            if(direction == "Up") {yMove = -speed;}
+            if(direction == "Down") {yMove = speed;}
+            if(direction == "Left") {xMove = -speed;}
+            if(direction == "Right") {xMove = speed;}
+        }
+
+        Move();
     }
 
     public int GetLife() {return life;}

@@ -66,11 +66,11 @@ public abstract class Item
         ///Dreptunghiul de coliziune implicit este setat ca fiind cel normal
         bounds = normalBounds;
         cChecker = new CollisionChecker(refLink);
-        try {
+        /*try {
             nothing = ImageIO.read(getClass().getResourceAsStream("/textures/nothing.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
+        }*/
     }
 
     ///Metoda abstracta destinata actualizarii starii curente

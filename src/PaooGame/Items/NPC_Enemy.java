@@ -14,7 +14,7 @@ public class NPC_Enemy extends Character{
     public NPC_Enemy(RefLinks refLink, float x, float y, int width, int height){
         super(refLink, x, y, width, height);
         //actionLockCounter = 0;
-        speed = 1;
+        speed = 4;
         image = Assets.enemy1Stands;
     }
 
@@ -108,6 +108,8 @@ public class NPC_Enemy extends Character{
                 }
             }
             g.drawImage(image, screenX, screenY, (int) (TILE_WIDTH*1.2), (int) (TILE_HEIGHT*1.2), null);
+            g.setColor(Color.red);
+            g.fillRect((int) screenX+bounds.x, (int) screenY+bounds.y, bounds.width, bounds.height);
         }
     }
 }

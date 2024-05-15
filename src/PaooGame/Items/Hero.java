@@ -206,7 +206,7 @@ public class Hero extends Character
     public void Draw(Graphics g)
     {
         g.drawImage(image, (int)GameWindow.GetHalfWidth()-30, (int)GameWindow.GetHalfHeight()-10, width, height, null);
-        //g.setColor(Color.blue);
-        //g.fillRect((int) screenX+bounds.x, (int) screenY+bounds.y, bounds.width, bounds.height);
+        g.setColor(Color.blue);
+        g.fillRect((int) screenX+bounds.x, (int) screenY+bounds.y, bounds.width, bounds.height);
     }
 }
