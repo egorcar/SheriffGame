@@ -68,23 +68,8 @@ public abstract class Character extends Item
     public void setAction(){
 
     }
-    /*public void Update(){
-        setAction();
-        collisionON = false;
-        cChecker.checkTileNPC(this);
-        //refLink.GetCChecker().checkTileNPC(this);
-        //System.out.println(direction);
-        if(!collisionON){
-            Move();
-            if(direction == "Up") {yMove = -speed;}
-            if(direction == "Down") {yMove = speed;}
-            if(direction == "Left") {xMove = -speed;}
-            if(direction == "Right") {xMove = speed;}
-        }
-    }*/
 
     public void Update(){
-        System.out.println("Updatetest");
         xMove = 0;
         yMove = 0;
 

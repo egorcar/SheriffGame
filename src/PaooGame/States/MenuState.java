@@ -39,17 +39,19 @@ public class MenuState extends State
         }
         if(refLink.GetKeyManager().enter){
             if(commandNum==0){
+                playMusic(0);
                 State.SetState(refLink.GetGame().playState);
+            }
+            if(commandNum==1){
+                //later
+            }
+            if(commandNum==2){
+                System.exit(0);
             }
         }
 
     }
 
-    /*! \fn public void Draw(Graphics g)
-        \brief Deseneaza (randeaza) pe ecran starea curenta a meniului.
-
-        \param g Contextul grafic in care trebuie sa deseneze starea jocului pe ecran.
-     */
     @Override
     public void Draw(Graphics g)
     {

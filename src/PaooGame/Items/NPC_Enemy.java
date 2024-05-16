@@ -14,7 +14,7 @@ public class NPC_Enemy extends Character{
     public NPC_Enemy(RefLinks refLink, float x, float y, int width, int height){
         super(refLink, x, y, width, height);
         //actionLockCounter = 0;
-        speed = 4;
+        speed = 2;
         image = Assets.enemy1Stands;
     }
 

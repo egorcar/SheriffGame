@@ -24,8 +24,6 @@ public class PlayState extends State
     public SuperObject []obj;
     public NPC_Enemy[] npc;
 
-    public static Sound se;
-    public static Sound music;
     public UI ui;
     /*! \fn public PlayState(RefLinks refLink)
         \brief Constructorul de initializare al clasei
@@ -92,7 +90,6 @@ public class PlayState extends State
     @Override
     public void Update()
     {
-        playMusic(0);
         map.Update();
         hero.Update();
         for(int i = 0; i< npc.length; i++){
@@ -141,19 +138,7 @@ public class PlayState extends State
         }
     }
 
-    public void playMusic(int i){
-        music.setFile(i);
-        music.play();
-        music.loop();
-    }
 
-    public void stopMusic(){
-        music.stop();
-    }
-    public static void playSE(int i){
-        se.setFile(i);
-        se.play();
-    }
 
 
 }

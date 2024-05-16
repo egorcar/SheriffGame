@@ -2,6 +2,7 @@ package PaooGame.States;
 
 import java.awt.*;
 import PaooGame.RefLinks;
+import PaooGame.Sound;
 
 /*! \class State
     \brief Implementeaza notiunea abstracta de stare a jocului/programului.
@@ -17,6 +18,8 @@ public abstract class State
     private static State previousState  = null; /*!< Referinta catre starea anterioara a jocului.*/
     private static State currentState   = null; /*!< Referinta catre starea curenta a jocului: game, meniu, settings, about etc.*/
     protected RefLinks refLink;
+    public static Sound se;
+    public static Sound music;
 
     public State(RefLinks refLink)
     {
@@ -43,4 +46,18 @@ public abstract class State
     public abstract void Update();
         ///Metoda abstracta destinata desenarii starii curente
     public abstract void Draw(Graphics g);
+
+    public void playMusic(int i){
+        music.setFile(i);
+        music.play();
+        music.loop();
+    }
+
+    public void stopMusic(){
+        music.stop();
+    }
+    public static void playSE(int i){
+        se.setFile(i);
+        se.play();
+    }
 }
