@@ -2,7 +2,7 @@ package PaooGame;
 
 import PaooGame.Items.Hero;
 import PaooGame.Items.NPC_Enemy;
-import PaooGame.Maps.Map;
+import PaooGame.Maps.Map2;
 
 import PaooGame.Input.KeyManager;
 import PaooGame.Object.SuperObject;
@@ -16,7 +16,7 @@ public class RefLinks
 {
     private Hero hero;
     private Game game;          /*!< Referinta catre obiectul Game.*/
-    private Map map;            /*!< Referinta catre harta curenta.*/
+    private Map2 map;            /*!< Referinta catre harta curenta.*/
 
     private CollisionChecker cChecker;
     private AssetSetter assetSetter;
@@ -56,11 +56,11 @@ public class RefLinks
         this.game = game;
     }
 
-    public Map GetMap()
+    public Map2 GetMap()
     {
         return map;
     }
-    public void SetMap(Map map)
+    public void SetMap(Map2 map)
     {
         this.map = map;
     }

@@ -100,7 +100,7 @@ public abstract class Character extends Item
             if(direction == "Right") {xMove = speed;}
         }
 
-        Move();
+        //Move();
     }
 
     public int GetLife() {return life;}

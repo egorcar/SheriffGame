@@ -35,8 +35,8 @@ public class CollisionChecker {
         switch (item.direction){
             case "Up":
                 itemTopRow = (int) (((itemTopWorldY-10) - item.speed)/Tile.TILE_HEIGHT);
-                tileNum1 = refLink.GetMap().MiddleEastMap(itemTopRow, itemLeftCol);
-                tileNum2 = refLink.GetMap().MiddleEastMap(itemTopRow, itemRightCol);
+                tileNum1 = refLink.GetMap().tiles[itemTopRow][itemLeftCol];
+                tileNum2 = refLink.GetMap().tiles[itemTopRow][itemRightCol];
                 Tile temp1 = Tile.tileMaker(tileNum1);
                 Tile temp2 = Tile.tileMaker(tileNum2);
 
@@ -47,8 +47,8 @@ public class CollisionChecker {
 
             case "Down":
                 itemBottomRow = (int) ((itemBottomWorldY+10 + item.speed)/Tile.TILE_HEIGHT);
-                tileNum1 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemLeftCol);
-                tileNum2 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemRightCol);
+                tileNum1 = refLink.GetMap().tiles[itemBottomRow][itemLeftCol];
+                tileNum2 = refLink.GetMap().tiles[itemBottomRow][itemRightCol];
                 temp1 = Tile.tileMaker(tileNum1);
                 temp2 = Tile.tileMaker(tileNum2);
                 if(temp1.solid || temp2.solid){
@@ -57,8 +57,8 @@ public class CollisionChecker {
                 break;
             case "Left":
                 itemLeftCol = (int) ((itemLeftWorldX-10 - item.speed)/Tile.TILE_HEIGHT);
-                tileNum1 = refLink.GetMap().MiddleEastMap(itemTopRow, itemLeftCol);
-                tileNum2 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemLeftCol);
+                tileNum1 = refLink.GetMap().tiles[itemTopRow][itemLeftCol];
+                tileNum2 = refLink.GetMap().tiles[itemTopRow][itemRightCol];
                 temp1 = Tile.tileMaker(tileNum1);
                 temp2 = Tile.tileMaker(tileNum2);
                 if(temp1.solid || temp2.solid){
@@ -67,8 +67,8 @@ public class CollisionChecker {
                 break;
             case "Right":
                 itemRightCol = (int) ((itemRightWorldX+10 + item.speed)/Tile.TILE_HEIGHT);
-                tileNum1 = refLink.GetMap().MiddleEastMap(itemTopRow, itemRightCol);
-                tileNum2 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemRightCol);
+                tileNum1 = refLink.GetMap().tiles[itemTopRow][itemLeftCol];
+                tileNum2 = refLink.GetMap().tiles[itemTopRow][itemRightCol];
                 temp1 = Tile.tileMaker(tileNum1);
                 temp2 = Tile.tileMaker(tileNum2);
                 if(temp1.solid || temp2.solid){
@@ -97,8 +97,8 @@ public class CollisionChecker {
         switch (item.direction){
             case "Up":
                 itemTopRow =((itemTopWorldY-10)/* - item.speed*/)/Tile.TILE_HEIGHT;
-                tileNum1 = refLink.GetMap().MiddleEastMap(itemTopRow, itemLeftCol);
-                tileNum2 = refLink.GetMap().MiddleEastMap(itemTopRow, itemRightCol);
+                tileNum1 = refLink.GetMap().tiles[itemTopRow][itemLeftCol];
+                tileNum2 = refLink.GetMap().tiles[itemTopRow][itemRightCol];
                 //System.out.println(itemLeftCol+","+itemTopRow);
                 //System.out.println(itemRightCol+","+itemTopRow);
                 Tile temp1 = Tile.tileMaker(tileNum1);
@@ -111,8 +111,8 @@ public class CollisionChecker {
 
             case "Down":
                 itemBottomRow =(itemBottomWorldY+10/* + item.speed*/)/Tile.TILE_HEIGHT;
-                tileNum1 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemLeftCol);
-                tileNum2 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemRightCol);
+                tileNum1 = refLink.GetMap().tiles[itemTopRow][itemLeftCol];
+                tileNum2 = refLink.GetMap().tiles[itemTopRow][itemRightCol];
                 temp1 = Tile.tileMaker(tileNum1);
                 temp2 = Tile.tileMaker(tileNum2);
                 //System.out.println(temp1 +" "+ temp2);
@@ -122,8 +122,8 @@ public class CollisionChecker {
                 break;
             case "Left":
                 itemLeftCol =(itemLeftWorldX-10/* - item.speed*/)/Tile.TILE_HEIGHT;
-                tileNum1 = refLink.GetMap().MiddleEastMap(itemTopRow, itemLeftCol);
-                tileNum2 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemLeftCol);
+                tileNum1 = refLink.GetMap().tiles[itemTopRow][itemLeftCol];
+                tileNum2 = refLink.GetMap().tiles[itemTopRow][itemRightCol];
                 temp1 = Tile.tileMaker(tileNum1);
                 temp2 = Tile.tileMaker(tileNum2);
                 //System.out.println(temp1 +" "+ temp2);
@@ -133,8 +133,8 @@ public class CollisionChecker {
                 break;
             case "Right":
                 itemRightCol = (int) ((itemRightWorldX+10/* + item.speed*/)/Tile.TILE_HEIGHT);
-                tileNum1 = refLink.GetMap().MiddleEastMap(itemTopRow, itemRightCol);
-                tileNum2 = refLink.GetMap().MiddleEastMap(itemBottomRow, itemRightCol);
+                tileNum1 = refLink.GetMap().tiles[itemTopRow][itemLeftCol];
+                tileNum2 = refLink.GetMap().tiles[itemTopRow][itemRightCol];
                 temp1 = Tile.tileMaker(tileNum1);
                 temp2 = Tile.tileMaker(tileNum2);
                 //System.out.println(temp1 +" "+ temp2);

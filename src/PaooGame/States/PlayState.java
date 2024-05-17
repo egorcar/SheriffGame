@@ -5,12 +5,9 @@ import PaooGame.GameWindow.GameWindow;
 import PaooGame.Items.Hero;
 import PaooGame.Items.NPC_Enemy;
 import PaooGame.Object.SuperObject;
-import PaooGame.Maps.Map;
+import PaooGame.Maps.Map2;
 
-import javax.swing.text.html.parser.Entity;
 import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.text.AttributedCharacterIterator;
 
 /*! \class public class PlayState extends State
     \brief Implementeaza/controleaza jocul.
@@ -18,7 +15,7 @@ import java.text.AttributedCharacterIterator;
 public class PlayState extends State
 {
     private Hero hero;  /*!< Referinta catre obiectul animat erou (controlat de utilizator).*/
-    private Map map;    /*!< Referinta catre harta curenta.*/
+    private Map2 map;    /*!< Referinta catre harta curenta.*/
     public AssetSetter assetSetter;
     public CollisionChecker cChecker;
     public SuperObject []obj;
@@ -36,7 +33,7 @@ public class PlayState extends State
         super(refLink);
         state = "PlayState";
         ///Construieste harta jocului
-        map = new Map(refLink);
+        map = new Map2(refLink);
         ///Referinta catre harta construita este setata si in obiectul shortcut pentru a fi accesibila si in alte clase ale programului.
         refLink.SetMap(map);
 
