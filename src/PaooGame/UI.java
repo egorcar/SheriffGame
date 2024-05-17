@@ -1,17 +1,23 @@
 package PaooGame;
 
+import PaooGame.Graphics.Assets;
 import PaooGame.Object.OBJ_potionH;
 import PaooGame.States.MenuState;
 import PaooGame.States.State;
 import PaooGame.Tiles.Tile;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class UI {
     RefLinks refLink;
     Font arial40;
     BufferedImage whiskeyGlassImage;
+    BufferedImage heartImage;
+    BufferedImage halfHeartImage;
+    BufferedImage noHeartImage;
     public boolean messageOn = false;
     public String message = " ";
     int messageCounter = 0;
@@ -21,6 +27,11 @@ public class UI {
         arial40 = new Font("Arial", Font.PLAIN, 40);
         OBJ_potionH potionH = new OBJ_potionH(refLink);
         whiskeyGlassImage = potionH.img;
+        try{
+            heartImage = ImageIO.read(getClass().getResourceAsStream("/textures/heart.png"));
+            halfHeartImage = ImageIO.read(getClass().getResourceAsStream("/textures/halfHeart.png"));
+            noHeartImage = ImageIO.read(getClass().getResourceAsStream("/textures/noHeart.png"));
+        } catch (IOException e) {e.printStackTrace();}
     }
 
     public void showMessage(String text){
@@ -31,8 +42,31 @@ public class UI {
     public void draw(Graphics g, RefLinks refLink){
         g.setFont(arial40);
         g.setColor(Color.white);
-        g.drawImage(whiskeyGlassImage, 0, 0, (int) (Tile.TILE_WIDTH*1.5), (int) (Tile.TILE_HEIGHT*1.5), null);
-        g.drawString(" = "+ this.refLink.GetHero().hasPotion, 55, 50);
+        g.drawImage(whiskeyGlassImage, 0, (int) (Tile.TILE_HEIGHT*1), (int) (Tile.TILE_WIDTH*1.5), (int) (Tile.TILE_HEIGHT*1.5), null);
+        g.drawString(" "+ this.refLink.GetHero().hasPotion, 55, 100);
+        int x = 5;
+        //int y = Tile.TILE_HEIGHT/2;
+        int i = 0;
+        while (i<refLink.GetHero().DEFAULT_LIFE/2){
+            g.drawImage(noHeartImage, x, 10, null);
+            i++;
+            x += Tile.TILE_WIDTH;
+        }
+        x = 5;
+        //y = Tile.TILE_HEIGHT/2;
+        i = 0;
+        while (i<refLink.GetHero().life){
+            g.drawImage(halfHeartImage, x, 10, null);
+            i++;
+            if(i<refLink.GetHero().life){
+                g.drawImage(heartImage, x, 10, null);
+            }
+            i++;
+            x += Tile.TILE_WIDTH;
+        }
+        //if()
+
+
         if(messageOn){
             g.setFont(g.getFont().deriveFont(30F));
             g.drawString(message, 10, 100);

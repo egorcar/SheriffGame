@@ -3,6 +3,7 @@ package PaooGame;
 import PaooGame.GameWindow.GameWindow;
 import PaooGame.Graphics.Assets;
 import PaooGame.Input.KeyManager;
+import PaooGame.Input.MouseManager;
 import PaooGame.States.*;
 import PaooGame.Tiles.Tile;
 import PaooGame.AssetSetter;
@@ -69,6 +70,7 @@ public class Game implements Runnable
     private State settingsState;        /*!< Referinta catre setari.*/
     private State aboutState;           /*!< Referinta catre about.*/
     private KeyManager keyManager;      /*!< Referinta catre obiectul care gestioneaza intrarile din partea utilizatorului.*/
+    private MouseManager mouseManager;      /*!< Referinta catre obiectul care gestioneaza intrarile din partea utilizatorului.*/
     private RefLinks refLink;            /*!< Referinta catre un obiect a carui sarcina este doar de a retine diverse referinte pentru a fi usor accesibile.*/
 
     private Tile tile; /*!< variabila membra temporara. Este folosita in aceasta etapa doar pentru a desena ceva pe ecran.*/
@@ -95,6 +97,7 @@ public class Game implements Runnable
         runState = false;
             ///Construirea obiectului de gestiune a evenimentelor de tastatura
         keyManager = new KeyManager();
+        mouseManager = new MouseManager();
     }
 
     /*! \fn private void init()

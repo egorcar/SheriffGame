@@ -21,7 +21,7 @@ public abstract class Character extends Item
     public static final int DEFAULT_CREATURE_HEIGHT = 60;   /*!< Inaltimea implicita a imaginii caracterului.*/
     public String direction = "Up";
 
-    protected int life;     /*!< Retine viata caracterului.*/
+    public int life;     /*!< Retine viata caracterului.*/
     public float speed;  /*!< Retine viteza de deplasare caracterului.*/
     protected float xMove;  /*!< Retine noua pozitie a caracterului pe axa X.*/
     protected float yMove;  /*!< Retine noua pozitie a caracterului pe axa Y.*/
@@ -40,7 +40,7 @@ public abstract class Character extends Item
         ///Apel constructor la clasei de baza
         super(refLink, x,y, width, height);
         //Seteaza pe valorile implicite pentru viata, viteza si distantele de deplasare
-        life    = DEFAULT_LIFE;
+        life    = DEFAULT_LIFE-3;
         speed   = DEFAULT_SPEED;
         xMove   = 0;
         yMove   = 0;

@@ -182,10 +182,9 @@ public class Hero extends Character
             switch (objectName){
                 case"PotionH":
                     PlayState.playSE(1);
-                    hasPotion++;
+                    life++;
                     refLink.GetSuperObject()[i]=null;
-                    //refLink.GetSuperObject()[i].img = nothing;
-                    System.out.println(refLink.GetNPC_Enemy());
+                    //System.out.println(refLink.GetNPC_Enemy());
                     refLink.GetUI().showMessage("Yee haw!");
                     break;
                 case "Shop":
@@ -195,12 +194,13 @@ public class Hero extends Character
                         refLink.GetUI().showMessage("Easy there, cowboy!");
                     }
                     else
-                        refLink.GetUI().showMessage("Get some booze, brother");
+                        refLink.GetUI().showMessage("Easy there, cowboy!");
 
                     break;
                 case "PotionS":
                     PlayState.playSE(1);
                     speed+=4;
+                    hasPotion++;
                     refLink.GetSuperObject()[i]=null;
                     refLink.GetUI().showMessage("Slow down, cowboy!");
                     break;

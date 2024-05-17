@@ -12,7 +12,7 @@ public class Sound {
     URL soundURL[] = new URL[30];
     public Sound(){
         soundURL[0] = getClass().getResource("/sounds/TheGoodtheBadandtheUgly.wav");
-        soundURL[1] = getClass().getResource("/sounds/ponk.wav");
+        soundURL[1] = getClass().getResource("/sounds/plop3.wav");
     }
 
     public void setFile(int i){
