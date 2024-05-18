@@ -16,6 +16,10 @@ public class Assets
     public static BufferedImage heroStandsRight;
     public static BufferedImage heroStands2;
     public static BufferedImage heroStandsRight2;
+    public static BufferedImage heroAttacks1Left;
+    public static BufferedImage heroAttacks1Right ;
+    public static BufferedImage heroAttacks1Up ;
+    public static BufferedImage heroAttacks1Down ;
     public static BufferedImage enemy1Stands;
     public static BufferedImage enemy1StandsRight;
     public static BufferedImage enemy1Stands2;
@@ -76,6 +80,10 @@ public class Assets
             heroStandsRight = ImageIO.read(Assets.class.getResourceAsStream("/textures/heroStandsRight1.png"));
             heroStands2 = ImageIO.read(Assets.class.getResourceAsStream("/textures/heroStands2.png"));
             heroStandsRight2 = ImageIO.read(Assets.class.getResourceAsStream("/textures/heroStandsRight2.png"));
+            heroAttacks1Left = ImageIO.read(Assets.class.getResourceAsStream("/textures/heroAttacks1Left.png"));
+            heroAttacks1Right = ImageIO.read(Assets.class.getResourceAsStream("/textures/heroAttacks1Right.png"));
+            heroAttacks1Up = ImageIO.read(Assets.class.getResourceAsStream("/textures/heroAttacks1Up.png"));
+            heroAttacks1Down = ImageIO.read(Assets.class.getResourceAsStream("/textures/heroAttacks1Down.png"));
             sand = ImageIO.read(Assets.class.getResourceAsStream("/textures/sand4.png"));
             rock = ImageIO.read(Assets.class.getResourceAsStream("/textures/sandstone.png"));
             hfence = ImageIO.read(Assets.class.getResourceAsStream("/textures/fenceHoriz.png"));

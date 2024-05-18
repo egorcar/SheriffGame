@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-//SANEK MAP
 public class Map2 {
     private RefLinks refLink;   /*!< O referinte catre un obiect "shortcut", obiect ce contine o serie de referinte utile in program.*/
     private int width;          /*!< Latimea hartii in numar de dale.*/
