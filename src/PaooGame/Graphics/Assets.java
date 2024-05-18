@@ -80,8 +80,8 @@ public class Assets
             heroStandsRight = ImageIO.read(Assets.class.getResourceAsStream("/textures/heroStandsRight1.png"));
             heroStands2 = ImageIO.read(Assets.class.getResourceAsStream("/textures/heroStands2.png"));
             heroStandsRight2 = ImageIO.read(Assets.class.getResourceAsStream("/textures/heroStandsRight2.png"));
-            heroAttacks1Left = ImageIO.read(Assets.class.getResourceAsStream("/textures/heroAttacks1Left.png"));
-            heroAttacks1Right = ImageIO.read(Assets.class.getResourceAsStream("/textures/heroAttacks1Right.png"));
+            heroAttacks1Left = ImageIO.read(Assets.class.getResourceAsStream("/textures/heroAttacks1Right.png"));
+            heroAttacks1Right = ImageIO.read(Assets.class.getResourceAsStream("/textures/heroAttacks1Left.png"));
             heroAttacks1Up = ImageIO.read(Assets.class.getResourceAsStream("/textures/heroAttacks1Up.png"));
             heroAttacks1Down = ImageIO.read(Assets.class.getResourceAsStream("/textures/heroAttacks1Down.png"));
             sand = ImageIO.read(Assets.class.getResourceAsStream("/textures/sand4.png"));

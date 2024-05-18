@@ -9,5 +9,4 @@ public class Main
         Game paooGame = new Game("Sheriff", 816, 576);
         paooGame.StartGame();
     }
-    //test
 }

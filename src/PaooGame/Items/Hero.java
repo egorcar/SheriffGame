@@ -57,7 +57,7 @@ public class Hero extends Character
         attackBounds.width = 38;
         attackBounds.height = 38;
         worldX = 22*Tile.TILE_WIDTH;
-        worldY = 25*Tile.TILE_HEIGHT;
+        worldY = 35*Tile.TILE_HEIGHT;
         screenX = GameWindow.GetHalfWidth();
         screenY = GameWindow.GetHalfHeight();
     }
@@ -72,61 +72,93 @@ public class Hero extends Character
         GetInput();
         ///Actualizeaza pozitia
         Move();
+        if(attacking){
+            attack();
+        } else {
+            spriteCounter++;
+
+            if(spriteCounter > 10){
+                if(spriteNum == 1)
+                    spriteNum = 2;
+                else if (spriteNum == 2)
+                    spriteNum = 1;
+                spriteCounter = 0;
+            }
+
+            /*//if(refLink.GetKeyManager().left)
+            if(direction=="Left")
+            {
+                if(spriteNum==1)
+                    image = Assets.heroStandsRight;
+                if(spriteNum==2)
+                    image = Assets.heroStandsRight2;
+                if(attacking)
+                    image = Assets.heroAttacks1Left;
+
+            }
+            if(refLink.GetKeyManager().right) {
+                if(spriteNum==1)
+                    image = Assets.heroStands;
+                if(spriteNum==2)
+                    image = Assets.heroStands2;
+                if(attacking)
+                    image = Assets.heroAttacks1Right;
+            }
+            if(refLink.GetKeyManager().up)
+            {
+                if (image==Assets.heroStandsRight||image==Assets.heroStandsRight2){
+                    if(spriteNum==1)
+                        image = Assets.heroStandsRight2;
+                    if(spriteNum==2)
+                        image = Assets.heroStandsRight;
+                    if(attacking){
+                        if(spriteNum==1)
+                            image = Assets.heroAttacks1Up;
+                        if(spriteNum==2)
+                            image = Assets.heroAttacks1Up;
+                    }
+                }
+                else{
+                    if(spriteNum==1)
+                        image = Assets.heroStands2;
+                    if(spriteNum==2)
+                        image = Assets.heroStands;
+                    if(attacking)
+                        image = Assets.heroAttacks1Left;
+                }
+            }
+
+            if(refLink.GetKeyManager().down) {
+                if (image==Assets.heroStandsRight||image==Assets.heroStandsRight2){
+                    if(spriteNum==1)
+                        image = Assets.heroStandsRight2;
+                    if(spriteNum==2)
+                        image = Assets.heroStandsRight;
+                }
+                else{
+                    if(spriteNum==1)
+                        image = Assets.heroStands2;
+                    if(spriteNum==2)
+                        image = Assets.heroStands;
+                }
+            }*/
+        }
+
+
         ///Actualizeaza imaginea
+
+    }
+
+    private void attack() {
         spriteCounter++;
-        if(spriteCounter > 10){
-            if(spriteNum == 1)
-                spriteNum = 2;
-            else if (spriteNum == 2)
-                spriteNum = 1;
+        if(spriteCounter <= /*5*/25) spriteNum = 1;
+        //if(spriteCounter > 5 && spriteCounter <=25) spriteNum = 2;
+        if(spriteCounter > 25){
+            spriteNum = 1;
             spriteCounter = 0;
+            attacking = false;
         }
 
-        if(refLink.GetKeyManager().left)
-        {
-            if(spriteNum==1)
-                image = Assets.heroStandsRight;
-            if(spriteNum==2)
-                image = Assets.heroStandsRight2;
-
-
-        }
-        if(refLink.GetKeyManager().right) {
-            if(spriteNum==1)
-                image = Assets.heroStands;
-            if(spriteNum==2)
-                image = Assets.heroStands2;
-        }
-        if(refLink.GetKeyManager().up)
-        {
-            if (image==Assets.heroStandsRight||image==Assets.heroStandsRight2){
-                if(spriteNum==1)
-                    image = Assets.heroStandsRight2;
-                if(spriteNum==2)
-                    image = Assets.heroStandsRight;
-            }
-            else{
-                if(spriteNum==1)
-                    image = Assets.heroStands2;
-                if(spriteNum==2)
-                    image = Assets.heroStands;
-            }
-        }
-
-        if(refLink.GetKeyManager().down) {
-            if (image==Assets.heroStandsRight||image==Assets.heroStandsRight2){
-                if(spriteNum==1)
-                    image = Assets.heroStandsRight2;
-                if(spriteNum==2)
-                    image = Assets.heroStandsRight;
-            }
-            else{
-                if(spriteNum==1)
-                    image = Assets.heroStands2;
-                if(spriteNum==2)
-                    image = Assets.heroStands;
-            }
-        }
     }
 
     /*! \fn private void GetInput()
@@ -210,13 +242,77 @@ public class Hero extends Character
     }
 
     public void interactNPC(int i){
-        if(i!=999){
-            System.out.println("You are hitting the "+i+" npc");
+        if(refLink.GetKeyManager().enter){
+            if(i!=999){
+                System.out.println("You are hitting the "+i+" npc");
+            }
+            else attacking = true;
         }
     }
+
     @Override
     public void Draw(Graphics g)
     {
+        System.out.println(direction);
+        //if(refLink.GetKeyManager().left)
+        if(direction=="Left")
+        {
+            image = Assets.heroAttacks1Left;
+            /*if(spriteNum==1)
+                image = Assets.heroStandsRight;
+            if(spriteNum==2)
+                image = Assets.heroStandsRight2;
+            if(attacking)
+                image = Assets.heroAttacks1Left;*/
+
+        }
+        if(direction=="Right") {
+            if(spriteNum==1)
+                image = Assets.heroStands;
+            if(spriteNum==2)
+                image = Assets.heroStands2;
+            if(attacking)
+                image = Assets.heroAttacks1Right;
+        }
+        if(direction == "Up")
+        {
+            /*if (image==Assets.heroStandsRight||image==Assets.heroStandsRight2){
+                if(spriteNum==1)
+                    image = Assets.heroStandsRight2;
+                if(spriteNum==2)
+                    image = Assets.heroStandsRight;
+                if(attacking){
+                    if(spriteNum==1)
+                        image = Assets.heroAttacks1Up;
+                    if(spriteNum==2)
+                        image = Assets.heroAttacks1Up;
+                }
+            }
+            else{
+                if(spriteNum==1)
+                    image = Assets.heroStands2;
+                if(spriteNum==2)
+                    image = Assets.heroStands;
+                if(attacking)
+                    */image = Assets.heroAttacks1Up;
+            //}
+        }
+
+        if(direction == "Down") {
+            /*if (image==Assets.heroStandsRight||image==Assets.heroStandsRight2){
+                if(spriteNum==1)
+                    image = Assets.heroStandsRight2;
+                if(spriteNum==2)
+                    image = Assets.heroStandsRight;
+            }
+            else{
+                if(spriteNum==1)
+                    image = Assets.heroStands2;
+                if(spriteNum==2)
+                    image = Assets.heroStands;
+            }*/
+            image = Assets.heroAttacks1Down;
+        }
         g.drawImage(image, (int)GameWindow.GetHalfWidth()-30, (int)GameWindow.GetHalfHeight()-10, width, height, null);
         g.setColor(Color.blue);
         g.fillRect((int) screenX+bounds.x, (int) screenY+bounds.y, bounds.width, bounds.height);
