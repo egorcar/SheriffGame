@@ -62,7 +62,7 @@ public class PlayState extends State
         //Construieste npc-urile
         npc = new NPC_Enemy[10];
         for (int i = 0; i < obj.length; i++) {
-            npc[i] = new NPC_Enemy(refLink, 10, 10, 48, 48);
+            npc[i] = new NPC_Enemy(refLink, 100, 100, 48, 48);
         }
         refLink.SetNPC_Enemy(npc);
         assetSetter.setNpc();

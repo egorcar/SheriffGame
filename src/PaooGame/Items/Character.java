@@ -19,7 +19,7 @@ public abstract class Character extends Item
     public static final float DEFAULT_SPEED         = 4.0f; /*!< Viteza implicita a unu caracter.*/
     public static final int DEFAULT_CREATURE_WIDTH  = 60;   /*!< Latimea implicita a imaginii caracterului.*/
     public static final int DEFAULT_CREATURE_HEIGHT = 60;   /*!< Inaltimea implicita a imaginii caracterului.*/
-    public String direction = "Up";
+    public String direction = "Down";
 
     public int life;     /*!< Retine viata caracterului.*/
     public float speed;  /*!< Retine viteza de deplasare caracterului.*/
@@ -100,7 +100,7 @@ public abstract class Character extends Item
             if(direction == "Right") {xMove = speed;}
         }
 
-        //Move();
+        Move();
     }
 
     public int GetLife() {return life;}
