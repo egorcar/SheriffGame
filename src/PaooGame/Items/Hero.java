@@ -52,8 +52,8 @@ public class Hero extends Character
         solidAreaDefaultY = normalBounds.y;
 
         ///Stabilieste pozitia relativa si dimensiunea dreptunghiului de coliziune, starea de atac
-        attackBounds.x = 10;
-        attackBounds.y = 10;
+        attackBounds.x = 0;
+        attackBounds.y = 0;
         attackBounds.width = 38;
         attackBounds.height = 38;
         worldX = 22*Tile.TILE_WIDTH;
@@ -151,7 +151,33 @@ public class Hero extends Character
 
     private void attack() {
         spriteCounter++;
-        if(spriteCounter <= /*5*/25) spriteNum = 1;
+        if(spriteCounter <= /*5*/25){
+            spriteNum = 1;
+            //Save current state
+            float currentWorldX = worldX;
+            float currentWorldY = worldY;
+            int boundsWidth = bounds.width;
+            int boundsHeight = bounds.height;
+
+            switch (direction){
+                case "Up": worldY -= attackBounds.height; break;
+                case "Down": worldY += attackBounds.height; break;
+                case "Left": worldX -= attackBounds.height; break;
+                case "Right": worldX += attackBounds.height; break;
+            }
+
+            bounds.width = attackBounds.width;
+            bounds.height = attackBounds.height;
+
+            int NPCIndex = refLink.GetCChecker().checkCharacters(this, refLink.GetNPC_Enemy());
+            damageNPC(NPCIndex);
+
+            worldX = currentWorldX;
+            worldY = currentWorldY;
+            bounds.width = boundsWidth;
+            bounds.height = boundsHeight;
+
+        }
         //if(spriteCounter > 5 && spriteCounter <=25) spriteNum = 2;
         if(spriteCounter > 25){
             spriteNum = 1;
@@ -159,6 +185,15 @@ public class Hero extends Character
             attacking = false;
         }
 
+    }
+
+    private void damageNPC(int i) {
+        if(i!=999){
+            System.out.println("Hit");
+            refLink.GetNPC_Enemy()[i] = null;
+        }
+        else
+            System.out.println("Miss");
     }
 
     /*! \fn private void GetInput()
@@ -181,7 +216,7 @@ public class Hero extends Character
         else if(refLink.GetKeyManager().left) {direction = "Left";}
         ///Verificare apasare tasta "dreapta"
         else if(refLink.GetKeyManager().right) {direction = "Right";}
-        else direction = "No";
+        //else direction = "No";
 
         //CHECK TILE COLLISION
         collisionON = false;
@@ -196,10 +231,10 @@ public class Hero extends Character
         interactNPC(npcIndex);
 
         if(!collisionON){
-            if(direction == "Up") {yMove = -speed;}
-            if(direction == "Down") {yMove = speed;}
-            if(direction == "Left") {xMove = -speed;}
-            if(direction == "Right") {xMove = speed;}
+            if(direction == "Up" && refLink.GetKeyManager().up) {yMove = -speed;}
+            if(direction == "Down"&&refLink.GetKeyManager().down) {yMove = speed;}
+            if(direction == "Left"&&refLink.GetKeyManager().left) {xMove = -speed;}
+            if(direction == "Right"&&refLink.GetKeyManager().right) {xMove = speed;}
         }
     }
 
@@ -254,16 +289,17 @@ public class Hero extends Character
     public void Draw(Graphics g)
     {
         System.out.println(direction);
+        BufferedImage attackAnimation = null;
         //if(refLink.GetKeyManager().left)
         if(direction=="Left")
         {
             image = Assets.heroAttacks1Left;
-            /*if(spriteNum==1)
+            if(spriteNum==1)
                 image = Assets.heroStandsRight;
             if(spriteNum==2)
                 image = Assets.heroStandsRight2;
             if(attacking)
-                image = Assets.heroAttacks1Left;*/
+                attackAnimation = Assets.heroAttacks1Left;
 
         }
         if(direction=="Right") {
@@ -272,20 +308,20 @@ public class Hero extends Character
             if(spriteNum==2)
                 image = Assets.heroStands2;
             if(attacking)
-                image = Assets.heroAttacks1Right;
+                attackAnimation = Assets.heroAttacks1Right;
         }
         if(direction == "Up")
         {
-            /*if (image==Assets.heroStandsRight||image==Assets.heroStandsRight2){
+            if (image==Assets.heroStandsRight||image==Assets.heroStandsRight2){
                 if(spriteNum==1)
                     image = Assets.heroStandsRight2;
                 if(spriteNum==2)
                     image = Assets.heroStandsRight;
                 if(attacking){
                     if(spriteNum==1)
-                        image = Assets.heroAttacks1Up;
+                        attackAnimation = Assets.heroAttacks1Up;
                     if(spriteNum==2)
-                        image = Assets.heroAttacks1Up;
+                        attackAnimation = Assets.heroAttacks1Up;
                 }
             }
             else{
@@ -294,27 +330,71 @@ public class Hero extends Character
                 if(spriteNum==2)
                     image = Assets.heroStands;
                 if(attacking)
-                    */image = Assets.heroAttacks1Up;
-            //}
+                    attackAnimation = Assets.heroAttacks1Up;
+            }
         }
 
         if(direction == "Down") {
-            /*if (image==Assets.heroStandsRight||image==Assets.heroStandsRight2){
+            if (image==Assets.heroStandsRight||image==Assets.heroStandsRight2){
                 if(spriteNum==1)
                     image = Assets.heroStandsRight2;
                 if(spriteNum==2)
                     image = Assets.heroStandsRight;
+                if(attacking)
+                    attackAnimation = Assets.heroAttacks1Down;
             }
             else{
                 if(spriteNum==1)
                     image = Assets.heroStands2;
                 if(spriteNum==2)
                     image = Assets.heroStands;
-            }*/
-            image = Assets.heroAttacks1Down;
+                if(attacking)
+                    attackAnimation = Assets.heroAttacks1Down;
+            }
+
         }
-        g.drawImage(image, (int)GameWindow.GetHalfWidth()-30, (int)GameWindow.GetHalfHeight()-10, width, height, null);
-        g.setColor(Color.blue);
-        g.fillRect((int) screenX+bounds.x, (int) screenY+bounds.y, bounds.width, bounds.height);
+
+
+        if(attackAnimation == null){
+            g.drawImage(image, (int)GameWindow.GetHalfWidth()-30, (int)GameWindow.GetHalfHeight()-10, width, height, null);
+            g.setColor(Color.blue);
+            g.fillRect((int) screenX+bounds.x, (int) screenY+bounds.y, bounds.width, bounds.height);
+        }
+        else{
+            if (attackAnimation.equals(Assets.heroAttacks1Up)) {
+                g.drawImage(attackAnimation, (int)GameWindow.GetHalfWidth()-30, (int) GameWindow.GetHalfHeight() - 70, width, 2*height, null);
+            }
+            else if (attackAnimation.equals(Assets.heroAttacks1Down)) {
+                g.drawImage(attackAnimation, (int)GameWindow.GetHalfWidth()-30, (int) GameWindow.GetHalfHeight() - 10, width, 2*height, null);
+            }
+            else if (attackAnimation.equals(Assets.heroAttacks1Left)) {
+                g.drawImage(attackAnimation, (int)GameWindow.GetHalfWidth()-90, (int) GameWindow.GetHalfHeight() - 10, width*2, height, null);
+            }
+            else if (attackAnimation.equals(Assets.heroAttacks1Right)) {
+                g.drawImage(attackAnimation, (int)GameWindow.GetHalfWidth()-30, (int) GameWindow.GetHalfHeight() - 10, width*2, height, null);
+            }
+        }
+
+
+        /*BufferedImage attackAnimation = null;
+        if (direction.equals("Left")) {
+            attackAnimation = Assets.heroAttacks1Left;
+        } else if (direction.equals("Right")) {
+            attackAnimation = Assets.heroAttacks1Right;
+        } else if (direction.equals("Up")) {
+            attackAnimation = Assets.heroAttacks1Up;
+        } else if (direction.equals("Down")) {
+            attackAnimation = Assets.heroAttacks1Down;
+        }*/
+
+
+
+        // Draw the bounding box for debugging purposes
+        //g.setColor(Color.blue);
+        //g.fillRect((int) screenX + bounds.x, (int) screenY + bounds.y, bounds.width, bounds.height);
+
+
+
+
     }
 }

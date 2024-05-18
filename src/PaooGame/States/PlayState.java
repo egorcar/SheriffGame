@@ -119,9 +119,10 @@ public class PlayState extends State
 
         //Draw npcs;
         for(int i = 0; i<this.obj.length; i++){
-            if(this.obj[i]!=null){
-                this.npc[i].Draw(refLink, hero, g);
+            if(this.obj[i]==null){
+                System.out.println(i);
             }
+            else this.npc[i].Draw(refLink, hero, g);
         }
 
         //Draw ui:

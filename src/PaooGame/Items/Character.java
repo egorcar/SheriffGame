@@ -6,6 +6,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.util.Random;
 
+import static java.lang.Math.sqrt;
+
 /*! \class public abstract class Character extends Item
     \brief Defineste notiunea abstracta de caracter/individ/fiinta din joc.
 
@@ -65,8 +67,14 @@ public abstract class Character extends Item
         MoveY();
     }
 
-    public void MoveX() {this.worldX += xMove;}
-    public void MoveY() {this.worldY += yMove;}
+    public void MoveX() {
+        if(yMove!=0) worldX += xMove / sqrt(2);
+        else worldX += xMove;
+    }
+    public void MoveY() {
+        if(xMove!=0) worldY += yMove / sqrt(2);
+        else worldY += yMove;
+    }
     public void setAction(){
 
     }

@@ -5,6 +5,7 @@ import PaooGame.RefLinks;
 import PaooGame.Tiles.Tile;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 /*! \class public class MenuState extends State
     \brief Implementeaza notiunea de menu pentru joc.
@@ -30,10 +31,12 @@ public class MenuState extends State
     public void Update()
     {
         if(refLink.GetKeyManager().up){
+            refLink.GetKeyManager().SetKey(KeyEvent.VK_W, false);
             commandNum--;
             if(commandNum<0) commandNum=2;
         }
         if(refLink.GetKeyManager().down){
+            refLink.GetKeyManager().SetKey(KeyEvent.VK_S, false);
             commandNum++;
             if(commandNum>2) commandNum=0;
         }

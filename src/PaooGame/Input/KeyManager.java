@@ -73,4 +73,11 @@ public class KeyManager implements KeyListener
     {
 
     }
+
+    public void SetKey(int key, boolean value){
+        keys[key] = value;
+    }
+
+
+
 }
