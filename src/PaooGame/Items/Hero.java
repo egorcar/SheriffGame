@@ -146,8 +146,9 @@ public class Hero extends Character
             if(!refLink.GetNPC_Enemy()[i].invincible){
                 if(!refLink.GetNPC_Enemy()[i].dying) playSE(2);
                 System.out.println("Hit");
-                refLink.GetNPC_Enemy()[i].life-=5;
-                refLink.GetNPC_Enemy()[i].invincible = true;
+                /*refLink.GetNPC_Enemy()[i].life-=5;
+                refLink.GetNPC_Enemy()[i].invincible = true;*/
+                refLink.GetNPC_Enemy()[i].dying = true;
                 if(refLink.GetNPC_Enemy()[i].life <= 0){
                     //refLink.GetNPC_Enemy()[i] = null;
                     refLink.GetNPC_Enemy()[i].dying = true;
@@ -255,6 +256,7 @@ public class Hero extends Character
         if(i != 999){
             if(!invincible){
                 life -=1;
+                playSE(4);
                 invincible = true;
             }
         }

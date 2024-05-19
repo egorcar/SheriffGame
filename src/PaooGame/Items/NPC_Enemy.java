@@ -7,6 +7,7 @@ import PaooGame.Tiles.Tile;
 import java.awt.*;
 import java.util.Random;
 
+import static PaooGame.States.State.playSE;
 import static PaooGame.Tiles.Tile.TILE_HEIGHT;
 import static PaooGame.Tiles.Tile.TILE_WIDTH;
 
@@ -151,11 +152,11 @@ public class NPC_Enemy extends Character{
     }*/
     public void dyingAnimation(Graphics2D g) {
         dyingCounter++;
-
         Composite originalComposite = g.getComposite();
 
         if (dyingCounter <= 5) {
             g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0f));
+            playSE(5);
         } else if (dyingCounter <= 10) {
             g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
         } else if (dyingCounter <= 15) {
