@@ -1,12 +1,13 @@
 package PaooGame;
 
-import PaooGame.Items.Cactus;
+//import PaooGame.Items.Cactus;
 import PaooGame.Items.NPC_Enemy;
 import PaooGame.Object.OBJ_Shop;
 import PaooGame.Object.OBJ_potionH;
 import PaooGame.Object.OBJ_potionS;
-
-import java.sql.Ref;
+import PaooGame.States.PlayState;
+import PaooGame.Items.ITCactusTile;
+import PaooGame.Tiles.Tile;
 
 import static PaooGame.Tiles.Tile.TILE_HEIGHT;
 import static PaooGame.Tiles.Tile.TILE_WIDTH;
@@ -53,11 +54,25 @@ public class AssetSetter {
         refLink.GetNPC_Enemy()[2].worldX = 26*TILE_WIDTH;
         refLink.GetNPC_Enemy()[2].worldY = 17*TILE_HEIGHT;
 
-        refLink.GetCactus()[3] = new Cactus(refLink, 24, 25, 48, 48);
-        refLink.GetCactus()[3].worldX = 26*TILE_WIDTH;
-        refLink.GetCactus()[3].worldY = 17*TILE_HEIGHT;
+    }
 
-
-
+    public void setInteractiveTile(){
+        int i = 0;
+        refLink.GetInteractiveTile()[i] = new ITCactusTile(refLink, 30, 25, 48, 48);
+        refLink.GetInteractiveTile()[i].worldX = 30* TILE_WIDTH;
+        refLink.GetInteractiveTile()[i].worldY = 25* TILE_HEIGHT;
+        //refLink.GetInteractiveTile()[i].bounds.width = 25* TILE_HEIGHT;
+        i++;
+        refLink.GetInteractiveTile()[i] = new ITCactusTile(refLink, 31, 25, 48, 48);
+        refLink.GetInteractiveTile()[i].worldX = 31* TILE_WIDTH;
+        refLink.GetInteractiveTile()[i].worldY = 25* TILE_HEIGHT;
+        i++;
+        refLink.GetInteractiveTile()[i] = new ITCactusTile(refLink, 32, 25, 48, 48);
+        refLink.GetInteractiveTile()[i].worldX = 32* TILE_WIDTH;
+        refLink.GetInteractiveTile()[i].worldY = 25* TILE_HEIGHT;
+        i++;
+        refLink.GetInteractiveTile()[i] = new ITCactusTile(refLink, 33, 25, 48, 48);
+        refLink.GetInteractiveTile()[i].worldX = 33* TILE_WIDTH;
+        refLink.GetInteractiveTile()[i].worldY = 25* TILE_HEIGHT;
     }
 }

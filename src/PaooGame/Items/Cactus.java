@@ -1,3 +1,4 @@
+/*
 package PaooGame.Items;
 
 import PaooGame.Graphics.Assets;
@@ -103,3 +104,4 @@ public class Cactus extends Character{
 
 
 }
+*/

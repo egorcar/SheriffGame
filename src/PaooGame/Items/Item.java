@@ -6,11 +6,6 @@ import PaooGame.RefLinks;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import PaooGame.GameWindow.GameWindow;
-
-import javax.imageio.ImageIO;
 
 /*! \class Item
     \brief. Implementeaza notiunea abstracta de entitate activa din joc, "element cu care se poate interactiona: monstru, turn etc.".
@@ -25,6 +20,7 @@ public abstract class Item
     public float screenX;
     public float screenY;
     public boolean collisionON = false;
+    public boolean collisionI = true;
     protected int width;                /*!< Latimea imaginii entitatii.*/
     protected int height;               /*!< Inaltimea imaginii entitatii.*/
     public int solidAreaDefaultX;
@@ -80,7 +76,7 @@ public abstract class Item
     ///Metoda abstracta destinata actualizarii starii curente
     public abstract void Update();
     ///Metoda abstracta destinata desenarii starii curente
-    public abstract void Draw(Graphics g);
+    public abstract void Draw(RefLinks refLink, Graphics g);
 
     /*! \fn public float GetX()
         \brief Returneaza coordonata pe axa X.

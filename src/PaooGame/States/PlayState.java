@@ -2,11 +2,12 @@ package PaooGame.States;
 
 import PaooGame.*;
 import PaooGame.GameWindow.GameWindow;
-import PaooGame.Items.Cactus;
+//import PaooGame.Items.Cactus;
 import PaooGame.Items.Hero;
 import PaooGame.Items.NPC_Enemy;
 import PaooGame.Object.SuperObject;
 import PaooGame.Maps.Map2;
+import PaooGame.Items.InteractiveTile;
 
 import java.awt.*;
 
@@ -21,7 +22,7 @@ public class PlayState extends State
     public CollisionChecker cChecker;
     public SuperObject []obj;
     public NPC_Enemy[] npc;
-    public Cactus[] cacti;
+    public InteractiveTile[] iTIle;
 
     public UI ui;
     /*! \fn public PlayState(RefLinks refLink)
@@ -67,14 +68,16 @@ public class PlayState extends State
             npc[i] = new NPC_Enemy(refLink, 100, 100, 48, 48);
         }
         refLink.SetNPC_Enemy(npc);
-
-
-        cacti = new Cactus[10];
-        for(int i = 0; i<cacti.length; i++){
-            cacti[i] = new Cactus(refLink, 200, 100, 48, 48);
-        }
-        refLink.SetCactus(cacti);
         assetSetter.setNpc();
+
+        //Construiesc tile-urile interactive
+        iTIle = new InteractiveTile[50];
+        for (int i = 0; i < iTIle.length; i++) {
+            iTIle[i] = new InteractiveTile(refLink, 100, 100, 48, 48);
+        }
+        refLink.SetInteractiveTile(iTIle);
+        assetSetter.setInteractiveTile();
+
 
         //Porneste muzica
         //playMusic(0);
@@ -108,6 +111,12 @@ public class PlayState extends State
                 }
             }
         }
+        for(int i = 0; i<iTIle.length; i++){
+            /*if(iTIle[i]!=null){
+                iTIle[i].Update();
+            }*/
+            iTIle[i].Update();
+        }
     }
 
     /*! \fn public void Draw(Graphics g)
@@ -122,6 +131,12 @@ public class PlayState extends State
         drawStart = System.nanoTime();
         //Draw map:
         map.Draw(g, hero);
+        //Draw interactive tiles:
+        for(int i = 0; i<iTIle.length; i++){
+            if(this.iTIle!=null){
+                this.iTIle[i].Draw(refLink, hero, g);
+            }
+        }
         //Draw objects:
         for(int i = 0; i<this.obj.length; i++){
             if(this.obj[i]!=null){
@@ -129,7 +144,7 @@ public class PlayState extends State
             }
         }
         //Draw hero:
-        hero.Draw(g);
+        hero.Draw(refLink, g);
 
         //Draw npcs;
         for(int i = 0; i<this.npc.length; i++){
@@ -138,12 +153,12 @@ public class PlayState extends State
             }
             else this.npc[i].Draw(refLink, hero, g);
         }
-        for(int i = 0; i<this.cacti.length; i++){
+        /*for(int i = 0; i<this.cacti.length; i++){
             if(this.cacti[i]==null){
                 //System.out.println(i);
             }
             else this.cacti[i].Draw(refLink, hero, g);
-        }
+        }*/
 
         //Draw ui:
         ui.draw(g, refLink);

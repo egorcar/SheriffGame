@@ -1,5 +1,7 @@
 package PaooGame.Tiles;
 
+import PaooGame.Items.ITCactusTile;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -22,6 +24,7 @@ public class Tile
     public static Tile tlFenceTile      = new tlFenceTile(7);
     public static Tile vFenceTile       = new vFenceTile(8);
     public static Tile hFenceTile       = new hFenceTile(9);
+    //public static Tile cactusTile       = new ITCactusTile(2);
     /*public static Tile waterTile        = new WaterTile(2);     *//*!< Dala de tip apa*//*
     public static Tile treeTile         = new TreeTile(3);      *//*!< Dala de tip copac*//*
     public static Tile soilTile         = new SoilTile(4);      *//*!< Dala de tip sol/pamant*/
@@ -77,6 +80,8 @@ public class Tile
                 return grassTile;
             case 1:
                 return mountainTile;
+            /*case 2:
+                return cactusTile;*/
             case 4:
                 return blFenceTile;
             case 5:
@@ -90,7 +95,8 @@ public class Tile
             case 9:
                 return hFenceTile;
             default:
-                throw new IllegalStateException("Unexpected value: " + id);
+                return mountainTile;
+                //throw new IllegalStateException("Unexpected value: " + id);
         }
     }
 }

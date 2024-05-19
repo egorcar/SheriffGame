@@ -1,4 +1,5 @@
 package PaooGame;
+import PaooGame.Graphics.Assets;
 import PaooGame.Items.Character;
 import PaooGame.Items.Item;
 import PaooGame.States.PlayState;
@@ -42,6 +43,10 @@ public class CollisionChecker {
 
                 if(temp1.solid || temp2.solid){
                     item.collisionON = true;
+                    if(temp1.equals(Assets.cactus)||temp2.equals(Assets.cactus)) {
+                        refLink.GetHero().life-=1;
+                        refLink.GetHero().invincible = true;
+                    }
                 }
                 break;
 
@@ -80,72 +85,7 @@ public class CollisionChecker {
         }
     }
 
-    public void checkTileNPC(Character item){
-        int itemLeftWorldX = (int) (item.worldX + item.bounds.x);
-        int itemRightWorldX = (int) (item.worldX + item.bounds.x + item.bounds.width);
-        int itemTopWorldY = (int) (item.worldY + item.bounds.y);
-        int itemBottomWorldY = (int) (item.worldY + item.bounds.y + item.bounds.height);
 
-        int itemLeftCol = (int) (itemLeftWorldX/ Tile.TILE_WIDTH);
-        int itemRightCol = (int) (itemRightWorldX/ Tile.TILE_WIDTH);
-        int itemTopRow = (int) (itemTopWorldY/ Tile.TILE_HEIGHT);
-        int itemBottomRow = (int) (itemBottomWorldY/ Tile.TILE_HEIGHT);
-
-        int tileNum1, tileNum2;
-
-
-        switch (item.direction){
-            case "Up":
-                itemTopRow =((itemTopWorldY-10)/* - item.speed*/)/Tile.TILE_HEIGHT;
-                tileNum1 = refLink.GetMap().tiles[itemTopRow][itemLeftCol];
-                tileNum2 = refLink.GetMap().tiles[itemTopRow][itemRightCol];
-                //System.out.println(itemLeftCol+","+itemTopRow);
-                //System.out.println(itemRightCol+","+itemTopRow);
-                Tile temp1 = Tile.tileMaker(tileNum1);
-                Tile temp2 = Tile.tileMaker(tileNum2);
-                //System.out.println(temp1 +" "+ temp2);
-                if(temp1.solid || temp2.solid){
-                    item.collisionON = true;
-                }
-                break;
-
-            case "Down":
-                itemBottomRow =(itemBottomWorldY+10/* + item.speed*/)/Tile.TILE_HEIGHT;
-                tileNum1 = refLink.GetMap().tiles[itemTopRow][itemLeftCol];
-                tileNum2 = refLink.GetMap().tiles[itemTopRow][itemRightCol];
-                temp1 = Tile.tileMaker(tileNum1);
-                temp2 = Tile.tileMaker(tileNum2);
-                //System.out.println(temp1 +" "+ temp2);
-                if(temp1.solid || temp2.solid){
-                    item.collisionON = true;
-                }
-                break;
-            case "Left":
-                itemLeftCol =(itemLeftWorldX-10/* - item.speed*/)/Tile.TILE_HEIGHT;
-                tileNum1 = refLink.GetMap().tiles[itemTopRow][itemLeftCol];
-                tileNum2 = refLink.GetMap().tiles[itemTopRow][itemRightCol];
-                temp1 = Tile.tileMaker(tileNum1);
-                temp2 = Tile.tileMaker(tileNum2);
-                //System.out.println(temp1 +" "+ temp2);
-                if(temp1.solid || temp2.solid){
-                    item.collisionON = true;
-                }
-                break;
-            case "Right":
-                itemRightCol = (int) ((itemRightWorldX+10/* + item.speed*/)/Tile.TILE_HEIGHT);
-                tileNum1 = refLink.GetMap().tiles[itemTopRow][itemLeftCol];
-                tileNum2 = refLink.GetMap().tiles[itemTopRow][itemRightCol];
-                temp1 = Tile.tileMaker(tileNum1);
-                temp2 = Tile.tileMaker(tileNum2);
-                //System.out.println(temp1 +" "+ temp2);
-                if(temp1.solid || temp2.solid){
-                    item.collisionON = true;
-                }
-                break;
-            case "No":
-                break;
-        }
-    }
     public int checkObject(Character character, boolean hero){
         int index = 999;
 
@@ -222,7 +162,7 @@ public class CollisionChecker {
         //6
 
         for(int i = 0; i<target.length; i++){
-            if(target[i] != null){
+            if(target[i] != null && target[i].collisionI){
                 character.collisionBounds.x = (int) (character.worldX + character.collisionBounds.x);
                 character.collisionBounds.y = (int) (character.worldY + character.collisionBounds.y);
 

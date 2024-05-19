@@ -50,7 +50,7 @@ public abstract class Character extends Item
         super(refLink, x,y, width, height);
         //Seteaza pe valorile implicite pentru viata, viteza si distantele de deplasare
         life    = DEFAULT_LIFE-3;
-        speed   = 10;
+        speed   = 4;
         xMove   = 0;
         yMove   = 0;
         normalBounds.x = 20;

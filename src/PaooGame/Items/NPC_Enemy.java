@@ -41,7 +41,7 @@ public class NPC_Enemy extends Character{
 
 
     @Override
-    public void Draw(Graphics g) {
+    public void Draw(RefLinks refLink, Graphics g) {
 
     }
 

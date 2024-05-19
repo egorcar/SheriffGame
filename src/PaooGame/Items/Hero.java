@@ -3,14 +3,10 @@ package PaooGame.Items;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import PaooGame.CollisionChecker;
 import PaooGame.GameWindow.GameWindow;
 import PaooGame.RefLinks;
 import PaooGame.Graphics.Assets;
-import PaooGame.States.PlayState;
 import PaooGame.Tiles.Tile;
-
-import javax.imageio.ImageIO;
 
 import static PaooGame.States.State.playSE;
 
@@ -121,10 +117,13 @@ public class Hero extends Character
             }
 
             bounds.width = attackBounds.width;
-            bounds.height = attackBounds.height;
+            bounds.height = attackBounds.height-10;
 
             int NPCIndex = refLink.GetCChecker().checkCharacters(this, refLink.GetNPC_Enemy());
             damageNPC(NPCIndex);
+
+            int iTileIndex = cChecker.checkCharacters(this, refLink.GetInteractiveTile());
+            damageInteractiveTile(iTileIndex);
 
             worldX = currentWorldX;
             worldY = currentWorldY;
@@ -185,6 +184,10 @@ public class Hero extends Character
         collisionON = false;
         cChecker.checkTile(this);
 
+        //CHECK INTERACTIVE TILE COLLISION
+        //cChecker.checkCharacters(this, refLink.GetInteractiveTile());
+        int iTileIndex = cChecker.checkCharacters(this, refLink.GetInteractiveTile());
+
         //CHECK OBJECT COLLISION
         int objIndex = cChecker.checkObject(this, true);
         pickUpObject(objIndex);
@@ -199,6 +202,14 @@ public class Hero extends Character
             if(direction == "Down"&&refLink.GetKeyManager().down) {yMove = speed;}
             if(direction == "Left"&&refLink.GetKeyManager().left) {xMove = -speed;}
             if(direction == "Right"&&refLink.GetKeyManager().right) {xMove = speed;}
+        }
+    }
+
+    private void damageInteractiveTile(int i) {
+        if(i!=999&&refLink.GetInteractiveTile()[i].destructible){
+            refLink.GetInteractiveTile()[i].image = Assets.cactusBroken;
+            refLink.GetInteractiveTile()[i].alive = false;
+            refLink.GetInteractiveTile()[i].collisionI = false;
         }
     }
 
@@ -267,7 +278,7 @@ public class Hero extends Character
 
 
     @Override
-    public void Draw(Graphics g)
+    public void Draw(RefLinks refLink, Graphics g)
     {
         System.out.println(direction);
         BufferedImage attackAnimation = null;
