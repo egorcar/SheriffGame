@@ -4,8 +4,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import PaooGame.GameWindow.GameWindow;
+import PaooGame.Input.KeyManager;
 import PaooGame.RefLinks;
 import PaooGame.Graphics.Assets;
+import PaooGame.States.State;
 import PaooGame.Tiles.Tile;
 
 import static PaooGame.States.State.playSE;
@@ -25,6 +27,7 @@ public class Hero extends Character
     //private BufferedImage image;    /*!< Referinta catre imaginea curenta a eroului.*/
     public int hasPotion = 0;
     public int hasCoin = 0;
+    public int hasKey = 0;
 
     int soundCounter;
     public boolean checkDrawTime = false;
@@ -149,10 +152,10 @@ public class Hero extends Character
                 /*refLink.GetNPC_Enemy()[i].life-=5;
                 refLink.GetNPC_Enemy()[i].invincible = true;*/
                 refLink.GetNPC_Enemy()[i].dying = true;
-                if(refLink.GetNPC_Enemy()[i].life <= 0){
+                /*if(refLink.GetNPC_Enemy()[i].life <= 0){
                     //refLink.GetNPC_Enemy()[i] = null;
                     refLink.GetNPC_Enemy()[i].dying = true;
-                }
+                }*/
             }
         }
         else
@@ -231,13 +234,15 @@ public class Hero extends Character
                     refLink.GetUI().showMessage("Yee haw!");
                     break;
                 case "Shop":
-                    if(hasPotion>0){
-                        //refLink.GetSuperObject()[i]=null;
-                        hasPotion--;
-                        refLink.GetUI().showMessage("Easy there, cowboy!");
+                    //refLink.GetSuperObject()[i]=null;
+                    if(refLink.GetKeyManager().f){
+                        State.SetState(refLink.GetGame().shopState);
+                        if(direction=="Up") worldY+=10;
+                        if(direction=="Down") worldY-=10;
+                        if(direction=="Left") worldX+=10;
+                        if(direction=="Right") worldX-=10;
                     }
-                    else
-                        refLink.GetUI().showMessage("Easy there, cowboy!");
+
 
                     break;
                 case "PotionS":
@@ -254,12 +259,13 @@ public class Hero extends Character
 
     public void interactNPC(int i){
         if(refLink.GetKeyManager().enter){
-            if(i!=999){
+            /*if(i!=999){
                 System.out.println("You are hitting the "+i+" npc");
             }
             else {
                 attacking = true;
-            }
+            }*/
+            attacking = true;
         }
     }
 

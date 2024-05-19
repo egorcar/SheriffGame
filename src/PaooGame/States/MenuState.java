@@ -13,6 +13,7 @@ import java.awt.event.KeyEvent;
 public class MenuState extends State
 {
     public int commandNum = 0;
+
     /*! \fn public MenuState(RefLinks refLink)
         \brief Constructorul de initializare al clasei.
 
@@ -59,6 +60,7 @@ public class MenuState extends State
     public void Draw(Graphics g)
     {
         //Background color
+        System.out.println("De-a pula");
         g.setColor(new Color(215, 153, 73));
         g.fillRect(0, 0, refLink.GetGame().GetWidth(), refLink.GetGame().GetHeight());
 

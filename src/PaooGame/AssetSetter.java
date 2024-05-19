@@ -86,7 +86,7 @@ public class AssetSetter {
         refLink.GetInteractiveTile()[i].worldY = 25* TILE_HEIGHT;
         i++;
         refLink.GetInteractiveTile()[i] = new ITCactusTile(refLink, 33, 25, 48, 48);
-        refLink.GetInteractiveTile()[i].worldX = 43* TILE_WIDTH;
-        refLink.GetInteractiveTile()[i].worldY = 66* TILE_HEIGHT;
+        refLink.GetInteractiveTile()[i].worldX = 35* TILE_WIDTH;
+        refLink.GetInteractiveTile()[i].worldY = 64* TILE_HEIGHT;
     }
 }

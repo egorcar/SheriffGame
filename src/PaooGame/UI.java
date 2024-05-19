@@ -19,7 +19,10 @@ public class UI {
     BufferedImage heartImage;
     BufferedImage halfHeartImage;
     BufferedImage noHeartImage;
-    BufferedImage coinImage;
+    public BufferedImage coinImage;
+    BufferedImage key1Image;
+    BufferedImage key2Image;
+    BufferedImage noKeyImage;
     public boolean messageOn = false;
     public String message = " ";
     int messageCounter = 0;
@@ -35,6 +38,9 @@ public class UI {
             halfHeartImage = ImageIO.read(getClass().getResourceAsStream("/textures/halfHeart.png"));
             noHeartImage = ImageIO.read(getClass().getResourceAsStream("/textures/noHeart.png"));
             coinImage = ImageIO.read(getClass().getResourceAsStream("/textures/coin.png"));
+            key1Image = ImageIO.read(getClass().getResourceAsStream("/textures/key1.png"));
+            key2Image = ImageIO.read(getClass().getResourceAsStream("/textures/key2.png"));
+            noKeyImage = ImageIO.read(getClass().getResourceAsStream("/textures/nokey.png"));
         } catch (IOException e) {e.printStackTrace();}
     }
 
@@ -50,6 +56,10 @@ public class UI {
         g.drawString(" "+ this.refLink.GetHero().hasPotion, 55, 100);
         g.drawString(" "+ this.refLink.GetHero().hasCoin, 730, 47);
         g.drawImage(coinImage, 760, 10, null);
+        if(refLink.GetHero().hasKey==0) g.drawImage(noKeyImage, 750, 50, null);
+        else if(refLink.GetHero().hasKey==1) g.drawImage(key1Image, 750, 50, null);
+        else if(refLink.GetHero().hasKey==2) g.drawImage(key2Image, 750, 50, null);
+
 
         int x = 5;
         //int y = Tile.TILE_HEIGHT/2;

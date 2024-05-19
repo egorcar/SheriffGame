@@ -46,6 +46,9 @@ public class Assets
     public static BufferedImage trfence;
     public static BufferedImage blfence;
     public static BufferedImage brfence;
+    public static BufferedImage key1Image;
+    public static BufferedImage key2Image;
+    public static BufferedImage noKeyImage;
 
     /*! \fn public static void Init()
         \brief Functia initializaza referintele catre elementele grafice utilizate.
@@ -100,6 +103,9 @@ public class Assets
             enemy1StandsRight2 = ImageIO.read(Assets.class.getResourceAsStream("/textures/enemy1Stands2Right.png"));
             cactus = ImageIO.read(Assets.class.getResourceAsStream("/textures/cactus.png"));
             cactusBroken = ImageIO.read(Assets.class.getResourceAsStream("/textures/cactusBroken.png"));
+            key1Image = ImageIO.read(Assets.class.getResourceAsStream("/textures/key1.png"));
+            key2Image = ImageIO.read(Assets.class.getResourceAsStream("/textures/key2.png"));
+            noKeyImage = ImageIO.read(Assets.class.getResourceAsStream("/textures/nokey.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
