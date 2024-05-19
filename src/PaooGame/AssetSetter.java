@@ -1,5 +1,6 @@
 package PaooGame;
 
+import PaooGame.Items.Cactus;
 import PaooGame.Items.NPC_Enemy;
 import PaooGame.Object.OBJ_Shop;
 import PaooGame.Object.OBJ_potionH;
@@ -51,6 +52,10 @@ public class AssetSetter {
         refLink.GetNPC_Enemy()[2] = new NPC_Enemy(refLink, 18, 19, 48, 48);
         refLink.GetNPC_Enemy()[2].worldX = 26*TILE_WIDTH;
         refLink.GetNPC_Enemy()[2].worldY = 17*TILE_HEIGHT;
+
+        refLink.GetCactus()[3] = new Cactus(refLink, 24, 25, 48, 48);
+        refLink.GetCactus()[3].worldX = 26*TILE_WIDTH;
+        refLink.GetCactus()[3].worldY = 17*TILE_HEIGHT;
 
 
 

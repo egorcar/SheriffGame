@@ -26,6 +26,8 @@ public class Assets
     public static BufferedImage enemy1StandsRight2;
     public static BufferedImage heroLeft;
     public static BufferedImage heroRight;
+    public static BufferedImage cactus;
+    public static BufferedImage cactusBroken;
     public static BufferedImage soil;
     public static BufferedImage sand;
     public static BufferedImage rock;
@@ -96,6 +98,8 @@ public class Assets
             enemy1StandsRight = ImageIO.read(Assets.class.getResourceAsStream("/textures/enemy1Stands1Right.png"));
             enemy1Stands2 = ImageIO.read(Assets.class.getResourceAsStream("/textures/enemy1Stands2.png"));
             enemy1StandsRight2 = ImageIO.read(Assets.class.getResourceAsStream("/textures/enemy1Stands2Right.png"));
+            cactus = ImageIO.read(Assets.class.getResourceAsStream("/textures/cactus.png"));
+            cactusBroken = ImageIO.read(Assets.class.getResourceAsStream("/textures/cactusBroken.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -2,6 +2,7 @@ package PaooGame.States;
 
 import PaooGame.*;
 import PaooGame.GameWindow.GameWindow;
+import PaooGame.Items.Cactus;
 import PaooGame.Items.Hero;
 import PaooGame.Items.NPC_Enemy;
 import PaooGame.Object.SuperObject;
@@ -20,6 +21,7 @@ public class PlayState extends State
     public CollisionChecker cChecker;
     public SuperObject []obj;
     public NPC_Enemy[] npc;
+    public Cactus[] cacti;
 
     public UI ui;
     /*! \fn public PlayState(RefLinks refLink)
@@ -61,10 +63,17 @@ public class PlayState extends State
 
         //Construieste npc-urile
         npc = new NPC_Enemy[10];
-        for (int i = 0; i < obj.length; i++) {
+        for (int i = 0; i < npc.length; i++) {
             npc[i] = new NPC_Enemy(refLink, 100, 100, 48, 48);
         }
         refLink.SetNPC_Enemy(npc);
+
+
+        cacti = new Cactus[10];
+        for(int i = 0; i<cacti.length; i++){
+            cacti[i] = new Cactus(refLink, 200, 100, 48, 48);
+        }
+        refLink.SetCactus(cacti);
         assetSetter.setNpc();
 
         //Porneste muzica
@@ -123,11 +132,17 @@ public class PlayState extends State
         hero.Draw(g);
 
         //Draw npcs;
-        for(int i = 0; i<this.obj.length; i++){
+        for(int i = 0; i<this.npc.length; i++){
             if(this.npc[i]==null){
                 //System.out.println(i);
             }
             else this.npc[i].Draw(refLink, hero, g);
+        }
+        for(int i = 0; i<this.cacti.length; i++){
+            if(this.cacti[i]==null){
+                //System.out.println(i);
+            }
+            else this.cacti[i].Draw(refLink, hero, g);
         }
 
         //Draw ui:

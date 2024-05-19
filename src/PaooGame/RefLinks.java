@@ -1,5 +1,6 @@
 package PaooGame;
 
+import PaooGame.Items.Cactus;
 import PaooGame.Items.Hero;
 import PaooGame.Items.NPC_Enemy;
 import PaooGame.Maps.Map2;
@@ -24,6 +25,7 @@ public class RefLinks
     private Sound sound;
     private UI ui;
     private NPC_Enemy[] npc1;
+    private Cactus[] cacti;
 
 
     /*! \fn public RefLinks(Game game)
@@ -82,4 +84,7 @@ public class RefLinks
 
     public NPC_Enemy[] GetNPC_Enemy(){return npc1;}
     public void SetNPC_Enemy(NPC_Enemy[] npc1){this.npc1 = npc1;}
+
+    public Cactus[] GetCactus(){return cacti;}
+    public void SetCactus(Cactus[] cacti){this.cacti = cacti;}
 }
