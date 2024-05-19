@@ -49,6 +49,8 @@ public class Assets
     public static BufferedImage key1Image;
     public static BufferedImage key2Image;
     public static BufferedImage noKeyImage;
+    public static BufferedImage hGate;
+    public static BufferedImage vGate;
 
     /*! \fn public static void Init()
         \brief Functia initializaza referintele catre elementele grafice utilizate.
@@ -106,6 +108,8 @@ public class Assets
             key1Image = ImageIO.read(Assets.class.getResourceAsStream("/textures/key1.png"));
             key2Image = ImageIO.read(Assets.class.getResourceAsStream("/textures/key2.png"));
             noKeyImage = ImageIO.read(Assets.class.getResourceAsStream("/textures/nokey.png"));
+            hGate = ImageIO.read(Assets.class.getResourceAsStream("/textures/gateHoriz.png"));
+            vGate = ImageIO.read(Assets.class.getResourceAsStream("/textures/gateVert.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

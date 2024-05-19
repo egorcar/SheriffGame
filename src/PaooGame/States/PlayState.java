@@ -63,7 +63,7 @@ public class PlayState extends State
         assetSetter.setObject();
 
         //Construieste npc-urile
-        npc = new NPC_Enemy[10];
+        npc = new NPC_Enemy[30];
         for (int i = 0; i < npc.length; i++) {
             npc[i] = new NPC_Enemy(refLink, 10, 10, 48, 48);
         }

@@ -50,7 +50,7 @@ public abstract class Character extends Item
         ///Apel constructor la clasei de baza
         super(refLink, x,y, width, height);
         //Seteaza pe valorile implicite pentru viata, viteza si distantele de deplasare
-        life    = DEFAULT_LIFE-3;
+        life    = DEFAULT_LIFE;
         speed   = 14;
         xMove   = 0;
         yMove   = 0;

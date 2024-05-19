@@ -27,7 +27,8 @@ public class InteractiveTile extends Character{
     }
 
     public void Draw(RefLinks refLink, Hero hero, Graphics g) {
-        int screenX = (int) (worldX - hero.worldX + hero.screenX);
+        System.out.println("Bad");
+        /*int screenX = (int) (worldX - hero.worldX + hero.screenX);
         int screenY = (int) (worldY - hero.worldY + hero.screenY);
         if(worldX + Tile.TILE_WIDTH > hero.worldX - hero.screenX &&
                 worldX - Tile.TILE_WIDTH < hero.worldX + hero.screenX &&
@@ -35,15 +36,15 @@ public class InteractiveTile extends Character{
                 worldY - Tile.TILE_WIDTH < hero.worldY + hero.screenY){
             if(alive) image = Assets.cactus;
             else image = Assets.cactusBroken;
-            /*if(dying){
+            *//*if(dying){
                 dyingAnimation((Graphics2D) g);
-            }*/
+            }*//*
 
 
             g.drawImage(image, screenX, screenY, TILE_WIDTH, TILE_HEIGHT, null);
             //g.setColor(Color.red);
             //g.fillRect(screenX+collisionBounds.x,screenY+collisionBounds.y, collisionBounds.width, collisionBounds.height);
-        }
+        }*/
     }
 
 }

@@ -24,6 +24,8 @@ public class Tile
     public static Tile tlFenceTile      = new tlFenceTile(7);
     public static Tile vFenceTile       = new vFenceTile(8);
     public static Tile hFenceTile       = new hFenceTile(9);
+    public static Tile hGateTile        = new hGateTile(2);
+    public static Tile vGateTile        = new vGateTile(3);
     //public static Tile cactusTile       = new ITCactusTile(2);
     /*public static Tile waterTile        = new WaterTile(2);     *//*!< Dala de tip apa*//*
     public static Tile treeTile         = new TreeTile(3);      *//*!< Dala de tip copac*//*
@@ -80,8 +82,10 @@ public class Tile
                 return grassTile;
             case 1:
                 return mountainTile;
-            /*case 2:
-                return cactusTile;*/
+            case 2:
+                return hGateTile;
+            case 3:
+                return vGateTile;
             case 4:
                 return blFenceTile;
             case 5:
