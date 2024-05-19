@@ -1,6 +1,7 @@
 package PaooGame;
 
 import PaooGame.Graphics.Assets;
+import PaooGame.Object.OBJ_coin;
 import PaooGame.Object.OBJ_potionH;
 import PaooGame.States.MenuState;
 import PaooGame.States.State;
@@ -18,6 +19,7 @@ public class UI {
     BufferedImage heartImage;
     BufferedImage halfHeartImage;
     BufferedImage noHeartImage;
+    BufferedImage coinImage;
     public boolean messageOn = false;
     public String message = " ";
     int messageCounter = 0;
@@ -26,11 +28,13 @@ public class UI {
         this.refLink = refLink;
         arial40 = new Font("Arial", Font.PLAIN, 40);
         OBJ_potionH potionH = new OBJ_potionH(refLink);
+        OBJ_coin coin = new OBJ_coin(refLink);
         whiskeyGlassImage = potionH.img;
         try{
             heartImage = ImageIO.read(getClass().getResourceAsStream("/textures/heart.png"));
             halfHeartImage = ImageIO.read(getClass().getResourceAsStream("/textures/halfHeart.png"));
             noHeartImage = ImageIO.read(getClass().getResourceAsStream("/textures/noHeart.png"));
+            coinImage = ImageIO.read(getClass().getResourceAsStream("/textures/coin.png"));
         } catch (IOException e) {e.printStackTrace();}
     }
 
@@ -44,6 +48,9 @@ public class UI {
         g.setColor(Color.white);
         g.drawImage(whiskeyGlassImage, 0, (int) (Tile.TILE_HEIGHT*1), (int) (Tile.TILE_WIDTH*1.5), (int) (Tile.TILE_HEIGHT*1.5), null);
         g.drawString(" "+ this.refLink.GetHero().hasPotion, 55, 100);
+        g.drawString(" "+ this.refLink.GetHero().hasCoin, 730, 47);
+        g.drawImage(coinImage, 760, 10, null);
+
         int x = 5;
         //int y = Tile.TILE_HEIGHT/2;
         int i = 0;
@@ -67,9 +74,10 @@ public class UI {
         //if()
 
 
+
         if(messageOn){
             g.setFont(g.getFont().deriveFont(30F));
-            g.drawString(message, 10, 100);
+            g.drawString(message, 10, 140);
             messageCounter++;
         }
         if(messageCounter>120){

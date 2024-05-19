@@ -27,6 +27,7 @@ public abstract class Character extends Item
     public int dyingCounter;
     public boolean invincible = false;
     public int invincibleCounter = 0;
+    public boolean moving = true;
 
     public int life;     /*!< Retine viata caracterului.*/
     public float speed;  /*!< Retine viteza de deplasare caracterului.*/
@@ -50,7 +51,7 @@ public abstract class Character extends Item
         super(refLink, x,y, width, height);
         //Seteaza pe valorile implicite pentru viata, viteza si distantele de deplasare
         life    = DEFAULT_LIFE-3;
-        speed   = 4;
+        speed   = 14;
         xMove   = 0;
         yMove   = 0;
         normalBounds.x = 20;
@@ -114,8 +115,7 @@ public abstract class Character extends Item
             if(direction == "Left") {xMove = -speed;}
             if(direction == "Right") {xMove = speed;}
         }
-
-        Move();
+        if(this.moving) Move();
     }
 
     public int GetLife() {return life;}

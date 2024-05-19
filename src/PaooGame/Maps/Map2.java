@@ -14,8 +14,10 @@ public class Map2 {
     private int width;          /*!< Latimea hartii in numar de dale.*/
     private int height;         /*!< Inaltimea hartii in numar de dale.*/
     public int[][] tiles;     /*!< Referinta catre o matrice cu codurile dalelor ce vor construi harta.*/
-    public final int maxWorldCol = 44;
-    public final int maxWorldRow = 44;
+    //public final int maxWorldCol = 44;
+    public final int maxWorldCol = 100;
+    //public final int maxWorldRow = 44;
+    public final int maxWorldRow = 100;
     public int tick;
 
     /*! \fn public Map(RefLinks refLink)

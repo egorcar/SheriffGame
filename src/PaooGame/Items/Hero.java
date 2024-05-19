@@ -24,6 +24,7 @@ public class Hero extends Character
 {
     //private BufferedImage image;    /*!< Referinta catre imaginea curenta a eroului.*/
     public int hasPotion = 0;
+    public int hasCoin = 0;
 
     int soundCounter;
     public boolean checkDrawTime = false;
@@ -57,8 +58,8 @@ public class Hero extends Character
         attackBounds.y = 0;
         attackBounds.width = 38;
         attackBounds.height = 38;
-        worldX = 22*Tile.TILE_WIDTH;
-        worldY = 35*Tile.TILE_HEIGHT;
+        worldX = 50*Tile.TILE_WIDTH;
+        worldY = 86*Tile.TILE_HEIGHT;
         screenX = GameWindow.GetHalfWidth();
         screenY = GameWindow.GetHalfHeight();
     }

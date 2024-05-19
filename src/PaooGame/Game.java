@@ -66,7 +66,7 @@ public class Game implements Runnable
 
         ///Available states
     public State playState;            /*!< Referinta catre joc.*/
-    private State menuState;            /*!< Referinta catre menu.*/
+    public State menuState;            /*!< Referinta catre menu.*/
     private State settingsState;        /*!< Referinta catre setari.*/
     private State aboutState;           /*!< Referinta catre about.*/
     private KeyManager keyManager;      /*!< Referinta catre obiectul care gestioneaza intrarile din partea utilizatorului.*/

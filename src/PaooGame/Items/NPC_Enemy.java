@@ -156,7 +156,7 @@ public class NPC_Enemy extends Character{
 
         if (dyingCounter <= 5) {
             g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0f));
-            playSE(5);
+            //playSE(5);
         } else if (dyingCounter <= 10) {
             g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
         } else if (dyingCounter <= 15) {
@@ -174,6 +174,7 @@ public class NPC_Enemy extends Character{
         } else {
             dying = false;
             alive = false;
+            refLink.GetHero().hasCoin++;
         }
 
         // Restore the original composite

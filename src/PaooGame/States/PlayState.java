@@ -65,7 +65,7 @@ public class PlayState extends State
         //Construieste npc-urile
         npc = new NPC_Enemy[10];
         for (int i = 0; i < npc.length; i++) {
-            npc[i] = new NPC_Enemy(refLink, 100, 100, 48, 48);
+            npc[i] = new NPC_Enemy(refLink, 10, 10, 48, 48);
         }
         refLink.SetNPC_Enemy(npc);
         assetSetter.setNpc();
@@ -73,7 +73,7 @@ public class PlayState extends State
         //Construiesc tile-urile interactive
         iTIle = new InteractiveTile[50];
         for (int i = 0; i < iTIle.length; i++) {
-            iTIle[i] = new InteractiveTile(refLink, 100, 100, 48, 48);
+            iTIle[i] = new InteractiveTile(refLink, 10, 10, 48, 48);
         }
         refLink.SetInteractiveTile(iTIle);
         assetSetter.setInteractiveTile();
@@ -117,6 +117,10 @@ public class PlayState extends State
             }*/
             iTIle[i].Update();
         }
+        /*if(refLink.GetHero().hasCoin==3) {
+            State.SetState(refLink.GetGame().menuState);
+            refLink.GetHero().hasCoin=0;
+        }*/
     }
 
     /*! \fn public void Draw(Graphics g)
