@@ -30,16 +30,24 @@ public class AssetSetter {
         refLink.GetSuperObject()[i].worldY = 76*TILE_HEIGHT;
         i++;
         refLink.GetSuperObject()[i] = new OBJ_potionH(refLink);
-        refLink.GetSuperObject()[i].worldX = 17*TILE_WIDTH;
-        refLink.GetSuperObject()[i].worldY = 19*TILE_HEIGHT;
+        refLink.GetSuperObject()[i].worldX = 34*TILE_WIDTH;
+        refLink.GetSuperObject()[i].worldY = 24*TILE_HEIGHT;
+        i++;
+        refLink.GetSuperObject()[i] = new OBJ_potionH(refLink);
+        refLink.GetSuperObject()[i].worldX = 80*TILE_WIDTH;
+        refLink.GetSuperObject()[i].worldY = 28*TILE_HEIGHT;
+        i++;
+        refLink.GetSuperObject()[i] = new OBJ_potionH(refLink);
+        refLink.GetSuperObject()[i].worldX = 80*TILE_WIDTH;
+        refLink.GetSuperObject()[i].worldY = 39*TILE_HEIGHT;
         i++;
         refLink.GetSuperObject()[i] = new OBJ_potionS(refLink);
         refLink.GetSuperObject()[i].worldX = 62*TILE_WIDTH;
         refLink.GetSuperObject()[i].worldY = 68*TILE_HEIGHT;
         i++;
         refLink.GetSuperObject()[i] = new OBJ_potionS(refLink);
-        refLink.GetSuperObject()[i].worldX = 21*TILE_WIDTH;
-        refLink.GetSuperObject()[i].worldY = 23*TILE_HEIGHT;
+        refLink.GetSuperObject()[i].worldX = 20*TILE_WIDTH;
+        refLink.GetSuperObject()[i].worldY = 35*TILE_HEIGHT;
     }
 
     public void setNpc(){
@@ -163,5 +171,29 @@ public class AssetSetter {
         refLink.GetInteractiveTile()[i] = new ITCactusTile(refLink, 33, 25, 48, 48);
         refLink.GetInteractiveTile()[i].worldX = 35* TILE_WIDTH;
         refLink.GetInteractiveTile()[i].worldY = 64* TILE_HEIGHT;
+        i++;
+        refLink.GetInteractiveTile()[i] = new ITCactusTile(refLink, 33, 25, 48, 48);
+        refLink.GetInteractiveTile()[i].worldX = 58* TILE_WIDTH;
+        refLink.GetInteractiveTile()[i].worldY = 40* TILE_HEIGHT;
+        i++;
+        refLink.GetInteractiveTile()[i] = new ITCactusTile(refLink, 33, 25, 48, 48);
+        refLink.GetInteractiveTile()[i].worldX = 60* TILE_WIDTH;
+        refLink.GetInteractiveTile()[i].worldY = 71* TILE_HEIGHT;
+        i++;
+        refLink.GetInteractiveTile()[i] = new ITCactusTile(refLink, 33, 25, 48, 48);
+        refLink.GetInteractiveTile()[i].worldX = 61* TILE_WIDTH;
+        refLink.GetInteractiveTile()[i].worldY = 71* TILE_HEIGHT;
+        i++;
+        refLink.GetInteractiveTile()[i] = new ITCactusTile(refLink, 33, 25, 48, 48);
+        refLink.GetInteractiveTile()[i].worldX = 62* TILE_WIDTH;
+        refLink.GetInteractiveTile()[i].worldY = 71* TILE_HEIGHT;
+        i++;
+        refLink.GetInteractiveTile()[i] = new ITCactusTile(refLink, 33, 25, 48, 48);
+        refLink.GetInteractiveTile()[i].worldX = 63* TILE_WIDTH;
+        refLink.GetInteractiveTile()[i].worldY = 71* TILE_HEIGHT;
+        i++;
+        refLink.GetInteractiveTile()[i] = new ITCactusTile(refLink, 33, 25, 48, 48);
+        refLink.GetInteractiveTile()[i].worldX = 44* TILE_WIDTH;
+        refLink.GetInteractiveTile()[i].worldY = 75* TILE_HEIGHT;
     }
 }

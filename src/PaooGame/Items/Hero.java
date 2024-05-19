@@ -98,6 +98,7 @@ public class Hero extends Character
         }
 
 
+
         ///Actualizeaza imaginea
 
     }
@@ -360,8 +361,8 @@ public class Hero extends Character
 
         if(attackAnimation == null){
             g.drawImage(image, (int)GameWindow.GetHalfWidth()-30, (int)GameWindow.GetHalfHeight()-10, width, height, null);
-            g.setColor(Color.blue);
-            g.fillRect((int) screenX+bounds.x, (int) screenY+bounds.y, bounds.width, bounds.height);
+            //g.setColor(Color.blue);
+            //g.fillRect((int) screenX+bounds.x, (int) screenY+bounds.y, bounds.width, bounds.height);
         }
         else{
             if (attackAnimation.equals(Assets.heroAttacks1Up)) {
