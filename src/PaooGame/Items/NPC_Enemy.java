@@ -107,10 +107,76 @@ public class NPC_Enemy extends Character{
                         image = Assets.enemy1Stands;
                 }
             }
+            if(dying){
+                dyingAnimation((Graphics2D) g);
+            }
+
+
             g.drawImage(image, screenX, screenY, (int) (TILE_WIDTH*1.2), (int) (TILE_HEIGHT*1.2), null);
             g.setColor(Color.red);
             g.fillRect(screenX+collisionBounds.x,screenY+collisionBounds.y, collisionBounds.width, collisionBounds.height);
-            System.out.println("");
         }
     }
+
+    /*public void dyingAnimation(Graphics2D g) {
+        dyingCounter++;
+        if(dyingCounter <=5){
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0f));
+        }
+        if(dyingCounter >5 && dyingCounter <=10){
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+        }
+        if(dyingCounter >10 && dyingCounter <=15){
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0f));
+        }
+        if(dyingCounter >15 && dyingCounter <=20){
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+        }
+        if(dyingCounter >20 && dyingCounter <=25){
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0f));
+        }
+        if(dyingCounter >25 && dyingCounter <=30){
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+        }
+        if(dyingCounter >30 && dyingCounter <=35){
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0f));
+        }
+        if(dyingCounter >35 && dyingCounter <=40){
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+        }
+        if(dyingCounter > 40){
+            dying = false;
+            alive = false;
+        }
+    }*/
+    public void dyingAnimation(Graphics2D g) {
+        dyingCounter++;
+
+        Composite originalComposite = g.getComposite();
+
+        if (dyingCounter <= 5) {
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0f));
+        } else if (dyingCounter <= 10) {
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+        } else if (dyingCounter <= 15) {
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0f));
+        } else if (dyingCounter <= 20) {
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+        } else if (dyingCounter <= 25) {
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0f));
+        } else if (dyingCounter <= 30) {
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+        } else if (dyingCounter <= 35) {
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0f));
+        } else if (dyingCounter <= 40) {
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+        } else {
+            dying = false;
+            alive = false;
+        }
+
+        // Restore the original composite
+        g.setComposite(originalComposite);
+    }
+
 }

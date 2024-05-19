@@ -12,6 +12,8 @@ import PaooGame.Tiles.Tile;
 
 import javax.imageio.ImageIO;
 
+import static PaooGame.States.State.playSE;
+
 
 /*! \class public class Hero extends Character
     \brief Implementeaza notiunea de erou/player (caracterul controlat de jucator).
@@ -26,7 +28,10 @@ public class Hero extends Character
 {
     //private BufferedImage image;    /*!< Referinta catre imaginea curenta a eroului.*/
     public int hasPotion = 0;
+
+    int soundCounter;
     public boolean checkDrawTime = false;
+    private java.awt.Graphics2D Graphics2D;
 
     /*! \fn public Hero(RefLinks refLink, float x, float y)
         \brief Constructorul de initializare al clasei Hero.
@@ -76,7 +81,6 @@ public class Hero extends Character
             attack();
         } else {
             spriteCounter++;
-
             if(spriteCounter > 10){
                 if(spriteNum == 1)
                     spriteNum = 2;
@@ -84,64 +88,13 @@ public class Hero extends Character
                     spriteNum = 1;
                 spriteCounter = 0;
             }
-
-            /*//if(refLink.GetKeyManager().left)
-            if(direction=="Left")
-            {
-                if(spriteNum==1)
-                    image = Assets.heroStandsRight;
-                if(spriteNum==2)
-                    image = Assets.heroStandsRight2;
-                if(attacking)
-                    image = Assets.heroAttacks1Left;
-
+        }
+        if(invincible){
+            invincibleCounter++;
+            if(invincibleCounter > 60){
+                invincible = false;
+                invincibleCounter = 0;
             }
-            if(refLink.GetKeyManager().right) {
-                if(spriteNum==1)
-                    image = Assets.heroStands;
-                if(spriteNum==2)
-                    image = Assets.heroStands2;
-                if(attacking)
-                    image = Assets.heroAttacks1Right;
-            }
-            if(refLink.GetKeyManager().up)
-            {
-                if (image==Assets.heroStandsRight||image==Assets.heroStandsRight2){
-                    if(spriteNum==1)
-                        image = Assets.heroStandsRight2;
-                    if(spriteNum==2)
-                        image = Assets.heroStandsRight;
-                    if(attacking){
-                        if(spriteNum==1)
-                            image = Assets.heroAttacks1Up;
-                        if(spriteNum==2)
-                            image = Assets.heroAttacks1Up;
-                    }
-                }
-                else{
-                    if(spriteNum==1)
-                        image = Assets.heroStands2;
-                    if(spriteNum==2)
-                        image = Assets.heroStands;
-                    if(attacking)
-                        image = Assets.heroAttacks1Left;
-                }
-            }
-
-            if(refLink.GetKeyManager().down) {
-                if (image==Assets.heroStandsRight||image==Assets.heroStandsRight2){
-                    if(spriteNum==1)
-                        image = Assets.heroStandsRight2;
-                    if(spriteNum==2)
-                        image = Assets.heroStandsRight;
-                }
-                else{
-                    if(spriteNum==1)
-                        image = Assets.heroStands2;
-                    if(spriteNum==2)
-                        image = Assets.heroStands;
-                }
-            }*/
         }
 
 
@@ -151,6 +104,7 @@ public class Hero extends Character
 
     private void attack() {
         spriteCounter++;
+        if(spriteCounter<2)playSE(3);
         if(spriteCounter <= /*5*/25){
             spriteNum = 1;
             //Save current state
@@ -189,8 +143,16 @@ public class Hero extends Character
 
     private void damageNPC(int i) {
         if(i!=999){
-            System.out.println("Hit");
-            refLink.GetNPC_Enemy()[i] = null;
+            if(!refLink.GetNPC_Enemy()[i].invincible){
+                if(!refLink.GetNPC_Enemy()[i].dying) playSE(2);
+                System.out.println("Hit");
+                refLink.GetNPC_Enemy()[i].life-=5;
+                refLink.GetNPC_Enemy()[i].invincible = true;
+                if(refLink.GetNPC_Enemy()[i].life <= 0){
+                    //refLink.GetNPC_Enemy()[i] = null;
+                    refLink.GetNPC_Enemy()[i].dying = true;
+                }
+            }
         }
         else
             System.out.println("Miss");
@@ -228,6 +190,7 @@ public class Hero extends Character
 
         //CHECK NPC COLLISION
         int npcIndex = refLink.GetCChecker().checkCharacters(this, refLink.GetNPC_Enemy());
+        contactEnemy(npcIndex);
         interactNPC(npcIndex);
 
         if(!collisionON){
@@ -248,7 +211,7 @@ public class Hero extends Character
             String objectName = refLink.GetSuperObject()[i].name;
             switch (objectName){
                 case"PotionH":
-                    PlayState.playSE(1);
+                    playSE(1);
                     life++;
                     refLink.GetSuperObject()[i]=null;
                     //System.out.println(refLink.GetNPC_Enemy());
@@ -265,7 +228,7 @@ public class Hero extends Character
 
                     break;
                 case "PotionS":
-                    PlayState.playSE(1);
+                    playSE(1);
                     speed+=4;
                     hasPotion++;
                     refLink.GetSuperObject()[i]=null;
@@ -281,9 +244,25 @@ public class Hero extends Character
             if(i!=999){
                 System.out.println("You are hitting the "+i+" npc");
             }
-            else attacking = true;
+            else {
+                attacking = true;
+            }
         }
     }
+
+
+    public void contactEnemy(int i){
+        if(i != 999){
+            if(!invincible){
+                life -=1;
+                invincible = true;
+            }
+        }
+    }
+
+
+
+
 
     @Override
     public void Draw(Graphics g)
@@ -353,7 +332,11 @@ public class Hero extends Character
             }
 
         }
-
+        BufferedImage transparentImage = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        java.awt.Graphics2D g2 = (Graphics2D) g;
+        if(invincible) {
+            //Hz
+        }
 
         if(attackAnimation == null){
             g.drawImage(image, (int)GameWindow.GetHalfWidth()-30, (int)GameWindow.GetHalfHeight()-10, width, height, null);

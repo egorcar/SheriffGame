@@ -40,17 +40,17 @@ public class AssetSetter {
     }
 
     public void setNpc(){
-        refLink.GetNPC_Enemy()[5] = new NPC_Enemy(refLink, 17, 23, 48, 48);
-        refLink.GetNPC_Enemy()[5].worldX = 17*TILE_WIDTH;
-        refLink.GetNPC_Enemy()[5].worldY = 23*TILE_HEIGHT;
+        refLink.GetNPC_Enemy()[0] = new NPC_Enemy(refLink, 17, 23, 48, 48);
+        refLink.GetNPC_Enemy()[0].worldX = 17*TILE_WIDTH;
+        refLink.GetNPC_Enemy()[0].worldY = 23*TILE_HEIGHT;
 
-        refLink.GetNPC_Enemy()[6] = new NPC_Enemy(refLink, 18, 19, 48, 48);
-        refLink.GetNPC_Enemy()[6].worldX = 26*TILE_WIDTH;
-        refLink.GetNPC_Enemy()[6].worldY = 21*TILE_HEIGHT;
+        refLink.GetNPC_Enemy()[1] = new NPC_Enemy(refLink, 18, 19, 48, 48);
+        refLink.GetNPC_Enemy()[1].worldX = 26*TILE_WIDTH;
+        refLink.GetNPC_Enemy()[1].worldY = 21*TILE_HEIGHT;
 
-        refLink.GetNPC_Enemy()[7] = new NPC_Enemy(refLink, 18, 19, 48, 48);
-        refLink.GetNPC_Enemy()[7].worldX = 26*TILE_WIDTH;
-        refLink.GetNPC_Enemy()[7].worldY = 17*TILE_HEIGHT;
+        refLink.GetNPC_Enemy()[2] = new NPC_Enemy(refLink, 18, 19, 48, 48);
+        refLink.GetNPC_Enemy()[2].worldX = 26*TILE_WIDTH;
+        refLink.GetNPC_Enemy()[2].worldY = 17*TILE_HEIGHT;
 
 
 

@@ -13,6 +13,9 @@ public class Sound {
     public Sound(){
         soundURL[0] = getClass().getResource("/sounds/TheGoodtheBadandtheUgly.wav");
         soundURL[1] = getClass().getResource("/sounds/plop3.wav");
+        soundURL[2] = getClass().getResource("/sounds/knifeStab.wav");
+        soundURL[3] = getClass().getResource("/sounds/knifeSwing.wav");
+        soundURL[4] = getClass().getResource("/sounds/hurt.wav");
     }
 
     public void setFile(int i){

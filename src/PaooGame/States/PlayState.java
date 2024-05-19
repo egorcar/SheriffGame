@@ -91,7 +91,12 @@ public class PlayState extends State
         hero.Update();
         for(int i = 0; i< npc.length; i++){
             if(npc[i] != null){
-                npc[i].Update();
+                if(npc[i].alive && !npc[i].dying){
+                    npc[i].Update();
+                }
+                if(!npc[i].alive){
+                    npc[i] = null;
+                }
             }
         }
     }
@@ -119,8 +124,8 @@ public class PlayState extends State
 
         //Draw npcs;
         for(int i = 0; i<this.obj.length; i++){
-            if(this.obj[i]==null){
-                System.out.println(i);
+            if(this.npc[i]==null){
+                //System.out.println(i);
             }
             else this.npc[i].Draw(refLink, hero, g);
         }

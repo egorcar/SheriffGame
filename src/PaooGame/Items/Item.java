@@ -40,6 +40,7 @@ public abstract class Item
     public CollisionChecker cChecker;
     public int actionLockCounter;
     public BufferedImage nothing;
+    public Graphics2D g2;
 
 
     /*! \fn public Item(RefLinks refLink, float x, float y, int width, int height)
@@ -68,6 +69,7 @@ public abstract class Item
         ///Dreptunghiul de coliziune implicit este setat ca fiind cel normal
         bounds = normalBounds;
         cChecker = new CollisionChecker(refLink);
+
         /*try {
             nothing = ImageIO.read(getClass().getResourceAsStream("/textures/nothing.png"));
         } catch (IOException e) {
