@@ -13,6 +13,9 @@ import PaooGame.Items.InteractiveTile;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static PaooGame.DataBase.DataBaseHelper.createTables;
+
+
 /*! \class public class PlayState extends State
     \brief Implementeaza/controleaza jocul.
  */
@@ -85,7 +88,7 @@ public class PlayState extends State
         projectileList = new ArrayList<>();
         refLink.SetProjectileList(projectileList);
 
-
+        createTables();
         //Porneste muzica
         //playMusic(0);
 

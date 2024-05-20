@@ -58,8 +58,9 @@ public class UI {
         else g.drawString(" "+ this.refLink.GetHero().hasCoin, 710, 47);
         g.drawImage(coinImage, 760, 10, null);
         if(refLink.GetHero().hasKey==0) g.drawImage(noKeyImage, 750, 50, null);
-        else if(refLink.GetHero().hasKey==1) g.drawImage(key1Image, 750, 50, null);
-        else if(refLink.GetHero().hasKey==2) g.drawImage(key2Image, 750, 50, null);
+        else g.drawImage(key2Image, 750, 50, null);
+        if(refLink.GetHero().hasKey<=1) g.drawImage(noKeyImage, 750, 90, null);
+        else g.drawImage(key1Image, 750, 90, null);
 
 
         int x = 5;

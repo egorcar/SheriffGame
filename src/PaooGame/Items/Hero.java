@@ -27,9 +27,8 @@ public class Hero extends Character
 {
     //private BufferedImage image;    /*!< Referinta catre imaginea curenta a eroului.*/
     public int hasPotion = 0;
-    public int hasCoin = 0;
+    public int hasCoin = 14;
     public int hasKey = 0;
-
     int soundCounter;
     public boolean checkDrawTime = false;
     private java.awt.Graphics2D Graphics2D;

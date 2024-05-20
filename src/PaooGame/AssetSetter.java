@@ -25,6 +25,14 @@ public class AssetSetter {
         refLink.GetSuperObject()[i].worldX = 62*TILE_WIDTH;
         refLink.GetSuperObject()[i].worldY = 76*TILE_HEIGHT;
         i++;
+        refLink.GetSuperObject()[i] = new OBJ_Shop(refLink);
+        refLink.GetSuperObject()[i].worldX = 80*TILE_WIDTH;
+        refLink.GetSuperObject()[i].worldY = 38*TILE_HEIGHT;
+        i++;
+        refLink.GetSuperObject()[i] = new OBJ_Shop(refLink);
+        refLink.GetSuperObject()[i].worldX = 29*TILE_WIDTH;
+        refLink.GetSuperObject()[i].worldY = 33*TILE_HEIGHT;
+        i++;
         refLink.GetSuperObject()[i] = new OBJ_potionH(refLink);
         refLink.GetSuperObject()[i].worldX = 39*TILE_WIDTH;
         refLink.GetSuperObject()[i].worldY = 76*TILE_HEIGHT;
