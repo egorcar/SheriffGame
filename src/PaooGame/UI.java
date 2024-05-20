@@ -54,7 +54,8 @@ public class UI {
         g.setColor(Color.white);
         /*g.drawImage(whiskeyGlassImage, 0, (int) (Tile.TILE_HEIGHT*1), (int) (Tile.TILE_WIDTH*1.5), (int) (Tile.TILE_HEIGHT*1.5), null);
         g.drawString(" "+ this.refLink.GetHero().hasPotion, 55, 100);*/
-        g.drawString(" "+ this.refLink.GetHero().hasCoin, 730, 47);
+        if(refLink.GetHero().hasCoin<10) g.drawString(" "+ this.refLink.GetHero().hasCoin, 730, 47);
+        else g.drawString(" "+ this.refLink.GetHero().hasCoin, 710, 47);
         g.drawImage(coinImage, 760, 10, null);
         if(refLink.GetHero().hasKey==0) g.drawImage(noKeyImage, 750, 50, null);
         else if(refLink.GetHero().hasKey==1) g.drawImage(key1Image, 750, 50, null);

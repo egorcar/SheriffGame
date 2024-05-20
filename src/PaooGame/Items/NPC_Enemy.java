@@ -44,6 +44,7 @@ public class NPC_Enemy extends Character{
         }
         this.shotAvailableCouter2++;
     }
+
     @Override
     public void Update() {
         super.Update();
