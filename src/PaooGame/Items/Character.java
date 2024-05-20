@@ -34,13 +34,13 @@ public abstract class Character extends Item
     public int invincibleCounter = 0;
     public int shotAvailableCouter = 0;
     public boolean moving = true;
-
+    boolean contactHero = false;
     public int life;     /*!< Retine viata caracterului.*/
     public float speed;  /*!< Retine viteza de deplasare caracterului.*/
     public int maxLife;
     public int maxMana;
     public int mana;
-    public int attack;
+    public int attack = 1;
     public Projectile projectile;
 
     protected float xMove;  /*!< Retine noua pozitie a caracterului pe axa X.*/
@@ -115,11 +115,13 @@ public abstract class Character extends Item
             actionLockCounter = 0;
         }
 
+
         collisionON = false;
 
-        cChecker.checkTile(this);
-        cChecker.checkObject(this, false);
-        cChecker.checkPlayer(this);
+        refLink.GetCChecker().checkTile(this);
+        refLink.GetCChecker().checkObject(this, false);
+        if(this!=refLink.GetHero()) contactHero = refLink.GetCChecker().checkPlayer(this);
+        System.out.println(contactHero);
 
         if(!collisionON){
             if(direction == "Up") {yMove = -speed;}
@@ -127,7 +129,22 @@ public abstract class Character extends Item
             if(direction == "Left") {xMove = -speed;}
             if(direction == "Right") {xMove = speed;}
         }
+        collisionON = false;
+        refLink.GetCChecker().checkCharacters(refLink.GetHero(), refLink.GetNPC_Enemy());
+        if(collisionON){
+            System.out.println(this.worldX/48+" "+this.worldY/48);
+            damagePlayer();
+        }
         if(this.moving) Move();
+    }
+
+    public void damagePlayer(){
+        if(!refLink.GetHero().invincible){
+            int damage = attack;
+            if(damage<0) damage = 0;
+            refLink.GetHero().life -= damage;
+            refLink.GetHero().invincible = true;
+        }
     }
 
     public int GetLife() {return life;}

@@ -60,7 +60,7 @@ public class MenuState extends State
     public void Draw(Graphics g)
     {
         //Background color
-        System.out.println("De-a pula");
+        //System.out.println("De-a pula");
         g.setColor(new Color(215, 153, 73));
         g.fillRect(0, 0, refLink.GetGame().GetWidth(), refLink.GetGame().GetHeight());
 

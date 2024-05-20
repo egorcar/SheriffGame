@@ -35,7 +35,10 @@ public class Projectile extends Character{
             }
         }
         else{
-
+            boolean contactPlayer = refLink.GetCChecker().checkPlayer(user);
+            if(!refLink.GetHero().invincible && contactPlayer){
+                damagePlayer();
+            }
         }
         switch (direction){
             case "Up": worldY -= this.speed; break;

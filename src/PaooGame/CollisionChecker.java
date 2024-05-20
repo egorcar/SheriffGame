@@ -209,7 +209,7 @@ public class CollisionChecker {
         }
         return index;
     }
-    public void checkPlayer(Character character){
+    public boolean checkPlayer(Character character){
         character.collisionBounds.x = (int) (character.worldX + character.collisionBounds.x);
         character.collisionBounds.y = (int) (character.worldY + character.collisionBounds.y);
 
@@ -247,5 +247,6 @@ public class CollisionChecker {
         character.collisionBounds.y = character.solidAreaDefaultY;
         refLink.GetHero().collisionBounds.x = refLink.GetHero().solidAreaDefaultX;
         refLink.GetHero().collisionBounds.y = refLink.GetHero().solidAreaDefaultY;
+        return character.collisionON;
     }
 }

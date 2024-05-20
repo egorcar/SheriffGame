@@ -41,7 +41,7 @@ public class ShopState extends State
     public void Draw(Graphics g)
     {
 //Background color
-        System.out.println("Norm");
+        //System.out.println("Norm");
         g.setColor(new Color(215, 153, 73));
         g.fillRect(0, 0, refLink.GetGame().GetWidth(), refLink.GetGame().GetHeight());
 

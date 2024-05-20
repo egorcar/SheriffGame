@@ -27,7 +27,7 @@ public class InteractiveTile extends Character{
     }
 
     public void Draw(RefLinks refLink, Hero hero, Graphics g) {
-        System.out.println("Bad");
+        //System.out.println("Bad");
         /*int screenX = (int) (worldX - hero.worldX + hero.screenX);
         int screenY = (int) (worldY - hero.worldY + hero.screenY);
         if(worldX + Tile.TILE_WIDTH > hero.worldX - hero.screenX &&

@@ -170,8 +170,8 @@ public class Hero extends Character
                 }*/
             }
         }
-        else
-            System.out.println("Miss");
+        //else
+            //System.out.println("Miss");
     }
 
     /*! \fn private void GetInput()
@@ -280,7 +280,6 @@ public class Hero extends Character
             attacking = true;
         }
     }
-
 
     public void contactEnemy(int i){
         if(i != 999){
