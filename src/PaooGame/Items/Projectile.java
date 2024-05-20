@@ -7,6 +7,7 @@ import PaooGame.Tiles.Tile;
 import javax.swing.text.html.parser.Entity;
 import java.awt.*;
 
+import static PaooGame.States.State.playSE;
 import static PaooGame.Tiles.Tile.TILE_HEIGHT;
 import static PaooGame.Tiles.Tile.TILE_WIDTH;
 
@@ -27,7 +28,6 @@ public class Projectile extends Character{
 
     public void Update(){
         if(user == refLink.GetHero()){
-            //refLink.GetCChecker().checkTile(this);
             int npcIndex = refLink.GetCChecker().checkCharacters(this, refLink.GetNPC_Enemy());
             if(npcIndex!=999){
                 refLink.GetHero().damageNPC(npcIndex);
@@ -35,10 +35,17 @@ public class Projectile extends Character{
             }
         }
         else{
-            boolean contactPlayer = refLink.GetCChecker().checkPlayer(user);
+            boolean contactPlayer = refLink.GetCChecker().checkPlayer(this);
             if(!refLink.GetHero().invincible && contactPlayer){
+                //playSE(4);
                 damagePlayer();
+                alive = false;
             }
+        }
+        refLink.GetCChecker().checkTile(this);
+        if(this.collisionON){
+            alive = false;
+            collisionON = false;
         }
         switch (direction){
             case "Up": worldY -= this.speed; break;
@@ -69,7 +76,14 @@ public class Projectile extends Character{
                     case "Left": image = imLeft; break;
                     case "Right": image = imRight; break;
                 }
+                /*if(user.equals(refLink.GetHero())){
+                    g.drawImage(image, screenX-20, screenY-10, TILE_WIDTH, TILE_HEIGHT, null);
+                }
+                else{
+                    g.drawImage(image, screenX, screenY, TILE_WIDTH, TILE_HEIGHT, null);
+                }*/
                 g.drawImage(image, screenX, screenY, TILE_WIDTH, TILE_HEIGHT, null);
+
                 //g.setColor(Color.red);
                 //g.fillRect(screenX+collisionBounds.x,screenY+collisionBounds.y, collisionBounds.width, collisionBounds.height);
         }

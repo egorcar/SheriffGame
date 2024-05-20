@@ -12,11 +12,14 @@ import static PaooGame.Tiles.Tile.TILE_HEIGHT;
 import static PaooGame.Tiles.Tile.TILE_WIDTH;
 
 public class NPC_Enemy extends Character{
+    private int shotAvailableCouter2;
+
     public NPC_Enemy(RefLinks refLink, float x, float y, int width, int height){
         super(refLink, x, y, width, height);
         //actionLockCounter = 0;
         speed = 2;
         image = Assets.enemy1Stands;
+        projectile = new Bullet(refLink, 10, 10, 48, 48);
     }
 
     public void setAction(){
@@ -33,10 +36,18 @@ public class NPC_Enemy extends Character{
             if(i > 100){this.direction = "NA";}
             actionLockCounter = 0;
         }
+        int i = new Random().nextInt(100)+1;
+        if(i>90 && !projectile.alive/* && this.shotAvailableCouter2 == 30*/){
+            projectile.set((int) worldX, (int) worldY, direction, true, this);
+            refLink.GetProjectileList().add(projectile);
+            this.shotAvailableCouter2 = 0;
+        }
+        this.shotAvailableCouter2++;
     }
     @Override
     public void Update() {
         super.Update();
+
     }
 
 

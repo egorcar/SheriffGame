@@ -100,7 +100,7 @@ public class Hero extends Character
             }
         }
         if(refLink.GetKeyManager().l && !projectile.alive && shotAvailableCouter == 30){
-            projectile.set((int) this.worldX, (int) this.worldY, this.direction, true, this);
+            projectile.set((int) this.worldX-25, (int) this.worldY, this.direction, true, this);
             playSE(6);
             shotAvailableCouter = 0;
             refLink.GetProjectileList().add(projectile);
@@ -240,7 +240,8 @@ public class Hero extends Character
             switch (objectName){
                 case"PotionH":
                     playSE(1);
-                    life++;
+                    life+=6;
+                    if(life>maxLife)life = maxLife;
                     refLink.GetSuperObject()[i]=null;
                     //System.out.println(refLink.GetNPC_Enemy());
                     refLink.GetUI().showMessage("Yee haw!");
@@ -254,8 +255,6 @@ public class Hero extends Character
                         if(direction=="Left") worldX+=10;
                         if(direction=="Right") worldX-=10;
                     }
-
-
                     break;
                 case "PotionS":
                     playSE(1);

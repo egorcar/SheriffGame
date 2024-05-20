@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.util.Random;
 
+import static PaooGame.States.State.playSE;
 import static java.lang.Math.sqrt;
 
 /*! \class public abstract class Character extends Item
@@ -32,7 +33,7 @@ public abstract class Character extends Item
     public int dyingCounter;
     public boolean invincible = false;
     public int invincibleCounter = 0;
-    public int shotAvailableCouter = 0;
+    public int shotAvailableCouter;
     public boolean moving = true;
     boolean contactHero = false;
     public int life;     /*!< Retine viata caracterului.*/
@@ -63,6 +64,7 @@ public abstract class Character extends Item
         super(refLink, x,y, width, height);
         //Seteaza pe valorile implicite pentru viata, viteza si distantele de deplasare
         life    = DEFAULT_LIFE;
+        maxLife = DEFAULT_LIFE;
         speed   = 14;
         xMove   = 0;
         yMove   = 0;
@@ -101,19 +103,7 @@ public abstract class Character extends Item
         xMove = 0;
         yMove = 0;
 
-        actionLockCounter++;
-        //System.out.println(this.direction);
-        //System.out.println(refLink.GetNPC_Enemy().length);
-        if(actionLockCounter == 60){
-            Random random = new Random();
-            int i = random.nextInt(125)+1;
-            if(i<=25)             {this.direction = "Up";}
-            if(i > 25 && i <= 50) {this.direction = "Down";}
-            if(i > 50 && i <= 75) {this.direction = "Left";}
-            if(i > 75 && i <= 100){this.direction = "Right";}
-            if(i > 100){this.direction = "No";}
-            actionLockCounter = 0;
-        }
+        setAction();
 
 
         collisionON = false;
@@ -143,6 +133,7 @@ public abstract class Character extends Item
             int damage = attack;
             if(damage<0) damage = 0;
             refLink.GetHero().life -= damage;
+            playSE(4);
             refLink.GetHero().invincible = true;
         }
     }
