@@ -27,7 +27,7 @@ public class Hero extends Character
 {
     //private BufferedImage image;    /*!< Referinta catre imaginea curenta a eroului.*/
     public int hasPotion = 0;
-    public int hasCoin = 14;
+    public int hasCoin = 0;
     public int hasKey = 0;
     int soundCounter;
     public boolean checkDrawTime = false;
@@ -75,6 +75,8 @@ public class Hero extends Character
     @Override
     public void Update()
     {
+        refLink.getDatabase().saveProgress(worldX, worldY, direction, life, hasCoin, hasKey);
+
         ///Verifica daca a fost apasata o tasta
         GetInput();
         ///Actualizeaza pozitia
@@ -107,6 +109,9 @@ public class Hero extends Character
         if(shotAvailableCouter<30){
             shotAvailableCouter++;
         }
+        /*if(refLink.GetHero().hasKey==1){
+            Assets.hGate.solid = false;
+        }*/
 
 
         ///Actualizeaza imaginea
@@ -179,6 +184,9 @@ public class Hero extends Character
     private void GetInput()
     {
         ///Implicit eroul nu trebuie sa se deplaseze daca nu este apasata o tasta
+        if (refLink.GetKeyManager().p) {
+            State.SetState(refLink.GetGame().menuState);
+        }
         xMove = 0;
         yMove = 0;
         ///Verificare apasare tasta "sus"

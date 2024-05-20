@@ -1,6 +1,7 @@
 package PaooGame;
 
 //import PaooGame.Items.Cactus;
+import PaooGame.DataBase.DataBaseHelper;
 import PaooGame.Items.Character;
 import PaooGame.Items.Hero;
 import PaooGame.Items.InteractiveTile;
@@ -10,6 +11,7 @@ import PaooGame.Maps.Map2;
 import PaooGame.Input.KeyManager;
 import PaooGame.Object.SuperObject;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 
 /*! \class public class RefLinks
@@ -31,6 +33,7 @@ public class RefLinks
     private NPC_Enemy[] npc1;
     private InteractiveTile[] iTile;
     private ArrayList<Character> projectileList;
+    private DataBaseHelper database;
 
 
     /*! \fn public RefLinks(Game game)
@@ -95,5 +98,11 @@ public class RefLinks
 
     public void SetProjectileList(ArrayList<Character> projectileList) {this.projectileList = projectileList;}
     public ArrayList<Character> GetProjectileList() {return this.projectileList;}
+    public DataBaseHelper getDatabase(){
+        return database;
+    }
+    public void setDatabase(DataBaseHelper db){
+        database = db;
+    }
 
 }

@@ -13,6 +13,7 @@ import java.awt.event.KeyListener;
 public class KeyManager implements KeyListener
 {
     public boolean esc;
+    public boolean p;
     private boolean[] keys; /*!< Vector de flaguri pentru toate tastele. Tastele vor fi regasite dupa cod [0 - 255]*/
     public boolean up;      /*!< Flag pentru tasta "sus" apasata.*/
     public boolean down;    /*!< Flag pentru tasta "jos" apasata.*/
@@ -44,6 +45,7 @@ public class KeyManager implements KeyListener
         esc = keys[KeyEvent.VK_ESCAPE];
         f = keys[KeyEvent.VK_F];
         l = keys[KeyEvent.VK_L];
+        p = keys[KeyEvent.VK_P];
     }
 
     /*! \fn public void keyPressed(KeyEvent e)

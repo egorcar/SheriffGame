@@ -1,5 +1,6 @@
 package PaooGame;
 
+import PaooGame.DataBase.DataBaseHelper;
 import PaooGame.GameWindow.GameWindow;
 import PaooGame.Graphics.Assets;
 import PaooGame.Input.KeyManager;
@@ -117,12 +118,14 @@ public class Game implements Runnable
         Assets.Init();
             ///Se construieste obiectul de tip shortcut ce va retine o serie de referinte catre elementele importante din program.
         refLink = new RefLinks(this);
-            ///Definirea starilor programului
+        refLink.setDatabase(new DataBaseHelper());
+
+        ///Definirea starilor programului
         playState       = new PlayState(refLink);
         menuState       = new MenuState(refLink);
         settingsState   = new SettingsState(refLink);
         shopState      = new ShopState(refLink);
-            ///Seteaza starea implicita cu care va fi lansat programul in executie
+         ///Seteaza starea implicita cu care va fi lansat programul in executie
         State.SetState(menuState);
     }
 

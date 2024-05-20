@@ -50,51 +50,67 @@ public class UI {
     }
 
     public void draw(Graphics g, RefLinks refLink){
-        g.setFont(arial40);
-        g.setColor(Color.white);
+        if(refLink.GetHero().life<=0){
+            g.setColor(new Color(215, 153, 73));
+            g.fillRect(0, 0, refLink.GetGame().GetWidth(), refLink.GetGame().GetHeight());
+            g.setColor(new Color(0, 0, 0));
+            g.setFont(g.getFont().deriveFont(Font.BOLD,96F));
+            String text = "Game over";
+            int length = (int)g.getFontMetrics().getStringBounds(text, g).getWidth();
+            int x = refLink.GetGame().GetWidth()/2 - length/2;
+            int y = Tile.TILE_HEIGHT*3;
+            g.drawString(message, x, y);
+            System.out.println("Game Over!");
+            if(refLink.GetKeyManager().esc) System.exit(0);
+        }
+        else{
+            g.setFont(arial40);
+            g.setColor(Color.white);
         /*g.drawImage(whiskeyGlassImage, 0, (int) (Tile.TILE_HEIGHT*1), (int) (Tile.TILE_WIDTH*1.5), (int) (Tile.TILE_HEIGHT*1.5), null);
         g.drawString(" "+ this.refLink.GetHero().hasPotion, 55, 100);*/
-        if(refLink.GetHero().hasCoin<10) g.drawString(" "+ this.refLink.GetHero().hasCoin, 730, 47);
-        else g.drawString(" "+ this.refLink.GetHero().hasCoin, 710, 47);
-        g.drawImage(coinImage, 760, 10, null);
-        if(refLink.GetHero().hasKey==0) g.drawImage(noKeyImage, 750, 50, null);
-        else g.drawImage(key2Image, 750, 50, null);
-        if(refLink.GetHero().hasKey<=1) g.drawImage(noKeyImage, 750, 90, null);
-        else g.drawImage(key1Image, 750, 90, null);
+            if(refLink.GetHero().hasCoin<10) g.drawString(" "+ this.refLink.GetHero().hasCoin, 730, 47);
+            else g.drawString(" "+ this.refLink.GetHero().hasCoin, 710, 47);
+            g.drawImage(coinImage, 760, 10, null);
+            if(refLink.GetHero().hasKey==0) g.drawImage(noKeyImage, 750, 50, null);
+            else g.drawImage(key2Image, 750, 50, null);
+            if(refLink.GetHero().hasKey<=1) g.drawImage(noKeyImage, 750, 90, null);
+            else g.drawImage(key1Image, 750, 90, null);
 
 
-        int x = 5;
-        //int y = Tile.TILE_HEIGHT/2;
-        int i = 0;
-        while (i<refLink.GetHero().DEFAULT_LIFE/2){
-            g.drawImage(noHeartImage, x, 10, null);
-            i++;
-            x += Tile.TILE_WIDTH;
-        }
-        x = 5;
-        //y = Tile.TILE_HEIGHT/2;
-        i = 0;
-        while (i<refLink.GetHero().life){
-            g.drawImage(halfHeartImage, x, 10, null);
-            i++;
-            if(i<refLink.GetHero().life){
-                g.drawImage(heartImage, x, 10, null);
+            int x = 5;
+            //int y = Tile.TILE_HEIGHT/2;
+            int i = 0;
+            while (i<refLink.GetHero().DEFAULT_LIFE/2){
+                g.drawImage(noHeartImage, x, 10, null);
+                i++;
+                x += Tile.TILE_WIDTH;
             }
-            i++;
-            x += Tile.TILE_WIDTH;
-        }
-        //if()
+            x = 5;
+            //y = Tile.TILE_HEIGHT/2;
+            i = 0;
+            while (i<refLink.GetHero().life){
+                g.drawImage(halfHeartImage, x, 10, null);
+                i++;
+                if(i<refLink.GetHero().life){
+                    g.drawImage(heartImage, x, 10, null);
+                }
+                i++;
+                x += Tile.TILE_WIDTH;
+            }
+            //if()
 
 
 
-        if(messageOn){
-            g.setFont(g.getFont().deriveFont(30F));
-            g.drawString(message, 10, 140);
-            messageCounter++;
+            if(messageOn){
+                g.setFont(g.getFont().deriveFont(30F));
+                g.drawString(message, 10, 140);
+                messageCounter++;
+            }
+            if(messageCounter>120){
+                messageCounter=0;
+                messageOn = false;
+            }
         }
-        if(messageCounter>120){
-            messageCounter=0;
-            messageOn = false;
-        }
+
     }
 }

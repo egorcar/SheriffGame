@@ -44,10 +44,14 @@ public class MenuState extends State
         if(refLink.GetKeyManager().enter){
             if(commandNum==0){
                 playMusic(0);
-                State.SetState(refLink.GetGame().playState);
+                State st = refLink.GetGame().playState;
+                State.SetState(st);
             }
             if(commandNum==1){
-                //later
+                playMusic(0);
+                PlayState st = (PlayState) refLink.GetGame().playState;
+                st.InitState();
+                State.SetState(st);
             }
             if(commandNum==2){
                 System.exit(0);

@@ -65,7 +65,7 @@ public abstract class Character extends Item
         //Seteaza pe valorile implicite pentru viata, viteza si distantele de deplasare
         life    = DEFAULT_LIFE;
         maxLife = DEFAULT_LIFE;
-        speed   = 14;
+        speed   = 4;
         xMove   = 0;
         yMove   = 0;
         normalBounds.x = 20;

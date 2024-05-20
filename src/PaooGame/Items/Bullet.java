@@ -25,7 +25,4 @@ public class Bullet extends Projectile{
             throw new RuntimeException(e);
         }
     }
-
-
-
 }
