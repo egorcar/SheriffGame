@@ -3,6 +3,7 @@ package PaooGame.States;
 import PaooGame.*;
 import PaooGame.GameWindow.GameWindow;
 //import PaooGame.Items.Cactus;
+import PaooGame.Items.Character;
 import PaooGame.Items.Hero;
 import PaooGame.Items.NPC_Enemy;
 import PaooGame.Object.SuperObject;
@@ -10,6 +11,7 @@ import PaooGame.Maps.Map2;
 import PaooGame.Items.InteractiveTile;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 /*! \class public class PlayState extends State
     \brief Implementeaza/controleaza jocul.
@@ -23,6 +25,8 @@ public class PlayState extends State
     public SuperObject []obj;
     public NPC_Enemy[] npc;
     public InteractiveTile[] iTIle;
+
+    public ArrayList<Character> projectileList;
 
     public UI ui;
     /*! \fn public PlayState(RefLinks refLink)
@@ -78,6 +82,9 @@ public class PlayState extends State
         refLink.SetInteractiveTile(iTIle);
         assetSetter.setInteractiveTile();
 
+        projectileList = new ArrayList<>();
+        refLink.SetProjectileList(projectileList);
+
 
         //Porneste muzica
         //playMusic(0);
@@ -111,6 +118,19 @@ public class PlayState extends State
                 }
             }
         }
+
+        for(int i = 0; i< projectileList.size(); i++){
+            if(projectileList.get(i) != null){
+                if(projectileList.get(i).alive){
+                    projectileList.get(i).Update();
+                }
+                if(!projectileList.get(i).alive){
+                    projectileList.remove(i);
+                }
+            }
+        }
+
+
         for(int i = 0; i<iTIle.length; i++){
             /*if(iTIle[i]!=null){
                 iTIle[i].Update();
@@ -157,12 +177,12 @@ public class PlayState extends State
             }
             else this.npc[i].Draw(refLink, hero, g);
         }
-        /*for(int i = 0; i<this.cacti.length; i++){
-            if(this.cacti[i]==null){
-                //System.out.println(i);
+
+        for(int i = 0; i<this.projectileList.size(); i++){
+            if(refLink.GetProjectileList().get(i) != null){
+                refLink.GetProjectileList().get(i).Draw(refLink, g);
             }
-            else this.cacti[i].Draw(refLink, hero, g);
-        }*/
+        }
 
         //Draw ui:
         ui.draw(g, refLink);

@@ -7,6 +7,7 @@ import PaooGame.GameWindow.GameWindow;
 import PaooGame.Input.KeyManager;
 import PaooGame.RefLinks;
 import PaooGame.Graphics.Assets;
+import PaooGame.States.PlayState;
 import PaooGame.States.State;
 import PaooGame.Tiles.Tile;
 
@@ -65,6 +66,8 @@ public class Hero extends Character
         worldY = 86*Tile.TILE_HEIGHT;
         screenX = GameWindow.GetHalfWidth();
         screenY = GameWindow.GetHalfHeight();
+
+        projectile = new Bullet(refLink, 10, 10, 48, 48);
     }
 
     /*! \fn public void Update()
@@ -95,6 +98,10 @@ public class Hero extends Character
                 invincible = false;
                 invincibleCounter = 0;
             }
+        }
+        if(refLink.GetKeyManager().l && !projectile.alive){
+            projectile.set((int) this.worldX, (int) this.worldY, this.direction, true, this);
+            refLink.GetProjectileList().add(projectile);
         }
 
 

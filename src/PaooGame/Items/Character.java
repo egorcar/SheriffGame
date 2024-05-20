@@ -2,6 +2,7 @@ package PaooGame.Items;
 
 import PaooGame.RefLinks;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.util.Random;
@@ -17,6 +18,10 @@ import static java.lang.Math.sqrt;
 public abstract class Character extends Item
 {
     public BufferedImage image;
+    public BufferedImage imUp;
+    public BufferedImage imDown;
+    public BufferedImage imLeft;
+    public BufferedImage imRight;
     public static final int DEFAULT_LIFE            = 10;   /*!< Valoarea implicita a vietii unui caracter.*/
     public static final float DEFAULT_SPEED         = 4.0f; /*!< Viteza implicita a unu caracter.*/
     public static final int DEFAULT_CREATURE_WIDTH  = 60;   /*!< Latimea implicita a imaginii caracterului.*/
@@ -31,6 +36,12 @@ public abstract class Character extends Item
 
     public int life;     /*!< Retine viata caracterului.*/
     public float speed;  /*!< Retine viteza de deplasare caracterului.*/
+    public int maxLife;
+    public int maxMana;
+    public int mana;
+    public int attack;
+    public Projectile projectile;
+
     protected float xMove;  /*!< Retine noua pozitie a caracterului pe axa X.*/
     protected float yMove;  /*!< Retine noua pozitie a caracterului pe axa Y.*/
 
@@ -133,5 +144,6 @@ public abstract class Character extends Item
     public void SetXMove(float xMove) {this.xMove = xMove;}
 
     public void SetYMove(float yMove) {this.yMove = yMove;}
+
 }
 

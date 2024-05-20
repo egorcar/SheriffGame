@@ -20,6 +20,7 @@ public class KeyManager implements KeyListener
     public boolean right;   /*!< Flag pentru tasta "dreapta" apasata.*/
     public boolean debug;   /*!< Flag pentru tasta "debug" apasata.*/
     public boolean f;   /*!< Flag pentru tasta "debug" apasata.*/
+    public boolean l;   /*!< Flag pentru tasta "debug" apasata.*/
     public boolean enter;
 
     /*! \fn public KeyManager()
@@ -42,6 +43,7 @@ public class KeyManager implements KeyListener
         enter = keys[KeyEvent.VK_ENTER];
         esc = keys[KeyEvent.VK_ESCAPE];
         f = keys[KeyEvent.VK_F];
+        l = keys[KeyEvent.VK_L];
     }
 
     /*! \fn public void keyPressed(KeyEvent e)

@@ -1,6 +1,7 @@
 package PaooGame;
 
 //import PaooGame.Items.Cactus;
+import PaooGame.Items.Character;
 import PaooGame.Items.Hero;
 import PaooGame.Items.InteractiveTile;
 import PaooGame.Items.NPC_Enemy;
@@ -8,6 +9,8 @@ import PaooGame.Maps.Map2;
 
 import PaooGame.Input.KeyManager;
 import PaooGame.Object.SuperObject;
+
+import java.util.ArrayList;
 
 /*! \class public class RefLinks
     \brief Clasa ce retine o serie de referinte ale unor elemente pentru a fi usor accesibile.
@@ -27,6 +30,7 @@ public class RefLinks
     private UI ui;
     private NPC_Enemy[] npc1;
     private InteractiveTile[] iTile;
+    private ArrayList<Character> projectileList;
 
 
     /*! \fn public RefLinks(Game game)
@@ -88,4 +92,8 @@ public class RefLinks
 
     public InteractiveTile[] GetInteractiveTile(){return iTile;}
     public void SetInteractiveTile(InteractiveTile[] iTile){this.iTile = iTile;}
+
+    public void SetProjectileList(ArrayList<Character> projectileList) {this.projectileList = projectileList;}
+    public ArrayList<Character> GetProjectileList() {return this.projectileList;}
+
 }
