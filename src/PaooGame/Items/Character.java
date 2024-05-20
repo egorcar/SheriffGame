@@ -32,6 +32,7 @@ public abstract class Character extends Item
     public int dyingCounter;
     public boolean invincible = false;
     public int invincibleCounter = 0;
+    public int shotAvailableCouter = 0;
     public boolean moving = true;
 
     public int life;     /*!< Retine viata caracterului.*/

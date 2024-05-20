@@ -26,6 +26,17 @@ public class Projectile extends Character{
     }
 
     public void Update(){
+        if(user == refLink.GetHero()){
+            //refLink.GetCChecker().checkTile(this);
+            int npcIndex = refLink.GetCChecker().checkCharacters(this, refLink.GetNPC_Enemy());
+            if(npcIndex!=999){
+                refLink.GetHero().damageNPC(npcIndex);
+                alive = false;
+            }
+        }
+        else{
+
+        }
         switch (direction){
             case "Up": worldY -= this.speed; break;
             case "Down": worldY += this.speed; break;
@@ -39,7 +50,6 @@ public class Projectile extends Character{
     }
 
     public void Draw(RefLinks refLink, Graphics g) {
-        System.out.println("Pos");
         Draw(refLink, refLink.GetHero(), g);
     }
     public void Draw(RefLinks refLink, Hero hero, Graphics g) {

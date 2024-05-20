@@ -99,11 +99,15 @@ public class Hero extends Character
                 invincibleCounter = 0;
             }
         }
-        if(refLink.GetKeyManager().l && !projectile.alive){
+        if(refLink.GetKeyManager().l && !projectile.alive && shotAvailableCouter == 30){
             projectile.set((int) this.worldX, (int) this.worldY, this.direction, true, this);
+            playSE(6);
+            shotAvailableCouter = 0;
             refLink.GetProjectileList().add(projectile);
         }
-
+        if(shotAvailableCouter<30){
+            shotAvailableCouter++;
+        }
 
 
         ///Actualizeaza imaginea
@@ -152,7 +156,7 @@ public class Hero extends Character
 
     }
 
-    private void damageNPC(int i) {
+    public void damageNPC(int i) {
         if(i!=999){
             if(!refLink.GetNPC_Enemy()[i].invincible){
                 if(!refLink.GetNPC_Enemy()[i].dying) playSE(2);
